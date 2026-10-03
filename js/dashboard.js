@@ -58,7 +58,7 @@ const TAB_CONFIG = {
     'market': { title: 'F&O Market Signals', path: 'tabs/market.html', script: 'js/market.js', init: 'initMarketTab' },
     'analyzer': { title: '360° Commodity Analyzer', path: 'tabs/analyzer.html', script: 'js/analyzer.js', init: 'initAnalyzerTab' },
     'trade-plan': { title: 'Prediction Result & Trade Plan', path: 'tabs/trade-plan.html', script: 'js/trade-plan.js', init: 'initTradePlanTab' },
-    'quality': { title: 'MC Commodity Scores', path: 'tabs/quality.html', script: 'js/quality.js', init: 'initQualityTab' },
+    'quality': { title: 'Quant Commodity Scores', path: 'tabs/quality.html', script: 'js/quality.js', init: 'initQualityTab' },
     'analytics': { title: 'AI Quant Predictions', path: 'tabs/analytics.html', script: 'js/analytics.js', init: 'initAnalyticsTab' },
     'retrospective': { title: 'Daily Retrospective', path: 'tabs/retrospective.html', script: 'js/analytics.js', init: 'initRetroTab' },
     'todos': { title: 'AI Improvement To-Dos', path: 'tabs/todos.html', script: 'js/analytics.js', init: 'initTodosTab' }
