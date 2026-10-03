@@ -27,7 +27,7 @@
                     <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
                         <span style="font-size: 11.5px; font-weight: 700; color: #64748b; text-transform: uppercase;">Implementation:</span>
                         <span style="font-size: 13.5px; font-weight: 800; color: #0f172a;">
-                            <span id="todoCompletedCount">0</span> of <span id="todoTotalCount">0</span> Done (<span id="todoPercentText">0%</span>)
+                            <span id="todoCompletedCount">0</span> of <span id="todoTotalCount">4</span> Done (<span id="todoPercentText">0%</span>)
                         </span>
                     </div>
                     <div style="width: 100%; height: 7px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin-top: 6px;">
@@ -40,10 +40,10 @@
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 14px; margin-bottom: 16px;">
                 <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                     <button class="todo-filter-btn" id="filterBtn-all" onclick="setTodoFilter('all')" style="padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #0f172a; background: #0f172a; color: #ffffff; cursor: pointer;">
-                        All (<span id="filterCountAll">0</span>)
+                        All (<span id="filterCountAll">4</span>)
                     </button>
                     <button class="todo-filter-btn" id="filterBtn-pending" onclick="setTodoFilter('pending')" style="padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; cursor: pointer;">
-                        ⏳ Pending (<span id="filterCountPending">0</span>)
+                        ⏳ Pending (<span id="filterCountPending">4</span>)
                     </button>
                     <button class="todo-filter-btn" id="filterBtn-completed" onclick="setTodoFilter('completed')" style="padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; cursor: pointer;">
                         ✅ Completed (<span id="filterCountCompleted">0</span>)
@@ -92,6 +92,62 @@
             <!-- Master Cards Container -->
             <div id="masterTodosList">
                 
+        <div class="todo-master-card" id="todoCard-master-todo-20261003-1" data-id="todo-20261003-1" data-priority="HIGH" data-category="Risk Management" data-date="2026-10-03" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #b91c1c; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+            <input type="checkbox" class="master-todo-chk" id="chk-master-todo-20261003-1" onchange="toggleTodo('todo-20261003-1', this.checked)"  style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">HIGH PRIORITY</span>
+                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Risk Management</span>
+                    <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-10-03</span>
+                    <span class="todo-status-badge" id="todoBadge-master-todo-20261003-1" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
+                </div>
+                <div class="todo-title" id="todoTitle-master-todo-20261003-1" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px; text-decoration: none;">Implement ATR-Based Dynamic Stop Loss & Target Engine</div>
+                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Replace static 1.0% stop-loss and 2.0% target rules with a dynamic ATR multiple (e.g., 1.5x ATR for stops, 3.0x ATR for targets) to account for varying asset volatility profiles.</div>
+            </div>
+        </div>
+        
+        <div class="todo-master-card" id="todoCard-master-todo-20261003-2" data-id="todo-20261003-2" data-priority="HIGH" data-category="Quantitative Filtering" data-date="2026-10-03" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #b91c1c; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+            <input type="checkbox" class="master-todo-chk" id="chk-master-todo-20261003-2" onchange="toggleTodo('todo-20261003-2', this.checked)"  style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">HIGH PRIORITY</span>
+                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Quantitative Filtering</span>
+                    <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-10-03</span>
+                    <span class="todo-status-badge" id="todoBadge-master-todo-20261003-2" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
+                </div>
+                <div class="todo-title" id="todoTitle-master-todo-20261003-2" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px; text-decoration: none;">Add Macro-Regime Breadth Gatekeeper</div>
+                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Develop a pre-filter script that checks market breadth and DXY correlation. Suspend trade generation entirely if universe-wide median return equals 0.0% across opening snapshots.</div>
+            </div>
+        </div>
+        
+        <div class="todo-master-card" id="todoCard-master-todo-20261003-3" data-id="todo-20261003-3" data-priority="MEDIUM" data-category="Alpha Generation" data-date="2026-10-03" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #b45309; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+            <input type="checkbox" class="master-todo-chk" id="chk-master-todo-20261003-3" onchange="toggleTodo('todo-20261003-3', this.checked)"  style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #fef3c7; color: #b45309; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">MEDIUM PRIORITY</span>
+                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Alpha Generation</span>
+                    <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-10-03</span>
+                    <span class="todo-status-badge" id="todoBadge-master-todo-20261003-3" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
+                </div>
+                <div class="todo-title" id="todoTitle-master-todo-20261003-3" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px; text-decoration: none;">Integrate Intraday VWAP Slope Confirmation</div>
+                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Require a confirmed 15-minute VWAP slope alignment before any commodity can achieve a Combined Score >= 80.0, filtering out mean-reverting chop.</div>
+            </div>
+        </div>
+        
+        <div class="todo-master-card" id="todoCard-master-todo-20261003-4" data-id="todo-20261003-4" data-priority="MEDIUM" data-category="Data Infrastructure" data-date="2026-10-03" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #b45309; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+            <input type="checkbox" class="master-todo-chk" id="chk-master-todo-20261003-4" onchange="toggleTodo('todo-20261003-4', this.checked)"  style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #fef3c7; color: #b45309; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">MEDIUM PRIORITY</span>
+                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Data Infrastructure</span>
+                    <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-10-03</span>
+                    <span class="todo-status-badge" id="todoBadge-master-todo-20261003-4" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
+                </div>
+                <div class="todo-title" id="todoTitle-master-todo-20261003-4" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px; text-decoration: none;">Expand Snapshot Monitoring Window</div>
+                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Broaden the intraday snapshot ingestion pipeline to capture full-session data starting from market open (09:00 AM) through EOD close, ensuring early liquidity moves are logged.</div>
+            </div>
+        </div>
+        
             </div>
 
         </div><!-- /#aiTodosSection -->
