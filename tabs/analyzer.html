@@ -3,7 +3,7 @@
     &#128373; 360&#176; Commodity Intelligence Dossier
   </div>
   <div style="font-size:13px; color:#475569; margin-bottom:14px;">
-    Search any NSE listed equity stock or F&amp;O derivative to view synthesized confluence: Market Signal, Quality/Score breakdown, AI Quant model stance, and Final Actionable Verdict.
+    Search any MCX commodity to view synthesized confluence: Market Signal, Quality/Score breakdown, AI Quant model stance, and Final Actionable Verdict.
   </div>
 
   <div style="position:relative; max-width:600px;">
@@ -11,7 +11,7 @@
       <input
         type="text"
         id="analyzerInput"
-        placeholder="Search any share symbol or name (e.g. RELIANCE, TCS, MANORAMA)..."
+        placeholder="Search any commodity symbol (e.g. GOLD, SILVER, CRUDEOIL)..."
         oninput="onAnalyzerSearchInput(this.value)"
         onkeydown="onAnalyzerSearchKeyDown(event)"
         style="flex:1; padding:10px 14px; font-size:14px; border:2px solid #cbd5e1; border-radius:8px; outline:none;"
@@ -24,15 +24,15 @@
   </div>
 
   <div style="margin-top:12px; display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
-    <span style="font-size:12px; font-weight:700; color:#64748b;">Quick Stocks:</span>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('RELIANCE')">RELIANCE</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('TCS')">TCS</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('HDFCBANK')">HDFCBANK</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('INFY')">INFY</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('MANORAMA')">MANORAMA</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('SBIN')">SBIN</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('ICICIBANK')">ICICIBANK</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('ZOMATO')">ZOMATO</button>
+    <span style="font-size:12px; font-weight:700; color:#64748b;">Quick Commodities:</span>
+        <button class="analyzer-chip" onclick="selectAnalyzerStock('GOLD')">GOLD</button>
+    <button class="analyzer-chip" onclick="selectAnalyzerStock('SILVER')">SILVER</button>
+    <button class="analyzer-chip" onclick="selectAnalyzerStock('CRUDEOIL')">CRUDEOIL</button>
+    <button class="analyzer-chip" onclick="selectAnalyzerStock('NATURALGAS')">NATURALGAS</button>
+    <button class="analyzer-chip" onclick="selectAnalyzerStock('COPPER')">COPPER</button>
+    <button class="analyzer-chip" onclick="selectAnalyzerStock('ZINC')">ZINC</button>
+    <button class="analyzer-chip" onclick="selectAnalyzerStock('ALUMINIUM')">ALUMINIUM</button>
+    <button class="analyzer-chip" onclick="selectAnalyzerStock('LEAD')">LEAD</button>
   </div>
 </div>
 
