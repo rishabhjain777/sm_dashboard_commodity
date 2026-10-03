@@ -2084,7 +2084,7 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
 <h3>&#9733; High Conviction Signals &nbsp;(0 Active &bull; Combined Score &ge; 80)</h3>
 <table id="highScoreTable">
 <thead><tr>
-  <th onclick="sortTable(this, 0)">Stock</th>
+  <th onclick="sortTable(this, 0)">Commodity</th>
   <th onclick="sortTable(this, 1)">Entry Date/Time</th>
   <th onclick="sortTable(this, 2)">Entry Price</th>
   <th onclick="sortTable(this, 3)" title="Target: BUY +2.0% | SELL -2.0%">Target</th>
@@ -2137,7 +2137,7 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
     <table id="predictionTable">
       <thead>
         <tr>
-          <th onclick="sortTable(this, 0)">Stock</th>
+          <th onclick="sortTable(this, 0)">Commodity</th>
           <th onclick="sortTable(this, 1)">Signal Side</th>
           <th onclick="sortTable(this, 2)">Signal at Call</th>
           <th onclick="sortTable(this, 3)" title="Combined Score: Stock Score (Percentile) &times; Final Score">Combined Score</th>
@@ -2167,22 +2167,22 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
 <div class="scores-kpi-row">
   <div class="scores-kpi-card">
     <div class="scores-kpi-title">Universe Tracked</div>
-    <div class="scores-kpi-val">8 <span style="font-size:12px;color:#888;">Stocks</span></div>
-    <div class="scores-kpi-sub">All NSE Listed Shares (8 Scored)</div>
+    <div class="scores-kpi-val">8 <span style="font-size:12px;color:#888;">Commodities</span></div>
+    <div class="scores-kpi-sub">All MCX Commodities (8 Scored)</div>
   </div>
   <div class="scores-kpi-card">
     <div class="scores-kpi-title">Top Decile (&ge;7.0)</div>
-    <div class="scores-kpi-val" style="color:#22543d;">8 <span style="font-size:12px;color:#888;">Stocks</span></div>
+    <div class="scores-kpi-val" style="color:#22543d;">0 <span style="font-size:12px;color:#888;">Commodities</span></div>
     <div class="scores-kpi-sub">Top Ranked Percentile</div>
   </div>
   <div class="scores-kpi-card">
     <div class="scores-kpi-title">Average Score</div>
-    <div class="scores-kpi-val" style="color:#2b6cb0;">10.0 <span style="font-size:12px;color:#888;">/ 10</span></div>
-    <div class="scores-kpi-sub">Universe Percentile Score</div>
+    <div class="scores-kpi-val" style="color:#2b6cb0;">5.5 <span style="font-size:12px;color:#888;">/ 10</span></div>
+    <div class="scores-kpi-sub">Universe MC Score</div>
   </div>
   <div class="scores-kpi-card">
     <div class="scores-kpi-title">Top Scorer</div>
-    <div class="scores-kpi-val" style="color:#2e7d32;">ALUMINIUM (10.0)</div>
+    <div class="scores-kpi-val" style="color:#2e7d32;">ALUMINIUM (5.5)</div>
     <div class="scores-kpi-sub">Highest Ranked in Universe</div>
   </div>
 </div>
@@ -2192,13 +2192,13 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
   <input
     type="text"
     id="searchScores"
-    placeholder="Search Any NSE Stock / Company Name / Analysis..."
+    placeholder="Search Any MCX Commodity / Analysis..."
     oninput="debouncedScoreFilter()"
     style="min-width: 280px;"
   >
   <select id="scoreCategoryFilter" onchange="applyScoreFilters()">
-    <option value="ALL" selected>All NSE Stocks (8)</option>
-    <option value="SCORED">Scored Stocks Only (8)</option>
+    <option value="ALL" selected>All MCX Commodities (8)</option>
+    <option value="SCORED">Scored Commodities Only (8)</option>
     <option value="HIGH">High Score (&ge; 7.0)</option>
     <option value="MID">Moderate (5.0 - 6.9)</option>
     <option value="LOW">Caution (&lt; 5.0)</option>
@@ -2218,16 +2218,16 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
 <thead>
 <tr>
   <th onclick="sortScoreTable(this, 0)" style="width: 35px; cursor:pointer;" title="Sort by default rank">#</th>
-  <th onclick="sortScoreTable(this, 1)" style="text-align: left; min-width: 150px; cursor:pointer;" title="Sort by Symbol">Stock</th>
+  <th onclick="sortScoreTable(this, 1)" style="text-align: left; min-width: 150px; cursor:pointer;" title="Sort by Symbol">Commodity</th>
   <th onclick="sortScoreTable(this, 2)" style="cursor:pointer;" title="Sort by Spot Price">Spot &#8377;</th>
   <th onclick="sortScoreTable(this, 3)" style="cursor:pointer;" title="Sort by F&amp;O Signal">F&amp;O Signal</th>
   <th onclick="sortScoreTable(this, 4)" style="cursor:pointer;" title="Sort by Overall Score">Overall Score</th>
-  <th onclick="sortScoreTable(this, 5)" style="cursor:pointer;" title="Quality: Financial Strength &amp; Operational Excellence">Quality (Q)</th>
-  <th onclick="sortScoreTable(this, 6)" style="cursor:pointer;" title="Growth: Historical &amp; Forward Revenue/Earnings">Growth (G)</th>
-  <th onclick="sortScoreTable(this, 7)" style="cursor:pointer;" title="Value: Price Multiple &amp; Relative Valuation">Value (V)</th>
-  <th onclick="sortScoreTable(this, 8)" style="cursor:pointer;" title="Technical: Trend &amp; Momentum Indicators">Technical (T)</th>
+  <th onclick="sortScoreTable(this, 5)" style="cursor:pointer;" title="OI Change % (Open Interest Momentum)">OI Chg (Q)</th>
+  <th onclick="sortScoreTable(this, 6)" style="cursor:pointer;" title="Price Change % (Intraday Momentum)">Price Chg (G)</th>
+  <th onclick="sortScoreTable(this, 7)" style="cursor:pointer;" title="OI Buildup Bias Score">OI Bias (V)</th>
+  <th onclick="sortScoreTable(this, 8)" style="cursor:pointer;" title="MC Technical Score">Technical (T)</th>
   <th onclick="sortScoreTable(this, 9)" style="cursor:pointer;" title="Kotak Neo Trend Proxy">Neo T-Proxy</th>
-  <th onclick="sortScoreTable(this, 10)" style="text-align: left; min-width: 260px; cursor:pointer;">Valuation &amp; Financial Analysis</th>
+  <th onclick="sortScoreTable(this, 10)" style="text-align: left; min-width: 260px; cursor:pointer;">OI Buildup &amp; Market Analysis</th>
   <th style="width: 60px;">MC Link</th>
 </tr>
 </thead>
@@ -2241,14 +2241,14 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
           </td>
           <td>336.60</td>
           <td><span class="signal-SHORT sig-pill">SHORT</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 10.0/10 (Raw MC Score: 50/100)">10.0</span></td>
+          <td><span class="score-badge score-mid" title="MC Score: 5.5/10 (Raw MC Score: 50/100)">5.5</span></td>
           <td class="sub-score">0</td>
           <td class="sub-score">0</td>
           <td class="sub-score">50</td>
           <td class="sub-score">50</td>
           <td>—</td>
           <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"> detected. Price Chg: 0%, OI Chg: 0%</td>
-          <td><a href="https://www.moneycontrol.com/markets/stocks-score/aluminium-aluminium/" target="_blank" class="mc-link-btn" title="View ALUMINIUM on MoneyControl">MC &#8599;</a></td>
+          <td><a href="https://www.moneycontrol.com/commodity/mcx-aluminium-price?type=futures" target="_blank" class="mc-link-btn" title="View ALUMINIUM on MoneyControl">MC &#8599;</a></td>
         </tr>
         
         <tr>
@@ -2259,14 +2259,14 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
           </td>
           <td>1399.60</td>
           <td><span class="signal-LONG sig-pill">LONG</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 10.0/10 (Raw MC Score: 50/100)">10.0</span></td>
+          <td><span class="score-badge score-mid" title="MC Score: 5.5/10 (Raw MC Score: 50/100)">5.5</span></td>
           <td class="sub-score">0</td>
           <td class="sub-score">0</td>
           <td class="sub-score">50</td>
           <td class="sub-score">50</td>
           <td>—</td>
           <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"> detected. Price Chg: 0%, OI Chg: 0%</td>
-          <td><a href="https://www.moneycontrol.com/markets/stocks-score/copper-copper/" target="_blank" class="mc-link-btn" title="View COPPER on MoneyControl">MC &#8599;</a></td>
+          <td><a href="https://www.moneycontrol.com/commodity/mcx-copper-price?type=futures" target="_blank" class="mc-link-btn" title="View COPPER on MoneyControl">MC &#8599;</a></td>
         </tr>
         
         <tr>
@@ -2277,14 +2277,14 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
           </td>
           <td>8916.00</td>
           <td><span class="signal-LONG sig-pill">LONG</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 10.0/10 (Raw MC Score: 50/100)">10.0</span></td>
+          <td><span class="score-badge score-mid" title="MC Score: 5.5/10 (Raw MC Score: 50/100)">5.5</span></td>
           <td class="sub-score">0</td>
           <td class="sub-score">0</td>
           <td class="sub-score">50</td>
           <td class="sub-score">50</td>
           <td>—</td>
           <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"> detected. Price Chg: 0%, OI Chg: 0%</td>
-          <td><a href="https://www.moneycontrol.com/markets/stocks-score/crudeoil-crudeoil/" target="_blank" class="mc-link-btn" title="View CRUDEOIL on MoneyControl">MC &#8599;</a></td>
+          <td><a href="https://www.moneycontrol.com/commodity/mcx-crudeoil-price?type=futures" target="_blank" class="mc-link-btn" title="View CRUDEOIL on MoneyControl">MC &#8599;</a></td>
         </tr>
         
         <tr>
@@ -2295,14 +2295,14 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
           </td>
           <td>147866.00</td>
           <td><span class="signal-LONG sig-pill">LONG</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 10.0/10 (Raw MC Score: 50/100)">10.0</span></td>
+          <td><span class="score-badge score-mid" title="MC Score: 5.5/10 (Raw MC Score: 50/100)">5.5</span></td>
           <td class="sub-score">0</td>
           <td class="sub-score">0</td>
           <td class="sub-score">50</td>
           <td class="sub-score">50</td>
           <td>—</td>
           <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"> detected. Price Chg: 0%, OI Chg: 0%</td>
-          <td><a href="https://www.moneycontrol.com/markets/stocks-score/gold-gold/" target="_blank" class="mc-link-btn" title="View GOLD on MoneyControl">MC &#8599;</a></td>
+          <td><a href="https://www.moneycontrol.com/commodity/mcx-gold-price?type=futures" target="_blank" class="mc-link-btn" title="View GOLD on MoneyControl">MC &#8599;</a></td>
         </tr>
         
         <tr>
@@ -2313,14 +2313,14 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
           </td>
           <td>192.20</td>
           <td><span class="signal-SHORT sig-pill">SHORT</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 10.0/10 (Raw MC Score: 50/100)">10.0</span></td>
+          <td><span class="score-badge score-mid" title="MC Score: 5.5/10 (Raw MC Score: 50/100)">5.5</span></td>
           <td class="sub-score">0</td>
           <td class="sub-score">0</td>
           <td class="sub-score">50</td>
           <td class="sub-score">50</td>
           <td>—</td>
           <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"> detected. Price Chg: 0%, OI Chg: 0%</td>
-          <td><a href="https://www.moneycontrol.com/markets/stocks-score/lead-lead/" target="_blank" class="mc-link-btn" title="View LEAD on MoneyControl">MC &#8599;</a></td>
+          <td><a href="https://www.moneycontrol.com/commodity/mcx-lead-price?type=futures" target="_blank" class="mc-link-btn" title="View LEAD on MoneyControl">MC &#8599;</a></td>
         </tr>
         
         <tr>
@@ -2331,14 +2331,14 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
           </td>
           <td>287.50</td>
           <td><span class="signal-SHORT sig-pill">SHORT</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 10.0/10 (Raw MC Score: 50/100)">10.0</span></td>
+          <td><span class="score-badge score-mid" title="MC Score: 5.5/10 (Raw MC Score: 50/100)">5.5</span></td>
           <td class="sub-score">0</td>
           <td class="sub-score">0</td>
           <td class="sub-score">50</td>
           <td class="sub-score">50</td>
           <td>—</td>
           <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"> detected. Price Chg: 0%, OI Chg: 0%</td>
-          <td><a href="https://www.moneycontrol.com/markets/stocks-score/naturalgas-naturalgas/" target="_blank" class="mc-link-btn" title="View NATURALGAS on MoneyControl">MC &#8599;</a></td>
+          <td><a href="https://www.moneycontrol.com/commodity/mcx-naturalgas-price?type=futures" target="_blank" class="mc-link-btn" title="View NATURALGAS on MoneyControl">MC &#8599;</a></td>
         </tr>
         
         <tr>
@@ -2349,14 +2349,14 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
           </td>
           <td>225877.00</td>
           <td><span class="signal-LONG sig-pill">LONG</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 10.0/10 (Raw MC Score: 50/100)">10.0</span></td>
+          <td><span class="score-badge score-mid" title="MC Score: 5.5/10 (Raw MC Score: 50/100)">5.5</span></td>
           <td class="sub-score">0</td>
           <td class="sub-score">0</td>
           <td class="sub-score">50</td>
           <td class="sub-score">50</td>
           <td>—</td>
           <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"> detected. Price Chg: 0%, OI Chg: 0%</td>
-          <td><a href="https://www.moneycontrol.com/markets/stocks-score/silver-silver/" target="_blank" class="mc-link-btn" title="View SILVER on MoneyControl">MC &#8599;</a></td>
+          <td><a href="https://www.moneycontrol.com/commodity/mcx-silver-price?type=futures" target="_blank" class="mc-link-btn" title="View SILVER on MoneyControl">MC &#8599;</a></td>
         </tr>
         
         <tr>
@@ -2367,14 +2367,14 @@ MCX MARKET: 48160.69 | Change: 0.79 | Change %: 0.00% | Market: UP mildly | 15M:
           </td>
           <td>410.60</td>
           <td><span class="signal-SHORT sig-pill">SHORT</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 10.0/10 (Raw MC Score: 50/100)">10.0</span></td>
+          <td><span class="score-badge score-mid" title="MC Score: 5.5/10 (Raw MC Score: 50/100)">5.5</span></td>
           <td class="sub-score">0</td>
           <td class="sub-score">0</td>
           <td class="sub-score">50</td>
           <td class="sub-score">50</td>
           <td>—</td>
           <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"> detected. Price Chg: 0%, OI Chg: 0%</td>
-          <td><a href="https://www.moneycontrol.com/markets/stocks-score/zinc-zinc/" target="_blank" class="mc-link-btn" title="View ZINC on MoneyControl">MC &#8599;</a></td>
+          <td><a href="https://www.moneycontrol.com/commodity/mcx-zinc-price?type=futures" target="_blank" class="mc-link-btn" title="View ZINC on MoneyControl">MC &#8599;</a></td>
         </tr>
         
 </tbody>
@@ -4282,8 +4282,8 @@ function switchDashboardTab(tabId) {
 })();
 
 // ── 360° Unified Stock Analyzer Engine ──────────────────────────────
-const ANALYZER_DATA = {"ALUMINIUM": {"symbol": "ALUMINIUM", "company_name": "ALUMINIUM", "spot": "336.6", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/aluminium-aluminium/", "score": {"total_score": 10.0, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "SHORT", "last_signal": "SHORT", "final_score": 7.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 337.53, "r1": 339.17, "r2": 341.73, "s1": 334.97, "s2": 333.33, "zone": "S1-P", "bias": "BEARISH", "dist_pivot": -0.28, "oi_status": null}, "quant": {"intraday_signal": "SELL", "intraday_conf": 71.8, "intraday_factors": ["Trading below Central Pivot (Rs.337.5)", "Trading right at session lows (17% of range)", "Aggressive Short Buildup (Price \u2193, OI \u2191)"], "short_term_signal": "NEUTRAL", "short_term_conf": 61.3, "short_term_factors": ["Multi-day price breakdown below Floor Pivot", "Continuous Short buildup across cycles", "Elevated valuation multiples / high derating risk (Val: 35)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "COPPER": {"symbol": "COPPER", "company_name": "COPPER", "spot": "1399.6", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/copper-copper/", "score": {"total_score": 10.0, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 9.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 1399.13, "r1": 1408.32, "r2": 1417.03, "s1": 1390.42, "s2": 1381.23, "zone": "P-R1", "bias": "BULLISH", "dist_pivot": 0.03, "oi_status": null}, "quant": {"intraday_signal": "NEUTRAL", "intraday_conf": 58.8, "intraday_factors": ["Trading above Central Pivot (Rs.1,399.1)", "Institutional Long Buildup (Price \u2191, OI \u2191)"], "short_term_signal": "NEUTRAL", "short_term_conf": 59.0, "short_term_factors": ["Multi-day price base above Floor Pivot", "Persistent Long buildup across cycles", "Superior Quality & Growth profile (Q: 81, G: 89)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "CRUDEOIL": {"symbol": "CRUDEOIL", "company_name": "CRUDEOIL", "spot": "8916", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/crudeoil-crudeoil/", "score": {"total_score": 10.0, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 9.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 8825.33, "r1": 9117.67, "r2": 9319.33, "s1": 8623.67, "s2": 8331.33, "zone": "P-R1", "bias": "BULLISH", "dist_pivot": 1.03, "oi_status": null}, "quant": {"intraday_signal": "BUY", "intraday_conf": 69.6, "intraday_factors": ["Trading above Central Pivot (Rs.8,825.3)", "Trading near session highs (78% of range)", "Institutional Long Buildup (Price \u2191, OI \u2191)"], "short_term_signal": "BUY", "short_term_conf": 60.1, "short_term_factors": ["Multi-day price base above Floor Pivot", "Persistent Long buildup across cycles", "Substantial hurdle-free runway to R2 (+4.5%)"], "risk_level": "MODERATE", "risk_flags": ["High intraday volatility (5.8% daily range)"]}}, "GOLD": {"symbol": "GOLD", "company_name": "GOLD", "spot": "147866", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/gold-gold/", "score": {"total_score": 10.0, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 9.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 147650.0, "r1": 148366.0, "r2": 148866.0, "s1": 147150.0, "s2": 146434.0, "zone": "P-R1", "bias": "BULLISH", "dist_pivot": 0.15, "oi_status": null}, "quant": {"intraday_signal": "BUY", "intraday_conf": 76.3, "intraday_factors": ["Trading above Central Pivot (Rs.147,650.0)", "Trading near session highs (77% of range)", "Institutional Long Buildup (Price \u2191, OI \u2191)", "Call option premium skew (CE > PE)"], "short_term_signal": "BUY", "short_term_conf": 67.4, "short_term_factors": ["Multi-day price base above Floor Pivot", "Persistent Long buildup across cycles", "Superior Quality & Growth profile (Q: 67, G: 89)", "Favorable valuation margin of safety (Val: 71)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "LEAD": {"symbol": "LEAD", "company_name": "LEAD", "spot": "192.2", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/lead-lead/", "score": {"total_score": 10.0, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "SHORT", "last_signal": "SHORT", "final_score": 7.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 192.25, "r1": 193.95, "r2": 195.7, "s1": 190.5, "s2": 188.8, "zone": "S1-P", "bias": "BEARISH", "dist_pivot": -0.03, "oi_status": null}, "quant": {"intraday_signal": "NEUTRAL", "intraday_conf": 61.0, "intraday_factors": ["Trading below Central Pivot (Rs.192.2)", "Aggressive Short Buildup (Price \u2193, OI \u2191)"], "short_term_signal": "SELL", "short_term_conf": 67.2, "short_term_factors": ["Multi-day price breakdown below Floor Pivot", "Continuous Short buildup across cycles", "Elevated valuation multiples / high derating risk (Val: 24)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "NATURALGAS": {"symbol": "NATURALGAS", "company_name": "NATURALGAS", "spot": "287.5", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/naturalgas-naturalgas/", "score": {"total_score": 10.0, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "SHORT", "last_signal": "SHORT", "final_score": 7.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 288.3, "r1": 291.3, "r2": 295.1, "s1": 284.5, "s2": 281.5, "zone": "S1-P", "bias": "BEARISH", "dist_pivot": -0.28, "oi_status": null}, "quant": {"intraday_signal": "SELL", "intraday_conf": 66.0, "intraday_factors": ["Trading below Central Pivot (Rs.288.3)", "Aggressive Short Buildup (Price \u2193, OI \u2191)"], "short_term_signal": "NEUTRAL", "short_term_conf": 39.4, "short_term_factors": ["Strong structural technical posture (Tech: 100/100)", "Superior Quality & Growth profile (Q: 100, G: 100)", "Substantial hurdle-free runway to R2 (+2.6%)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "SILVER": {"symbol": "SILVER", "company_name": "SILVER", "spot": "225877", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/silver-silver/", "score": {"total_score": 10.0, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 9.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 225595.67, "r1": 227177.33, "r2": 228477.67, "s1": 224295.33, "s2": 222713.67, "zone": "P-R1", "bias": "BULLISH", "dist_pivot": 0.12, "oi_status": null}, "quant": {"intraday_signal": "BUY", "intraday_conf": 66.0, "intraday_factors": ["Trading above Central Pivot (Rs.225,595.7)", "Institutional Long Buildup (Price \u2191, OI \u2191)"], "short_term_signal": "BUY", "short_term_conf": 60.1, "short_term_factors": ["Multi-day price base above Floor Pivot", "Persistent Long buildup across cycles"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "ZINC": {"symbol": "ZINC", "company_name": "ZINC", "spot": "410.6", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/zinc-zinc/", "score": {"total_score": 10.0, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "SHORT", "last_signal": "SHORT", "final_score": 7.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 412.23, "r1": 416.12, "r2": 421.63, "s1": 406.72, "s2": 402.83, "zone": "S1-P", "bias": "BEARISH", "dist_pivot": -0.4, "oi_status": null}, "quant": {"intraday_signal": "SELL", "intraday_conf": 67.3, "intraday_factors": ["Trading below Central Pivot (Rs.412.2)", "Trading right at session lows (24% of range)", "Aggressive Short Buildup (Price \u2193, OI \u2191)"], "short_term_signal": "NEUTRAL", "short_term_conf": 54.5, "short_term_factors": ["Deteriorating structural chart trend (Tech: 20/100)", "Multi-day price breakdown below Floor Pivot", "Continuous Short buildup across cycles"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}};
-let currentAnalyzerStock = "RELIANCE";
+const ANALYZER_DATA = {"ALUMINIUM": {"symbol": "ALUMINIUM", "company_name": "ALUMINIUM", "spot": "336.6", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/aluminium-aluminium/", "score": {"total_score": 5.5, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "SHORT", "last_signal": "SHORT", "final_score": 7.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 337.53, "r1": 339.17, "r2": 341.73, "s1": 334.97, "s2": 333.33, "zone": "S1-P", "bias": "BEARISH", "dist_pivot": -0.28, "oi_status": null}, "quant": {"intraday_signal": "SELL", "intraday_conf": 71.8, "intraday_factors": ["Trading below Central Pivot (Rs.337.5)", "Trading right at session lows (17% of range)", "Aggressive Short Buildup (Price \u2193, OI \u2191)"], "short_term_signal": "NEUTRAL", "short_term_conf": 61.3, "short_term_factors": ["Multi-day price breakdown below Floor Pivot", "Continuous Short buildup across cycles", "Elevated valuation multiples / high derating risk (Val: 35)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "COPPER": {"symbol": "COPPER", "company_name": "COPPER", "spot": "1399.6", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/copper-copper/", "score": {"total_score": 5.5, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 9.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 1399.13, "r1": 1408.32, "r2": 1417.03, "s1": 1390.42, "s2": 1381.23, "zone": "P-R1", "bias": "BULLISH", "dist_pivot": 0.03, "oi_status": null}, "quant": {"intraday_signal": "NEUTRAL", "intraday_conf": 58.8, "intraday_factors": ["Trading above Central Pivot (Rs.1,399.1)", "Institutional Long Buildup (Price \u2191, OI \u2191)"], "short_term_signal": "NEUTRAL", "short_term_conf": 59.0, "short_term_factors": ["Multi-day price base above Floor Pivot", "Persistent Long buildup across cycles", "Superior Quality & Growth profile (Q: 81, G: 89)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "CRUDEOIL": {"symbol": "CRUDEOIL", "company_name": "CRUDEOIL", "spot": "8916", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/crudeoil-crudeoil/", "score": {"total_score": 5.5, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 9.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 8825.33, "r1": 9117.67, "r2": 9319.33, "s1": 8623.67, "s2": 8331.33, "zone": "P-R1", "bias": "BULLISH", "dist_pivot": 1.03, "oi_status": null}, "quant": {"intraday_signal": "BUY", "intraday_conf": 69.6, "intraday_factors": ["Trading above Central Pivot (Rs.8,825.3)", "Trading near session highs (78% of range)", "Institutional Long Buildup (Price \u2191, OI \u2191)"], "short_term_signal": "BUY", "short_term_conf": 60.1, "short_term_factors": ["Multi-day price base above Floor Pivot", "Persistent Long buildup across cycles", "Substantial hurdle-free runway to R2 (+4.5%)"], "risk_level": "MODERATE", "risk_flags": ["High intraday volatility (5.8% daily range)"]}}, "GOLD": {"symbol": "GOLD", "company_name": "GOLD", "spot": "147866", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/gold-gold/", "score": {"total_score": 5.5, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 9.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 147650.0, "r1": 148366.0, "r2": 148866.0, "s1": 147150.0, "s2": 146434.0, "zone": "P-R1", "bias": "BULLISH", "dist_pivot": 0.15, "oi_status": null}, "quant": {"intraday_signal": "BUY", "intraday_conf": 76.3, "intraday_factors": ["Trading above Central Pivot (Rs.147,650.0)", "Trading near session highs (77% of range)", "Institutional Long Buildup (Price \u2191, OI \u2191)", "Call option premium skew (CE > PE)"], "short_term_signal": "BUY", "short_term_conf": 67.4, "short_term_factors": ["Multi-day price base above Floor Pivot", "Persistent Long buildup across cycles", "Superior Quality & Growth profile (Q: 67, G: 89)", "Favorable valuation margin of safety (Val: 71)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "LEAD": {"symbol": "LEAD", "company_name": "LEAD", "spot": "192.2", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/lead-lead/", "score": {"total_score": 5.5, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "SHORT", "last_signal": "SHORT", "final_score": 7.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 192.25, "r1": 193.95, "r2": 195.7, "s1": 190.5, "s2": 188.8, "zone": "S1-P", "bias": "BEARISH", "dist_pivot": -0.03, "oi_status": null}, "quant": {"intraday_signal": "NEUTRAL", "intraday_conf": 61.0, "intraday_factors": ["Trading below Central Pivot (Rs.192.2)", "Aggressive Short Buildup (Price \u2193, OI \u2191)"], "short_term_signal": "SELL", "short_term_conf": 67.2, "short_term_factors": ["Multi-day price breakdown below Floor Pivot", "Continuous Short buildup across cycles", "Elevated valuation multiples / high derating risk (Val: 24)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "NATURALGAS": {"symbol": "NATURALGAS", "company_name": "NATURALGAS", "spot": "287.5", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/naturalgas-naturalgas/", "score": {"total_score": 5.5, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "SHORT", "last_signal": "SHORT", "final_score": 7.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 288.3, "r1": 291.3, "r2": 295.1, "s1": 284.5, "s2": 281.5, "zone": "S1-P", "bias": "BEARISH", "dist_pivot": -0.28, "oi_status": null}, "quant": {"intraday_signal": "SELL", "intraday_conf": 66.0, "intraday_factors": ["Trading below Central Pivot (Rs.288.3)", "Aggressive Short Buildup (Price \u2193, OI \u2191)"], "short_term_signal": "NEUTRAL", "short_term_conf": 39.4, "short_term_factors": ["Strong structural technical posture (Tech: 100/100)", "Superior Quality & Growth profile (Q: 100, G: 100)", "Substantial hurdle-free runway to R2 (+2.6%)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "SILVER": {"symbol": "SILVER", "company_name": "SILVER", "spot": "225877", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/silver-silver/", "score": {"total_score": 5.5, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 9.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 225595.67, "r1": 227177.33, "r2": 228477.67, "s1": 224295.33, "s2": 222713.67, "zone": "P-R1", "bias": "BULLISH", "dist_pivot": 0.12, "oi_status": null}, "quant": {"intraday_signal": "BUY", "intraday_conf": 66.0, "intraday_factors": ["Trading above Central Pivot (Rs.225,595.7)", "Institutional Long Buildup (Price \u2191, OI \u2191)"], "short_term_signal": "BUY", "short_term_conf": 60.1, "short_term_factors": ["Multi-day price base above Floor Pivot", "Persistent Long buildup across cycles"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "ZINC": {"symbol": "ZINC", "company_name": "ZINC", "spot": "410.6", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/zinc-zinc/", "score": {"total_score": 5.5, "raw_score": 50.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%"}, "fno": {"signal": "SHORT", "last_signal": "SHORT", "final_score": 7.0, "share_score": 10.0, "oi_yesterday": 0.0, "oi_last_query": 0.0, "profit": null, "pivot": 412.23, "r1": 416.12, "r2": 421.63, "s1": 406.72, "s2": 402.83, "zone": "S1-P", "bias": "BEARISH", "dist_pivot": -0.4, "oi_status": null}, "quant": {"intraday_signal": "SELL", "intraday_conf": 67.3, "intraday_factors": ["Trading below Central Pivot (Rs.412.2)", "Trading right at session lows (24% of range)", "Aggressive Short Buildup (Price \u2193, OI \u2191)"], "short_term_signal": "NEUTRAL", "short_term_conf": 54.5, "short_term_factors": ["Deteriorating structural chart trend (Tech: 20/100)", "Multi-day price breakdown below Floor Pivot", "Continuous Short buildup across cycles"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}};
+let currentAnalyzerStock = "GOLD";
 let analyzerActiveIndex = -1;
 
 function onAnalyzerSearchInput(val) {
@@ -4410,7 +4410,7 @@ function selectAnalyzerStock(symbol) {
     if (!dossierDiv) return;
 
     if (!d) {
-        dossierDiv.innerHTML = '<div style="padding:40px; text-align:center; color:#888;">Stock ' + sym + ' not found in universe.</div>';
+        dossierDiv.innerHTML = '<div style="padding:40px; text-align:center; color:#888;">Commodity ' + sym + ' not in MCX universe.</div>';
         return;
     }
 
@@ -4438,7 +4438,7 @@ function renderFullDossierHtml(d) {
         : '<span style="background:#f1f5f9; color:#475569; padding:4px 10px; border-radius:6px; font-weight:700; font-size:12px; border:1px solid #cbd5e1;">Cash Equity Segment</span>';
 
     const scoreBadge = isScored
-        ? '<span style="background:#eff6ff; color:#1d4ed8; padding:4px 10px; border-radius:6px; font-weight:700; font-size:12px; border:1px solid #bfdbfe;">Score Synced (' + Number(d.score.total_score).toFixed(1) + '/10)</span>'
+        ? '<span style="background:#eff6ff; color:#1d4ed8; padding:4px 10px; border-radius:6px; font-weight:700; font-size:12px; border:1px solid #bfdbfe;">MC Score (' + Number(d.score.total_score).toFixed(1) + '/10)</span>'
         : '<span style="background:#faf5ff; color:#7e22ce; padding:4px 10px; border-radius:6px; font-weight:700; font-size:12px; border:1px solid #e9d5ff;">NSE Listed Share</span>';
 
     const quantBadge = isQuant
@@ -4493,7 +4493,7 @@ function renderFullDossierHtml(d) {
           '</div>';
     }
 
-    // Pillar 2: Stock Score Full (Q / G / V / T)
+    // Pillar 2: MC Commodity Score (OI / Price / Bias / Technical)
     let pillar2Html = "";
     if (d.score && d.score.total_score !== null && d.score.total_score !== undefined) {
         const sc = d.score;
@@ -4513,7 +4513,7 @@ function renderFullDossierHtml(d) {
 
         pillar2Html = '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">' +
             '<div>' +
-              '<div style="font-size:11px; color:#64748b; font-weight:700; text-transform:uppercase;">Overall Percentile Score</div>' +
+              '<div style="font-size:11px; color:#64748b; font-weight:700; text-transform:uppercase;">Overall MC Score</div>' +
               '<div style="font-size:24px; font-weight:900; color:' + (tot >= 7.0 ? "#15803d" : (tot >= 5.0 ? "#2563eb" : "#b91c1c")) + ';">' +
                 tot + ' <span style="font-size:13px; color:#888;">/ 10</span>' +
               '</div>' +
@@ -4523,10 +4523,10 @@ function renderFullDossierHtml(d) {
             '</div>' +
           '</div>' +
           '<div style="margin-bottom:12px;">' +
-            renderScoreBar("Quality (Q) — Balance Sheet Strength", q, barColor(q)) +
-            renderScoreBar("Growth (G) — Revenue & Earnings Trend", g, barColor(g)) +
-            renderScoreBar("Value (V) — Price Multiples & Valuation", v, barColor(v)) +
-            renderScoreBar("Technical (T) — Price Trend & Momentum", t, barColor(t)) +
+            renderScoreBar("OI Chg (Q) — Balance Sheet Strength", q, barColor(q)) +
+            renderScoreBar("Price Chg (G) — Revenue & Earnings Trend", g, barColor(g)) +
+            renderScoreBar("OI Bias (V) — Price Multiples & Valuation", v, barColor(v)) +
+            renderScoreBar("Technical (T) — MC Technical Score", t, barColor(t)) +
           '</div>' +
           '<div style="background:#f8fafc; border-left:3px solid #3b82f6; padding:8px 12px; font-size:12px; color:#334155; line-height:1.4;">' +
             '<strong>MoneyControl Analysis:</strong> ' + (sc.oneliner || "Comprehensive score evaluated across financial and technical parameters.") +
@@ -4534,7 +4534,7 @@ function renderFullDossierHtml(d) {
     } else {
         pillar2Html = '<div style="background:#f8fafc; border:1px dashed #cbd5e1; border-radius:8px; padding:24px; text-align:center;">' +
             '<div style="font-size:24px; margin-bottom:8px;">&#9733;</div>' +
-            '<div style="font-size:14px; font-weight:700; color:#334155;">Stock Score Being Synchronized</div>' +
+            '<div style="font-size:14px; font-weight:700; color:#334155;">MC Score Being Synchronized</div>' +
             '<div style="font-size:12px; color:#64748b; margin-top:6px; line-height:1.5;">' +
               sym + ' is active in the NSE listed universe with MoneyControl mapping enabled. Detailed Q/G/V/T score payload will update in the next scraping cycle.' +
             '</div>' +
@@ -4639,7 +4639,7 @@ function renderFullDossierHtml(d) {
         '</div>' +
 
         '<div class="analyzer-pillar-card">' +
-          '<div class="analyzer-pillar-title">&#127942; 2. Stock Score Full (Q / G / V / T Dimensions)</div>' +
+          '<div class="analyzer-pillar-title">&#127942; 2. MC Commodity Score (OI / Price / Bias / Technical)</div>' +
           pillar2Html +
         '</div>' +
 
@@ -4705,30 +4705,30 @@ function computeUnifiedVerdict(fno, score, quant) {
             bullishFactors.push("High conviction composite score (" + fno.final_score + "/100).");
         }
     } else {
-        warnings.push("Cash Equity Stock: Evaluated via fundamental score and quantitative valuation models (No F&O derivatives data).");
+        warnings.push("MCX Commodity: Evaluated via OI buildup and price momentum from MoneyControl.");
     }
 
     if (score && score.total_score !== null && score.total_score !== undefined) {
         const tot = score.total_score;
         if (tot >= 7.0) {
             scoreTotal += 15;
-            bullishFactors.push("Top Decile Stock Score (" + Number(tot).toFixed(1) + "/10 percentile) reflects top-tier balance sheet and operational efficiency.");
+            bullishFactors.push("Top Decile MC Score (" + Number(tot).toFixed(1) + "/10 MC) reflects strong bullish OI buildup and price momentum.");
         } else if (tot >= 5.0) {
             scoreTotal += 6;
-            bullishFactors.push("Moderate Stock Score (" + Number(tot).toFixed(1) + "/10 percentile) confirms steady fundamental base.");
+            bullishFactors.push("Moderate MC Score (" + Number(tot).toFixed(1) + "/10 MC) confirms neutral market positioning.");
         } else {
             scoreTotal -= 15;
-            bearishFactors.push("Low Stock Score (" + Number(tot).toFixed(1) + "/10) warns of valuation stretch, sluggish earnings, or debt load.");
+            bearishFactors.push("Low MC Score (" + Number(tot).toFixed(1) + "/10) warns of bearish OI buildup or short pressure.");
         }
 
         if (score.q_score && score.q_score >= 70) {
-            bullishFactors.push("Quality Score (" + Math.round(score.q_score) + "/100) indicates exceptional financial health.");
+            bullishFactors.push("OI Change Score (" + Math.round(score.q_score) + "/100) indicates strong open interest momentum.");
         }
         if (score.g_score && score.g_score >= 70) {
-            bullishFactors.push("Growth Score (" + Math.round(score.g_score) + "/100) confirms rapid revenue and profit expansion.");
+            bullishFactors.push("Price Change Score (" + Math.round(score.g_score) + "/100) confirms strong intraday price momentum.");
         }
         if (score.v_score && score.v_score < 40) {
-            bearishFactors.push("Value Score (" + Math.round(score.v_score) + "/100) signals rich valuation multiple relative to peers.");
+            bearishFactors.push("OI Bias Score (" + Math.round(score.v_score) + "/100) signals bearish buildup bias detected.");
         }
     }
 
@@ -4787,8 +4787,8 @@ function computeUnifiedVerdict(fno, score, quant) {
 
 function initAnalyzerDefault() {
     const dossierDiv = document.getElementById("analyzerDossier");
-    if (dossierDiv && (!dossierDiv.innerHTML.trim() || currentAnalyzerStock === "RELIANCE")) {
-        selectAnalyzerStock("RELIANCE");
+    if (dossierDiv && (!dossierDiv.innerHTML.trim() || currentAnalyzerStock === "GOLD")) {
+        selectAnalyzerStock("GOLD");
     }
 }
 
@@ -4800,8 +4800,8 @@ document.addEventListener("click", function(e) {
     }
 });
 
-// ── Ultra-Fast In-Memory Stock Scores Engine (2,500+ Stocks) ────────
-const ALL_SCORES_DATA = [{"symbol": "ALUMINIUM", "company_name": "ALUMINIUM", "spot": "336.6", "signal": "SHORT", "raw_score": 50.0, "total_score": 10.0, "percentile_score": 10.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/aluminium-aluminium/"}, {"symbol": "COPPER", "company_name": "COPPER", "spot": "1399.6", "signal": "LONG", "raw_score": 50.0, "total_score": 10.0, "percentile_score": 10.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/copper-copper/"}, {"symbol": "CRUDEOIL", "company_name": "CRUDEOIL", "spot": "8916", "signal": "LONG", "raw_score": 50.0, "total_score": 10.0, "percentile_score": 10.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/crudeoil-crudeoil/"}, {"symbol": "GOLD", "company_name": "GOLD", "spot": "147866", "signal": "LONG", "raw_score": 50.0, "total_score": 10.0, "percentile_score": 10.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/gold-gold/"}, {"symbol": "LEAD", "company_name": "LEAD", "spot": "192.2", "signal": "SHORT", "raw_score": 50.0, "total_score": 10.0, "percentile_score": 10.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/lead-lead/"}, {"symbol": "NATURALGAS", "company_name": "NATURALGAS", "spot": "287.5", "signal": "SHORT", "raw_score": 50.0, "total_score": 10.0, "percentile_score": 10.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/naturalgas-naturalgas/"}, {"symbol": "SILVER", "company_name": "SILVER", "spot": "225877", "signal": "LONG", "raw_score": 50.0, "total_score": 10.0, "percentile_score": 10.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/silver-silver/"}, {"symbol": "ZINC", "company_name": "ZINC", "spot": "410.6", "signal": "SHORT", "raw_score": 50.0, "total_score": 10.0, "percentile_score": 10.0, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/markets/stocks-score/zinc-zinc/"}];
+// ── Ultra-Fast In-Memory Commodity Scores Engine ────────
+const ALL_SCORES_DATA = [{"symbol": "ALUMINIUM", "company_name": "ALUMINIUM", "spot": "336.6", "signal": "SHORT", "raw_score": 50.0, "total_score": 5.5, "percentile_score": 5.5, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-aluminium-price?type=futures"}, {"symbol": "COPPER", "company_name": "COPPER", "spot": "1399.6", "signal": "LONG", "raw_score": 50.0, "total_score": 5.5, "percentile_score": 5.5, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-copper-price?type=futures"}, {"symbol": "CRUDEOIL", "company_name": "CRUDEOIL", "spot": "8916", "signal": "LONG", "raw_score": 50.0, "total_score": 5.5, "percentile_score": 5.5, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-crudeoil-price?type=futures"}, {"symbol": "GOLD", "company_name": "GOLD", "spot": "147866", "signal": "LONG", "raw_score": 50.0, "total_score": 5.5, "percentile_score": 5.5, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-gold-price?type=futures"}, {"symbol": "LEAD", "company_name": "LEAD", "spot": "192.2", "signal": "SHORT", "raw_score": 50.0, "total_score": 5.5, "percentile_score": 5.5, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-lead-price?type=futures"}, {"symbol": "NATURALGAS", "company_name": "NATURALGAS", "spot": "287.5", "signal": "SHORT", "raw_score": 50.0, "total_score": 5.5, "percentile_score": 5.5, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-naturalgas-price?type=futures"}, {"symbol": "SILVER", "company_name": "SILVER", "spot": "225877", "signal": "LONG", "raw_score": 50.0, "total_score": 5.5, "percentile_score": 5.5, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-silver-price?type=futures"}, {"symbol": "ZINC", "company_name": "ZINC", "spot": "410.6", "signal": "SHORT", "raw_score": 50.0, "total_score": 5.5, "percentile_score": 5.5, "q_score": 0.0, "g_score": 0.0, "v_score": 50.0, "t_score": 50.0, "neo_proxy": null, "oneliner": " detected. Price Chg: 0%, OI Chg: 0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-zinc-price?type=futures"}];
 let filteredScoresData = ALL_SCORES_DATA.slice();
 let currentScorePage = 1;
 let scorePageSize = 50;
@@ -4828,7 +4828,7 @@ function renderScoreRowHtml(r, idx) {
             totCls = "score-low";
         }
         totStr = Number(tot).toFixed(1);
-        totTitle = "Percentile Score: " + totStr + "/10" + rawInfo;
+        totTitle = "MC Score: " + totStr + "/10" + rawInfo;
     }
 
     const qStr = (r.q_score !== null && r.q_score !== undefined && !isNaN(r.q_score)) ? Math.round(r.q_score) : "NA";
