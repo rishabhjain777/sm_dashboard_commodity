@@ -1,0 +1,236 @@
+<!-- Summary KPI Cards -->
+<div class="scores-kpi-row">
+  <div class="scores-kpi-card">
+    <div class="scores-kpi-title">Universe Tracked</div>
+    <div class="scores-kpi-val">8</div>
+    <div class="scores-kpi-sub">All Active Listed NSE Equities</div>
+  </div>
+  <div class="scores-kpi-card">
+    <div class="scores-kpi-title">Top Decile (Score &ge; 7.0)</div>
+    <div class="scores-kpi-val" style="color: #15803d;">0</div>
+    <div class="scores-kpi-sub">High Quality &amp; Financial Strength</div>
+  </div>
+  <div class="scores-kpi-card">
+    <div class="scores-kpi-title">Top Performer</div>
+    <div class="scores-kpi-val" style="font-size:16px; color:#1d4ed8;">—</div>
+    <div class="scores-kpi-sub">Highest Composite Score in Universe</div>
+  </div>
+  <div class="scores-kpi-card">
+    <div class="scores-kpi-title">Coverage Status</div>
+    <div class="scores-kpi-val" style="color: #7e22ce;">100%</div>
+    <div class="scores-kpi-sub">F&amp;O + Entire NSE Cash Universe</div>
+  </div>
+</div>
+
+<!-- Controls Row -->
+<div class="scores-controls-row">
+  <input
+    type="text"
+    id="scoresSearchInput"
+    class="scores-search"
+    placeholder="Search 8 stocks by Symbol or Company Name..."
+    oninput="onScoresSearchInput(this.value)"
+  >
+  <div class="scores-filter-group">
+    <label>Filter:</label>
+    <select id="scoresFilterSelect" onchange="applyScoresFilters()">
+      <option value="ALL">All Stocks (8)</option>
+      <option value="TOP_DECILE">Top Decile (&ge; 7.0) (0)</option>
+      <option value="MID_TIER">Mid Tier (4.0 &ndash; 6.9)</option>
+      <option value="LOW_TIER">Low Tier (&lt; 4.0)</option>
+      <option value="BUY_SIGNALS">Buy Signals (LONG / COVER)</option>
+      <option value="SELL_SIGNALS">Sell Signals (SHORT / UNWIND)</option>
+    </select>
+  </div>
+  <div class="scores-filter-group">
+    <label>Sort By:</label>
+    <select id="scoresSortSelect" onchange="applyScoresFilters()">
+      <option value="total_score_desc">Overall Score (High &rarr; Low)</option>
+      <option value="total_score_asc">Overall Score (Low &rarr; High)</option>
+      <option value="q_desc">Quality (Q) (High &rarr; Low)</option>
+      <option value="g_desc">Growth (G) (High &rarr; Low)</option>
+      <option value="v_desc">Value (V) (High &rarr; Low)</option>
+      <option value="t_desc">Technicals (T) (High &rarr; Low)</option>
+      <option value="symbol_asc">Symbol (A &rarr; Z)</option>
+    </select>
+  </div>
+</div>
+
+<div class="scores-table-wrap">
+  <div id="scoresTableContainer">
+    <table class="scores-table" id="scoresTable">
+      <thead>
+        <tr>
+          <th style="width:130px;">Stock / Company</th>
+          <th style="width:70px;">Signal</th>
+          <th style="width:75px;">Spot</th>
+          <th style="width:110px;">Overall Score</th>
+          <th style="width:80px;" title="Quality: Balance sheet strength, ROE, debt levels (0-100)">Quality (Q)</th>
+          <th style="width:80px;" title="Growth: Revenue & EPS growth trajectory (0-100)">Growth (G)</th>
+          <th style="width:80px;" title="Valuation: P/E, P/B, EV/EBITDA attractiveness (0-100)">Valuation (V)</th>
+          <th style="width:90px;" title="Technicals: RSI, moving averages, momentum trend (0-100)">Technicals (T)</th>
+          <th>MoneyControl Analysis &amp; Link</th>
+        </tr>
+      </thead>
+      <tbody id="scoresTableBody">
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">1</td>
+          <td style="text-align:left;">
+            <strong>ALUMINIUM</strong>
+            <div style="font-size:10px; color:#666;">ALUMINIUM</div>
+          </td>
+          <td>336.60</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-na" title="Score not available">NA</span></td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"><span style="color:#888; font-style:italic;">NSE Listed Equity Share</span></td>
+          <td><a href="https://www.moneycontrol.com/stocks/cptmarket/compsearchnew.php?search_data=ALUMINIUM" target="_blank" class="mc-link-btn" title="View ALUMINIUM on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">2</td>
+          <td style="text-align:left;">
+            <strong>COPPER</strong>
+            <div style="font-size:10px; color:#666;">COPPER</div>
+          </td>
+          <td>1399.60</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-na" title="Score not available">NA</span></td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"><span style="color:#888; font-style:italic;">NSE Listed Equity Share</span></td>
+          <td><a href="https://www.moneycontrol.com/stocks/cptmarket/compsearchnew.php?search_data=COPPER" target="_blank" class="mc-link-btn" title="View COPPER on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">3</td>
+          <td style="text-align:left;">
+            <strong>CRUDEOIL</strong>
+            <div style="font-size:10px; color:#666;">CRUDEOIL</div>
+          </td>
+          <td>8916.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-na" title="Score not available">NA</span></td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"><span style="color:#888; font-style:italic;">NSE Listed Equity Share</span></td>
+          <td><a href="https://www.moneycontrol.com/stocks/cptmarket/compsearchnew.php?search_data=CRUDEOIL" target="_blank" class="mc-link-btn" title="View CRUDEOIL on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">4</td>
+          <td style="text-align:left;">
+            <strong>GOLD</strong>
+            <div style="font-size:10px; color:#666;">GOLD</div>
+          </td>
+          <td>147866.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-na" title="Score not available">NA</span></td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"><span style="color:#888; font-style:italic;">NSE Listed Equity Share</span></td>
+          <td><a href="https://www.moneycontrol.com/stocks/cptmarket/compsearchnew.php?search_data=GOLD" target="_blank" class="mc-link-btn" title="View GOLD on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">5</td>
+          <td style="text-align:left;">
+            <strong>LEAD</strong>
+            <div style="font-size:10px; color:#666;">LEAD</div>
+          </td>
+          <td>192.20</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-na" title="Score not available">NA</span></td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"><span style="color:#888; font-style:italic;">NSE Listed Equity Share</span></td>
+          <td><a href="https://www.moneycontrol.com/stocks/cptmarket/compsearchnew.php?search_data=LEAD" target="_blank" class="mc-link-btn" title="View LEAD on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">6</td>
+          <td style="text-align:left;">
+            <strong>NATURALGAS</strong>
+            <div style="font-size:10px; color:#666;">NATURALGAS</div>
+          </td>
+          <td>287.50</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-na" title="Score not available">NA</span></td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"><span style="color:#888; font-style:italic;">NSE Listed Equity Share</span></td>
+          <td><a href="https://www.moneycontrol.com/stocks/cptmarket/compsearchnew.php?search_data=NATURALGAS" target="_blank" class="mc-link-btn" title="View NATURALGAS on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">7</td>
+          <td style="text-align:left;">
+            <strong>SILVER</strong>
+            <div style="font-size:10px; color:#666;">SILVER</div>
+          </td>
+          <td>225877.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-na" title="Score not available">NA</span></td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"><span style="color:#888; font-style:italic;">NSE Listed Equity Share</span></td>
+          <td><a href="https://www.moneycontrol.com/stocks/cptmarket/compsearchnew.php?search_data=SILVER" target="_blank" class="mc-link-btn" title="View SILVER on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">8</td>
+          <td style="text-align:left;">
+            <strong>ZINC</strong>
+            <div style="font-size:10px; color:#666;">ZINC</div>
+          </td>
+          <td>410.60</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-na" title="Score not available">NA</span></td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td class="sub-score">NA</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;"><span style="color:#888; font-style:italic;">NSE Listed Equity Share</span></td>
+          <td><a href="https://www.moneycontrol.com/stocks/cptmarket/compsearchnew.php?search_data=ZINC" target="_blank" class="mc-link-btn" title="View ZINC on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+  <div id="scoresPagination" class="scores-pagination">
+    <button id="scoresPrevBtn" onclick="changeScoresPage(-1)">&larr; Previous</button>
+    <span id="scoresPageIndicator">Page 1 of 1</span>
+    <button id="scoresNextBtn" onclick="changeScoresPage(1)">Next &rarr;</button>
+    <span style="color:#aaa;">|</span>
+    <span style="font-size:12px; color:#555;">Show per page:</span>
+    <select id="scoresPageSizeSelect" onchange="setScoresPageSize(this.value)">
+      <option value="50" selected>50</option>
+      <option value="100">100</option>
+      <option value="250">250</option>
+      <option value="ALL">All (8)</option>
+    </select>
+  </div>
