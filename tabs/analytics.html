@@ -1,0 +1,978 @@
+<!-- ══════════════════ TAB 4: Quantitative Predictions ══════════════════ -->
+<div id="tabContent-predictions" class="tab-content">
+  <div class="quant-tab-container">
+    
+    <!-- Top Header Banner & Breadth -->
+    <div class="quant-header-banner">
+      <div class="quant-title-wrap">
+        <h3>&#9889; Quantitative Predictive Intelligence Engine</h3>
+        <div class="quant-title-sub">
+          Universe Analyzed: <strong>8 Commodities</strong> | Timestamp: <strong>2026-10-03T13:17:49.388516 IST</strong> | MCX MARKET: <strong>— (—) [NA]</strong>
+        </div>
+      </div>
+      <div class="quant-breadth-pills">
+        <div class="quant-breadth-card">
+          <span class="quant-breadth-title">Intraday Breadth</span>
+          <span class="quant-breadth-vals">
+            <span class="breadth-buy">3 BUY</span>
+            <span class="breadth-sell">3 SELL</span>
+            <span class="breadth-neutral">2 FLAT</span>
+          </span>
+        </div>
+        <div class="quant-breadth-card">
+          <span class="quant-breadth-title">Short-Term Breadth (1-15D)</span>
+          <span class="quant-breadth-vals">
+            <span class="breadth-buy">3 BUY</span>
+            <span class="breadth-sell">1 SELL</span>
+            <span class="breadth-neutral">4 FLAT</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Opportunities Hero 4-Grid -->
+    <div class="quant-hero-grid">
+      
+    <div class="quant-hero-card hero-buy" onclick="openQuantModal('GOLD')">
+      <div class="quant-hero-top">
+        <span class="quant-hero-horizon horizon-intra-buy">⚡ Intraday Opportunity</span>
+        <span class="quant-hero-score-badge score-badge-buy">BUY 64.5</span>
+      </div>
+      <div class="quant-hero-symbol">
+        <span>GOLD</span>
+        <span class="quant-hero-price">₹147,866.00</span>
+      </div>
+      <div style="font-size:11px; color:#64748b; margin-top:-4px;">Senco Gold</div>
+      <div class="quant-hero-keyfactor">
+        <strong>Catalyst:</strong> Trading above Central Pivot (Rs.147,650.0)
+      </div>
+      <div class="quant-hero-footer">
+        <span>Signal: <strong>BUY</strong></span>
+        <span>Confidence: <strong>76%</strong></span>
+      </div>
+    </div>
+    
+      
+    <div class="quant-hero-card hero-sell" onclick="openQuantModal('ALUMINIUM')">
+      <div class="quant-hero-top">
+        <span class="quant-hero-horizon horizon-intra-sell">⚡ Intraday Opportunity</span>
+        <span class="quant-hero-score-badge score-badge-sell">SELL 62.0</span>
+      </div>
+      <div class="quant-hero-symbol">
+        <span>ALUMINIUM</span>
+        <span class="quant-hero-price">₹336.60</span>
+      </div>
+      <div style="font-size:11px; color:#64748b; margin-top:-4px;">Vedanta Aluminium Metal</div>
+      <div class="quant-hero-keyfactor">
+        <strong>Catalyst:</strong> Trading below Central Pivot (Rs.337.5)
+      </div>
+      <div class="quant-hero-footer">
+        <span>Signal: <strong>SELL</strong></span>
+        <span>Confidence: <strong>72%</strong></span>
+      </div>
+    </div>
+    
+      
+    <div class="quant-hero-card hero-buy" onclick="openQuantModal('CRUDEOIL')">
+      <div class="quant-hero-top">
+        <span class="quant-hero-horizon horizon-st-buy">📅 Swing Horizon (1–15D)</span>
+        <span class="quant-hero-score-badge score-badge-buy">BUY 60.5</span>
+      </div>
+      <div class="quant-hero-symbol">
+        <span>CRUDEOIL</span>
+        <span class="quant-hero-price">₹8,916.00</span>
+      </div>
+      <div style="font-size:11px; color:#64748b; margin-top:-4px;">CRUDEOIL</div>
+      <div class="quant-hero-keyfactor">
+        <strong>Catalyst:</strong> Multi-day price base above Floor Pivot
+      </div>
+      <div class="quant-hero-footer">
+        <span>Signal: <strong>BUY</strong></span>
+        <span>Confidence: <strong>60%</strong></span>
+      </div>
+    </div>
+    
+      
+    <div class="quant-hero-card hero-sell" onclick="openQuantModal('LEAD')">
+      <div class="quant-hero-top">
+        <span class="quant-hero-horizon horizon-st-sell">📅 Swing Horizon (1–15D)</span>
+        <span class="quant-hero-score-badge score-badge-sell">SELL 60.4</span>
+      </div>
+      <div class="quant-hero-symbol">
+        <span>LEAD</span>
+        <span class="quant-hero-price">₹192.20</span>
+      </div>
+      <div style="font-size:11px; color:#64748b; margin-top:-4px;">LEAP India</div>
+      <div class="quant-hero-keyfactor">
+        <strong>Catalyst:</strong> Multi-day price breakdown below Floor Pivot
+      </div>
+      <div class="quant-hero-footer">
+        <span>Signal: <strong>SELL</strong></span>
+        <span>Confidence: <strong>67%</strong></span>
+      </div>
+    </div>
+    
+    </div>
+
+    <!-- Interactive Filter Toolbar -->
+    <div class="quant-toolbar">
+      <div class="quant-search-box">
+        <span class="quant-search-icon">&#128269;</span>
+        <input type="text" id="quantSearchInput" class="quant-search-input" placeholder="Search by Symbol or Company (e.g. RELIANCE, TATA)..." oninput="filterQuantTable()">
+      </div>
+
+      <div class="quant-filter-group">
+        <!-- View Mode Switcher -->
+        <div class="quant-view-toggle">
+          <button class="quant-view-btn active" id="btnViewDual" onclick="setQuantView('dual')">Dual View</button>
+          <button class="quant-view-btn" id="btnViewIntra" onclick="setQuantView('intra')">Intraday Focus</button>
+          <button class="quant-view-btn" id="btnViewST" onclick="setQuantView('st')">Short-Term Focus</button>
+        </div>
+
+        <!-- Signal Filter -->
+        <select id="quantSignalFilter" class="quant-select" onchange="filterQuantTable()">
+          <option value="ALL">All Signals (8)</option>
+          <option value="BUY_ANY">BUY Signals (Intraday or Short-Term)</option>
+          <option value="SELL_ANY">SELL Signals (Intraday or Short-Term)</option>
+          <option value="STRONG_ONLY">Strong Conviction Only (Score &ge; 70)</option>
+          <option value="INTRA_BUY">Intraday BUY Only (3)</option>
+          <option value="INTRA_SELL">Intraday SELL Only (3)</option>
+          <option value="ST_BUY">Short-Term BUY Only (3)</option>
+          <option value="ST_SELL">Short-Term SELL Only (1)</option>
+        </select>
+
+        <!-- Risk Filter -->
+        <select id="quantRiskFilter" class="quant-select" onchange="filterQuantTable()">
+          <option value="ALL">All Risk Levels</option>
+          <option value="LOW">Low Risk Only</option>
+          <option value="MODERATE">Moderate Risk</option>
+          <option value="ELEVATED">Elevated Risk</option>
+          <option value="HIGH">High Risk</option>
+        </select>
+
+        <span class="quant-count-badge" id="quantVisibleCount">Showing 8 of 8</span>
+      </div>
+    </div>
+
+    <!-- Master Prediction Table -->
+    <div class="quant-table-wrap">
+      <table id="quantPredTable">
+        <thead>
+          <tr>
+            <th style="width:30px;" onclick="sortQuantTable(0, true)"># <span class="sort-arrow">&#9650;&#9660;</span></th>
+            <th onclick="sortQuantTable(1, false)">Stock &amp; Company <span class="sort-arrow">&#9650;&#9660;</span></th>
+            <th onclick="sortQuantTable(2, true)">Current Price <span class="sort-arrow">&#9650;&#9660;</span></th>
+            <th onclick="sortQuantTable(3, false)">F&amp;O Flow <span class="sort-arrow">&#9650;&#9660;</span></th>
+            
+            <!-- Intraday Columns -->
+            <th class="col-intra" onclick="sortQuantTable(4, true)" title="Intraday BUY Score (0-100)">Intraday BUY <span class="sort-arrow">&#9650;&#9660;</span></th>
+            <th class="col-intra" onclick="sortQuantTable(5, true)" title="Intraday SELL Score (0-100)">Intraday SELL <span class="sort-arrow">&#9650;&#9660;</span></th>
+            <th class="col-intra" onclick="sortQuantTable(6, false)">Intraday Stance <span class="sort-arrow">&#9650;&#9660;</span></th>
+            
+            <!-- Short-Term Columns -->
+            <th class="col-st" onclick="sortQuantTable(7, true)" title="Short-Term BUY Score (0-100, 1-15 Sessions)">Short-Term BUY <span class="sort-arrow">&#9650;&#9660;</span></th>
+            <th class="col-st" onclick="sortQuantTable(8, true)" title="Short-Term SELL Score (0-100, 1-15 Sessions)">Short-Term SELL <span class="sort-arrow">&#9650;&#9660;</span></th>
+            <th class="col-st" onclick="sortQuantTable(9, false)">Short-Term Stance <span class="sort-arrow">&#9650;&#9660;</span></th>
+            
+            <!-- Risk & Action -->
+            <th onclick="sortQuantTable(10, true)">Risk <span class="sort-arrow">&#9650;&#9660;</span></th>
+            <th style="text-align:center;">Deep Dive</th>
+          </tr>
+        </thead>
+        <tbody id="quantTableBody">
+          
+    <tr data-symbol="SILVER" data-company="aditya birla sun life silver etf" data-isig="BUY" data-stsig="BUY" data-risk="LOW">
+      <td style="color:#94a3b8; font-weight:600; text-align:center;">1</td>
+      <td>
+        <div class="quant-stock-cell">
+          <span class="quant-sym-link" onclick="openQuantModal('SILVER')">SILVER</span>
+          <span class="quant-company-name" title="Aditya Birla Sun Life Silver ETF">Aditya Birla Sun Life Silver ETF</span>
+          <span class="quant-lot-badge">Lot: 30</span>
+        </div>
+      </td>
+      <td>
+        <div style="font-weight:700;">₹225,877.00</div>
+        <div style="font-size:10.5px; color:#64748b; font-weight:600;" title="Futures Basis %">Basis: +0.00%</div>
+      </td>
+      <td>
+        <span class="quant-sig-pill sig-long">LONG</span>
+        <div style="font-size:10.5px; color:#64748b; margin-top:2px;">RS: +0.00%</div>
+      </td>
+      
+      <!-- Intraday BUY -->
+      <td class="quant-meter-cell col-intra" data-val="55.5">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">55.5</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-med" style="width:55.5%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday SELL -->
+      <td class="quant-meter-cell col-intra" data-val="20.0">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">20.0</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-low" style="width:20.0%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday Signal -->
+      <td class="col-intra" data-val="BUY">
+        <span class="quant-sig-pill sig-buy">BUY</span>
+        <span class="quant-conf-pill">66%</span>
+      </td>
+      
+      <!-- Short-Term BUY -->
+      <td class="quant-meter-cell col-st" data-val="55.5">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">55.5</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-med" style="width:55.5%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term SELL -->
+      <td class="quant-meter-cell col-st" data-val="26.5">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">26.5</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-low" style="width:26.5%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term Signal -->
+      <td class="col-st" data-val="BUY">
+        <span class="quant-sig-pill sig-buy">BUY</span>
+        <span class="quant-conf-pill">60%</span>
+      </td>
+      
+      <!-- Risk -->
+      <td data-val="5">
+        <span class="quant-risk-badge risk-low">LOW</span>
+      </td>
+      
+      <!-- Actions -->
+      <td style="text-align:center;">
+        <button class="quant-details-btn" onclick="openQuantModal('SILVER')">Analyze ↗</button>
+      </td>
+    </tr>
+    
+    <tr data-symbol="GOLD" data-company="senco gold" data-isig="BUY" data-stsig="BUY" data-risk="LOW">
+      <td style="color:#94a3b8; font-weight:600; text-align:center;">2</td>
+      <td>
+        <div class="quant-stock-cell">
+          <span class="quant-sym-link" onclick="openQuantModal('GOLD')">GOLD</span>
+          <span class="quant-company-name" title="Senco Gold">Senco Gold</span>
+          <span class="quant-lot-badge">Lot: 1</span>
+        </div>
+      </td>
+      <td>
+        <div style="font-weight:700;">₹147,866.00</div>
+        <div style="font-size:10.5px; color:#64748b; font-weight:600;" title="Futures Basis %">Basis: +0.00%</div>
+      </td>
+      <td>
+        <span class="quant-sig-pill sig-long">LONG</span>
+        <div style="font-size:10.5px; color:#64748b; margin-top:2px;">RS: +0.00%</div>
+      </td>
+      
+      <!-- Intraday BUY -->
+      <td class="quant-meter-cell col-intra" data-val="64.5">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-buy-high">64.5</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-med" style="width:64.5%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday SELL -->
+      <td class="quant-meter-cell col-intra" data-val="17.5">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">17.5</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-low" style="width:17.5%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday Signal -->
+      <td class="col-intra" data-val="BUY">
+        <span class="quant-sig-pill sig-buy">BUY</span>
+        <span class="quant-conf-pill">76%</span>
+      </td>
+      
+      <!-- Short-Term BUY -->
+      <td class="quant-meter-cell col-st" data-val="56.3">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">56.3</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-med" style="width:56.3%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term SELL -->
+      <td class="quant-meter-cell col-st" data-val="27.0">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">27.0</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-low" style="width:27.0%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term Signal -->
+      <td class="col-st" data-val="BUY">
+        <span class="quant-sig-pill sig-buy">BUY</span>
+        <span class="quant-conf-pill">67%</span>
+      </td>
+      
+      <!-- Risk -->
+      <td data-val="5">
+        <span class="quant-risk-badge risk-low">LOW</span>
+      </td>
+      
+      <!-- Actions -->
+      <td style="text-align:center;">
+        <button class="quant-details-btn" onclick="openQuantModal('GOLD')">Analyze ↗</button>
+      </td>
+    </tr>
+    
+    <tr data-symbol="CRUDEOIL" data-company="crudeoil" data-isig="BUY" data-stsig="BUY" data-risk="MODERATE">
+      <td style="color:#94a3b8; font-weight:600; text-align:center;">3</td>
+      <td>
+        <div class="quant-stock-cell">
+          <span class="quant-sym-link" onclick="openQuantModal('CRUDEOIL')">CRUDEOIL</span>
+          <span class="quant-company-name" title="CRUDEOIL">CRUDEOIL</span>
+          <span class="quant-lot-badge">Lot: 100</span>
+        </div>
+      </td>
+      <td>
+        <div style="font-weight:700;">₹8,916.00</div>
+        <div style="font-size:10.5px; color:#64748b; font-weight:600;" title="Futures Basis %">Basis: +0.00%</div>
+      </td>
+      <td>
+        <span class="quant-sig-pill sig-long">LONG</span>
+        <div style="font-size:10.5px; color:#64748b; margin-top:2px;">RS: +0.00%</div>
+      </td>
+      
+      <!-- Intraday BUY -->
+      <td class="quant-meter-cell col-intra" data-val="59.5">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">59.5</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-med" style="width:59.5%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday SELL -->
+      <td class="quant-meter-cell col-intra" data-val="20.0">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">20.0</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-low" style="width:20.0%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday Signal -->
+      <td class="col-intra" data-val="BUY">
+        <span class="quant-sig-pill sig-buy">BUY</span>
+        <span class="quant-conf-pill">70%</span>
+      </td>
+      
+      <!-- Short-Term BUY -->
+      <td class="quant-meter-cell col-st" data-val="60.5">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-buy-high">60.5</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-med" style="width:60.5%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term SELL -->
+      <td class="quant-meter-cell col-st" data-val="31.5">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">31.5</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-low" style="width:31.5%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term Signal -->
+      <td class="col-st" data-val="BUY">
+        <span class="quant-sig-pill sig-buy">BUY</span>
+        <span class="quant-conf-pill">60%</span>
+      </td>
+      
+      <!-- Risk -->
+      <td data-val="35">
+        <span class="quant-risk-badge risk-moderate">MODERATE</span>
+      </td>
+      
+      <!-- Actions -->
+      <td style="text-align:center;">
+        <button class="quant-details-btn" onclick="openQuantModal('CRUDEOIL')">Analyze ↗</button>
+      </td>
+    </tr>
+    
+    <tr data-symbol="ZINC" data-company="hindustan zinc" data-isig="SELL" data-stsig="NEUTRAL" data-risk="LOW">
+      <td style="color:#94a3b8; font-weight:600; text-align:center;">4</td>
+      <td>
+        <div class="quant-stock-cell">
+          <span class="quant-sym-link" onclick="openQuantModal('ZINC')">ZINC</span>
+          <span class="quant-company-name" title="Hindustan Zinc">Hindustan Zinc</span>
+          <span class="quant-lot-badge">Lot: 5</span>
+        </div>
+      </td>
+      <td>
+        <div style="font-weight:700;">₹410.60</div>
+        <div style="font-size:10.5px; color:#64748b; font-weight:600;" title="Futures Basis %">Basis: +0.00%</div>
+      </td>
+      <td>
+        <span class="quant-sig-pill sig-short">SHORT</span>
+        <div style="font-size:10.5px; color:#64748b; margin-top:2px;">RS: +0.00%</div>
+      </td>
+      
+      <!-- Intraday BUY -->
+      <td class="quant-meter-cell col-intra" data-val="22.5">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">22.5</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-low" style="width:22.5%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday SELL -->
+      <td class="quant-meter-cell col-intra" data-val="59.5">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">59.5</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-med" style="width:59.5%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday Signal -->
+      <td class="col-intra" data-val="SELL">
+        <span class="quant-sig-pill sig-sell">SELL</span>
+        <span class="quant-conf-pill">67%</span>
+      </td>
+      
+      <!-- Short-Term BUY -->
+      <td class="quant-meter-cell col-st" data-val="39.9">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">39.9</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-low" style="width:39.9%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term SELL -->
+      <td class="quant-meter-cell col-st" data-val="54.9">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">54.9</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-med" style="width:54.9%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term Signal -->
+      <td class="col-st" data-val="NEUTRAL">
+        <span class="quant-sig-pill sig-neutral">NEUTRAL</span>
+        <span class="quant-conf-pill">54%</span>
+      </td>
+      
+      <!-- Risk -->
+      <td data-val="5">
+        <span class="quant-risk-badge risk-low">LOW</span>
+      </td>
+      
+      <!-- Actions -->
+      <td style="text-align:center;">
+        <button class="quant-details-btn" onclick="openQuantModal('ZINC')">Analyze ↗</button>
+      </td>
+    </tr>
+    
+    <tr data-symbol="NATURALGAS" data-company="shri ahimsa naturals" data-isig="SELL" data-stsig="NEUTRAL" data-risk="LOW">
+      <td style="color:#94a3b8; font-weight:600; text-align:center;">5</td>
+      <td>
+        <div class="quant-stock-cell">
+          <span class="quant-sym-link" onclick="openQuantModal('NATURALGAS')">NATURALGAS</span>
+          <span class="quant-company-name" title="Shri Ahimsa Naturals">Shri Ahimsa Naturals</span>
+          <span class="quant-lot-badge">Lot: 1250</span>
+        </div>
+      </td>
+      <td>
+        <div style="font-weight:700;">₹287.50</div>
+        <div style="font-size:10.5px; color:#64748b; font-weight:600;" title="Futures Basis %">Basis: +0.00%</div>
+      </td>
+      <td>
+        <span class="quant-sig-pill sig-short">SHORT</span>
+        <div style="font-size:10.5px; color:#64748b; margin-top:2px;">RS: +0.00%</div>
+      </td>
+      
+      <!-- Intraday BUY -->
+      <td class="quant-meter-cell col-intra" data-val="20.0">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">20.0</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-low" style="width:20.0%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday SELL -->
+      <td class="quant-meter-cell col-intra" data-val="55.5">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">55.5</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-med" style="width:55.5%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday Signal -->
+      <td class="col-intra" data-val="SELL">
+        <span class="quant-sig-pill sig-sell">SELL</span>
+        <span class="quant-conf-pill">66%</span>
+      </td>
+      
+      <!-- Short-Term BUY -->
+      <td class="quant-meter-cell col-st" data-val="52.2">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">52.2</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-med" style="width:52.2%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term SELL -->
+      <td class="quant-meter-cell col-st" data-val="46.2">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">46.2</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-low" style="width:46.2%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term Signal -->
+      <td class="col-st" data-val="NEUTRAL">
+        <span class="quant-sig-pill sig-neutral">NEUTRAL</span>
+        <span class="quant-conf-pill">39%</span>
+      </td>
+      
+      <!-- Risk -->
+      <td data-val="5">
+        <span class="quant-risk-badge risk-low">LOW</span>
+      </td>
+      
+      <!-- Actions -->
+      <td style="text-align:center;">
+        <button class="quant-details-btn" onclick="openQuantModal('NATURALGAS')">Analyze ↗</button>
+      </td>
+    </tr>
+    
+    <tr data-symbol="COPPER" data-company="hindustan copper" data-isig="NEUTRAL" data-stsig="NEUTRAL" data-risk="LOW">
+      <td style="color:#94a3b8; font-weight:600; text-align:center;">6</td>
+      <td>
+        <div class="quant-stock-cell">
+          <span class="quant-sym-link" onclick="openQuantModal('COPPER')">COPPER</span>
+          <span class="quant-company-name" title="Hindustan Copper">Hindustan Copper</span>
+          <span class="quant-lot-badge">Lot: 2500</span>
+        </div>
+      </td>
+      <td>
+        <div style="font-weight:700;">₹1,399.60</div>
+        <div style="font-size:10.5px; color:#64748b; font-weight:600;" title="Futures Basis %">Basis: +0.00%</div>
+      </td>
+      <td>
+        <span class="quant-sig-pill sig-long">LONG</span>
+        <div style="font-size:10.5px; color:#64748b; margin-top:2px;">RS: +0.00%</div>
+      </td>
+      
+      <!-- Intraday BUY -->
+      <td class="quant-meter-cell col-intra" data-val="50.5">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">50.5</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-med" style="width:50.5%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday SELL -->
+      <td class="quant-meter-cell col-intra" data-val="23.0">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">23.0</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-low" style="width:23.0%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday Signal -->
+      <td class="col-intra" data-val="NEUTRAL">
+        <span class="quant-sig-pill sig-neutral">NEUTRAL</span>
+        <span class="quant-conf-pill">59%</span>
+      </td>
+      
+      <!-- Short-Term BUY -->
+      <td class="quant-meter-cell col-st" data-val="53.3">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">53.3</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-med" style="width:53.3%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term SELL -->
+      <td class="quant-meter-cell col-st" data-val="33.3">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">33.3</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-low" style="width:33.3%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term Signal -->
+      <td class="col-st" data-val="NEUTRAL">
+        <span class="quant-sig-pill sig-neutral">NEUTRAL</span>
+        <span class="quant-conf-pill">59%</span>
+      </td>
+      
+      <!-- Risk -->
+      <td data-val="5">
+        <span class="quant-risk-badge risk-low">LOW</span>
+      </td>
+      
+      <!-- Actions -->
+      <td style="text-align:center;">
+        <button class="quant-details-btn" onclick="openQuantModal('COPPER')">Analyze ↗</button>
+      </td>
+    </tr>
+    
+    <tr data-symbol="ALUMINIUM" data-company="vedanta aluminium metal" data-isig="SELL" data-stsig="NEUTRAL" data-risk="LOW">
+      <td style="color:#94a3b8; font-weight:600; text-align:center;">7</td>
+      <td>
+        <div class="quant-stock-cell">
+          <span class="quant-sym-link" onclick="openQuantModal('ALUMINIUM')">ALUMINIUM</span>
+          <span class="quant-company-name" title="Vedanta Aluminium Metal">Vedanta Aluminium Metal</span>
+          <span class="quant-lot-badge">Lot: 5</span>
+        </div>
+      </td>
+      <td>
+        <div style="font-weight:700;">₹336.60</div>
+        <div style="font-size:10.5px; color:#64748b; font-weight:600;" title="Futures Basis %">Basis: +0.00%</div>
+      </td>
+      <td>
+        <span class="quant-sig-pill sig-short">SHORT</span>
+        <div style="font-size:10.5px; color:#64748b; margin-top:2px;">RS: +0.00%</div>
+      </td>
+      
+      <!-- Intraday BUY -->
+      <td class="quant-meter-cell col-intra" data-val="20.0">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">20.0</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-low" style="width:20.0%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday SELL -->
+      <td class="quant-meter-cell col-intra" data-val="62.0">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-sell-high">62.0</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-med" style="width:62.0%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday Signal -->
+      <td class="col-intra" data-val="SELL">
+        <span class="quant-sig-pill sig-sell">SELL</span>
+        <span class="quant-conf-pill">72%</span>
+      </td>
+      
+      <!-- Short-Term BUY -->
+      <td class="quant-meter-cell col-st" data-val="31.8">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">31.8</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-low" style="width:31.8%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term SELL -->
+      <td class="quant-meter-cell col-st" data-val="54.4">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">54.4</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-med" style="width:54.4%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term Signal -->
+      <td class="col-st" data-val="NEUTRAL">
+        <span class="quant-sig-pill sig-neutral">NEUTRAL</span>
+        <span class="quant-conf-pill">61%</span>
+      </td>
+      
+      <!-- Risk -->
+      <td data-val="5">
+        <span class="quant-risk-badge risk-low">LOW</span>
+      </td>
+      
+      <!-- Actions -->
+      <td style="text-align:center;">
+        <button class="quant-details-btn" onclick="openQuantModal('ALUMINIUM')">Analyze ↗</button>
+      </td>
+    </tr>
+    
+    <tr data-symbol="LEAD" data-company="leap india" data-isig="NEUTRAL" data-stsig="SELL" data-risk="LOW">
+      <td style="color:#94a3b8; font-weight:600; text-align:center;">8</td>
+      <td>
+        <div class="quant-stock-cell">
+          <span class="quant-sym-link" onclick="openQuantModal('LEAD')">LEAD</span>
+          <span class="quant-company-name" title="LEAP India">LEAP India</span>
+          <span class="quant-lot-badge">Lot: 5</span>
+        </div>
+      </td>
+      <td>
+        <div style="font-weight:700;">₹192.20</div>
+        <div style="font-size:10.5px; color:#64748b; font-weight:600;" title="Futures Basis %">Basis: +0.00%</div>
+      </td>
+      <td>
+        <span class="quant-sig-pill sig-short">SHORT</span>
+        <div style="font-size:10.5px; color:#64748b; margin-top:2px;">RS: +0.00%</div>
+      </td>
+      
+      <!-- Intraday BUY -->
+      <td class="quant-meter-cell col-intra" data-val="23.0">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">23.0</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-low" style="width:23.0%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday SELL -->
+      <td class="quant-meter-cell col-intra" data-val="53.0">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">53.0</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-med" style="width:53.0%;"></div>
+        </div>
+      </td>
+      
+      <!-- Intraday Signal -->
+      <td class="col-intra" data-val="NEUTRAL">
+        <span class="quant-sig-pill sig-neutral">NEUTRAL</span>
+        <span class="quant-conf-pill">61%</span>
+      </td>
+      
+      <!-- Short-Term BUY -->
+      <td class="quant-meter-cell col-st" data-val="31.3">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-neutral">31.3</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-buy-low" style="width:31.3%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term SELL -->
+      <td class="quant-meter-cell col-st" data-val="60.4">
+        <div class="quant-score-val-wrap">
+          <span class="score-num-sell-high">60.4</span>
+          <span style="font-size:10px; color:#94a3b8;">/100</span>
+        </div>
+        <div class="quant-bar-bg">
+          <div class="quant-bar-fill bar-sell-med" style="width:60.4%;"></div>
+        </div>
+      </td>
+      
+      <!-- Short-Term Signal -->
+      <td class="col-st" data-val="SELL">
+        <span class="quant-sig-pill sig-sell">SELL</span>
+        <span class="quant-conf-pill">67%</span>
+      </td>
+      
+      <!-- Risk -->
+      <td data-val="5">
+        <span class="quant-risk-badge risk-low">LOW</span>
+      </td>
+      
+      <!-- Actions -->
+      <td style="text-align:center;">
+        <button class="quant-details-btn" onclick="openQuantModal('LEAD')">Analyze ↗</button>
+      </td>
+    </tr>
+    
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Deep-Dive Explanation Modal -->
+    <div id="quantModalBackdrop" class="quant-modal-backdrop" onclick="closeQuantModalOnBackdrop(event)">
+      <div class="quant-modal-card">
+        <button class="quant-modal-close" onclick="closeQuantModal()">&times;</button>
+        <div class="quant-modal-header">
+          <div class="quant-modal-title">
+            <span id="modalSymbol">STOCK</span>
+            <span id="modalSpot" style="font-size:17px; color:#475569;">₹0.00</span>
+            <span id="modalBasisBadge" class="quant-sig-pill sig-neutral" style="font-size:11px;">Basis: +0.00%</span>
+          </div>
+          <div class="quant-modal-sub" id="modalCompany">Company Name</div>
+        </div>
+
+        <div class="quant-modal-grid">
+          <!-- Intraday Intelligence Panel -->
+          <div class="quant-panel">
+            <div class="quant-panel-header">
+              <span>⚡ Intraday Intelligence (Session)</span>
+              <span id="modalIntraSignalBadge" class="quant-sig-pill sig-neutral">NEUTRAL</span>
+            </div>
+            <div class="quant-metric-row">
+              <span>Intraday BUY Score:</span>
+              <span class="quant-metric-val" id="modalIntraBuy">0.0 / 100</span>
+            </div>
+            <div class="quant-metric-row">
+              <span>Intraday SELL Score:</span>
+              <span class="quant-metric-val" id="modalIntraSell">0.0 / 100</span>
+            </div>
+            <div class="quant-metric-row">
+              <span>Directional Confidence:</span>
+              <span class="quant-metric-val" id="modalIntraConf">0%</span>
+            </div>
+            <div class="quant-metric-row">
+              <span>Relative Strength vs NIFTY:</span>
+              <span class="quant-metric-val" id="modalIntraRS">0.00%</span>
+            </div>
+            <div class="quant-metric-row">
+              <span>Session Range Position:</span>
+              <span class="quant-metric-val" id="modalIntraRange">50% (Mid-Range)</span>
+            </div>
+            <div class="quant-metric-row">
+              <span>Central Pivot / S1 / R1:</span>
+              <span class="quant-metric-val" id="modalIntraPivots">—</span>
+            </div>
+            <div style="font-size:11px; font-weight:700; color:#475569; margin-top:10px;">Primary Intraday Catalysts:</div>
+            <ul class="quant-factors-list" id="modalIntraFactors">
+              <li>No significant catalysts</li>
+            </ul>
+          </div>
+
+          <!-- Short-Term Intelligence Panel -->
+          <div class="quant-panel">
+            <div class="quant-panel-header">
+              <span>📅 Short-Term Intelligence (1–15 Days)</span>
+              <span id="modalSTSignalBadge" class="quant-sig-pill sig-neutral">NEUTRAL</span>
+            </div>
+            <div class="quant-metric-row">
+              <span>Short-Term BUY Score:</span>
+              <span class="quant-metric-val" id="modalSTBuy">0.0 / 100</span>
+            </div>
+            <div class="quant-metric-row">
+              <span>Short-Term SELL Score:</span>
+              <span class="quant-metric-val" id="modalSTSell">0.0 / 100</span>
+            </div>
+            <div class="quant-metric-row">
+              <span>Swing Confidence:</span>
+              <span class="quant-metric-val" id="modalSTConf">0%</span>
+            </div>
+            <div class="quant-metric-row">
+              <span>Day-over-Day OI Change:</span>
+              <span class="quant-metric-val" id="modalSTOI">0.0%</span>
+            </div>
+            <div class="quant-metric-row">
+              <span>Technical Health (0-100):</span>
+              <span class="quant-metric-val" id="modalSTTech">—</span>
+            </div>
+            <div class="quant-metric-row">
+              <span>Fundamental (Q / G / V):</span>
+              <span class="quant-metric-val" id="modalSTFund">—</span>
+            </div>
+            <div style="font-size:11px; font-weight:700; color:#475569; margin-top:10px;">Primary Swing Catalysts:</div>
+            <ul class="quant-factors-list" id="modalSTFactors">
+              <li>No significant catalysts</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Risk & Uncertainty Panel -->
+        <div class="quant-panel" style="background:#ffffff; border-color:#cbd5e1;">
+          <div class="quant-panel-header" style="border-color:#e2e8f0;">
+            <span>⚠️ Risk &amp; Uncertainty Assessment</span>
+            <span id="modalRiskBadge" class="quant-risk-badge risk-moderate">MODERATE RISK</span>
+          </div>
+          <div class="quant-metric-row">
+            <span>Daily Volatility (Range Span):</span>
+            <span class="quant-metric-val" id="modalRangeSpan">0.0%</span>
+          </div>
+          <div class="quant-metric-row">
+            <span>Options Put/Call Premium Skew:</span>
+            <span class="quant-metric-val" id="modalOptSkew">—</span>
+          </div>
+          <div style="font-size:11px; font-weight:700; color:#475569; margin-top:10px;">Risk Factors &amp; Proximity Alerts:</div>
+          <ul class="quant-factors-list" id="modalRiskFlags">
+            <li>Standard market volatility</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
