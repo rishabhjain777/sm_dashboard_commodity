@@ -43,7 +43,7 @@ function renderScoresPage() {
         const v = (r.v_score !== null && r.v_score !== undefined) ? Math.round(r.v_score) : "—";
         const t = (r.t_score !== null && r.t_score !== undefined) ? Math.round(r.t_score) : "—";
         const oneliner = r.oneliner || "MCX Commodity";
-        const mcUrl = r.mc_url || ("https://www.moneycontrol.com/stocks/cptmarket/compsearchnew.php?search_data=" + sym);
+        const mcUrl = r.mc_url || ("https://www.moneycontrol.com/commodity/mcx-" + sym);
 
         let scoreBadgeClass = "badge-score-na";
         if (r.total_score !== null && r.total_score !== undefined) {
