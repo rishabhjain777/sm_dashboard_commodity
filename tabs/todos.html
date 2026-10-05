@@ -39,18 +39,25 @@
             <!-- Filters & Actions Bar -->
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 14px; margin-bottom: 16px;">
                 <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                    <button class="todo-filter-btn" id="filterBtn-all" onclick="setTodoFilter('all')" style="padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #0f172a; background: #0f172a; color: #ffffff; cursor: pointer;">
-                        All (<span id="filterCountAll">8</span>)
-                    </button>
-                    <button class="todo-filter-btn" id="filterBtn-pending" onclick="setTodoFilter('pending')" style="padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; cursor: pointer;">
-                        ⏳ Pending (<span id="filterCountPending">8</span>)
+                    <button class="todo-filter-btn" id="filterBtn-pending" onclick="setTodoFilter('pending')" style="padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #0f172a; background: #0f172a; color: #ffffff; cursor: pointer;">
+                        ⏳ Pending Tasks (<span id="filterCountPending">8</span>)
                     </button>
                     <button class="todo-filter-btn" id="filterBtn-completed" onclick="setTodoFilter('completed')" style="padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; cursor: pointer;">
-                        ✅ Completed (<span id="filterCountCompleted">0</span>)
+                        ✅ Completed Tasks (<span id="filterCountCompleted">0</span>)
+                    </button>
+                    <button class="todo-filter-btn" id="filterBtn-all" onclick="setTodoFilter('all')" style="padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; cursor: pointer;">
+                        All Tasks (<span id="filterCountAll">8</span>)
                     </button>
                 </div>
 
                 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <select id="todoPriFilter" onchange="applyTodoCardFilters()" style="padding: 5px 12px; font-size: 12px; font-weight: 700; border: 1px solid #b91c1c; border-radius: 6px; background: #fef2f2; color: #991b1b; cursor: pointer;">
+                        <option value="HIGH" selected>⚡ HIGH PRIORITY</option>
+                        <option value="MEDIUM">MEDIUM Priority</option>
+                        <option value="LOW">LOW Priority</option>
+                        <option value="ALL">All Priorities</option>
+                    </select>
+
                     <select id="todoCatFilter" onchange="applyTodoCardFilters()" style="padding: 5px 10px; font-size: 12px; font-weight: 600; border: 1px solid #cbd5e1; border-radius: 6px; background: #f8fafc; color: #0f172a; cursor: pointer;">
                         <option value="ALL">All Categories</option>
                         <option value="Risk Management">Risk Management</option>
