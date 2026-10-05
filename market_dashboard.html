@@ -200,8 +200,40 @@ th:hover {
     text-align: left;
     font-weight: bold;
     font-size: 13px;
-    padding: 5px 8px;
+    padding: 8px 12px;
     cursor: default;
+    border: 1px solid transparent;
+}
+
+.section-label.long-title td {
+    background: #dcfce7;
+    color: #166534;
+    border-color: #86efac;
+    border-radius: 7px 7px 0 0;
+}
+
+.section-label.short-title td {
+    background: #fee2e2;
+    color: #991b1b;
+    border-color: #fca5a5;
+    border-radius: 7px 7px 0 0;
+}
+
+.section-count-badge {
+    float: right;
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 11px;
+    line-height: 1.1;
+}
+
+.long-title .section-count-badge {
+    background: #15803d;
+}
+
+.short-title .section-count-badge {
+    background: #b91c1c;
 }
 
 .pivot-cell {
@@ -1427,7 +1459,7 @@ th:hover {
   </button>
   <button class="tab-nav-btn" id="tabBtn-prediction" onclick="switchDashboardTab('prediction')">
     &#127919; Prediction Result
-    <span class="tab-badge" id="pred-badge">4 Active</span>
+    <span class="tab-badge" id="pred-badge">3 Active</span>
   </button>
   <button class="tab-nav-btn" id="tabBtn-scores" onclick="switchDashboardTab('scores')">
     &#9733; Stock Scores (Q / G / V / T)
@@ -1451,7 +1483,7 @@ th:hover {
 <div id="tabContent-fno" class="tab-content active">
 
 <div class="nifty" style="background: #c8e6c9; border: 1px solid #2e7d32; color: #1b5e20;">
-MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 15M: -0.03% FLAT | B: 1.00 | S: 0.60
+MCX MARKET: 48075.13 | Change: 168.26 | Change %: 0.35% | Market: UP strongly | 15M: 0.03% FLAT | B: 1.00 | S: 0.60
 </div>
 
 <div class="controls">
@@ -1503,31 +1535,27 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
 
 <tr>
 
-<th onclick="sortTable(this, 0)" style="width: 120px">Commodity</th>
+<th onclick="sortTable(this, 0)" style="width: 120px">Share Name</th>
 
 <th onclick="sortTable(this, 1)">Spot</th>
 
-<th onclick="sortTable(this, 2)">OI % Yesterday</th>
+<th onclick="sortTable(this, 2)">OI%Change Yesterday</th>
 
-<th onclick="sortTable(this, 3)">OI % Last Query</th>
+<th onclick="sortTable(this, 3)">OI%Change Last Query</th>
 
-<th onclick="sortTable(this, 4)">EOM P&amp;L / Lot</th>
+<th onclick="sortTable(this, 4)">Signal</th>
 
-<th onclick="sortTable(this, 5)">Signal</th>
+<th onclick="sortTable(this, 5)">Last Signal</th>
 
-<th onclick="sortTable(this, 6)">Last Signal</th>
+<th onclick="sortTable(this, 6)" title="OI-based Share Score">OI Score</th>
 
-<th onclick="sortTable(this, 7)" title="OI-based Share Score">OI Score as Share Score</th>
+<th onclick="sortTable(this, 7)" title="Refactored commodity quantitative score on a 1-10 scale">Score QGVT</th>
 
-<th onclick="sortTable(this, 8)" title="Refactored commodity quantitative score on a 1-10 scale">Score Quant1</th>
+<th onclick="sortTable(this, 8)" title="Refactored AI quantitative score on a 1-10 scale">Score AI Quant</th>
 
-<th onclick="sortTable(this, 9)" title="Refactored AI quantitative score on a 1-10 scale">Score Quant2</th>
+<th onclick="sortTable(this, 9)" title="OI Score × Score QGVT × Score AI Quant / 100">Final Score</th>
 
-<th onclick="sortTable(this, 10)" title="Share Score × Score Quant1 × Score Quant2 / 100">Final Score</th>
-
-<th onclick="sortTable(this, 11)" title="15M Standard Pivot Points Channel (S3 to R3) with 7 coloured levels">S3--S2--S1--P--R1--R2--R3</th>
-
-<th onclick="sortTable(this, 12)" title="Trade Favor: Score based on 6-floor building model (BUY: Room till Resistance % | SELL: Room till Support %)">Buy Favor</th>
+<th onclick="sortTable(this, 10)" title="15M Standard Pivot Points Channel (S3 to R3) with 7 coloured levels">Pivot Points</th>
 
 </tr>
 
@@ -1535,23 +1563,19 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
 
 <tbody>
 
-<tr class="section-label long-title"><td colspan="13">&#9660; BUY SIDE &nbsp;— LONG &amp; COVER &nbsp;&nbsp;(Market Score: 1.00)</td></tr>
+<tr class="section-label long-title"><td colspan="11">&#9650; BUY SIDE &nbsp;— LONG &amp; COVER &nbsp;&nbsp;(Market Score: 1.00 | MCX Score: 10.0)<span class="section-count-badge">5 Commodities</span></td></tr>
 
         <tr>
 
-        <td>LEAD</td>
-        <td>193.70</td>
+        <td>CRUDEOIL</td>
+        <td>8705.00</td>
 
         <td>
-            407.69%
+            9350.49%
         </td>
 
         <td>
-            0.19%
-        </td>
-
-        <td class="profit">
-            NA
+            0.15%
         </td>
 
         <td class="signal-LONG">
@@ -1562,40 +1586,30 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
 
         <td>10.0</td>
 
-        <td>7.3</td>
+        <td><span class="score-badge score-mid" title="Commodity Quantitative Score (1-10)">6.4</span></td>
 
-        <td>7.0</td>
+        <td><span class="score-badge score-mid" title="AI Quantitative Score (1-10)">3.2</span></td>
 
-        <td style="font-weight: bold; font-size: 1.1em; color: green;">5.11</td>
+        <td style="font-weight: bold; font-size: 1.1em; color: green;">2.05</td>
 
         <td class="pivot-cell">
             <div class="pivot-graph-wrap" tabindex="0">
-              <span style="display:none">068.44</span>
-              <div class="pivot-detail-tooltip">S3: 189.08 | S2: 190.47 | S1: 191.33 | P: 192.72 | R1: 193.58 | R2: 194.97 | R3: 195.83</div>
+              <span style="display:none">027.43</span>
+              <div class="pivot-detail-tooltip">S3: 8534.67 | S2: 8567.33 | S1: 8741.67 | P: 8774.33 | R1: 8948.67 | R2: 8981.33 | R3: 9155.67</div>
               <div class="pivot-track">
                 <div class="pivot-pipe" style="left:0px; background:#991b1b;"></div>
-                <div class="pivot-pipe" style="left:calc(20.6% - 1px); background:#dc2626;"></div>
+                <div class="pivot-pipe" style="left:calc(5.3% - 1px); background:#dc2626;"></div>
                 <div class="pivot-pipe" style="left:calc(33.3% - 1px); background:#f87171;"></div>
-                <div class="pivot-pipe" style="left:calc(53.9% - 1px); background:#64748b;"></div>
+                <div class="pivot-pipe" style="left:calc(38.6% - 1px); background:#64748b;"></div>
                 <div class="pivot-pipe" style="left:calc(66.7% - 1px); background:#4ade80;"></div>
-                <div class="pivot-pipe" style="left:calc(87.3% - 1px); background:#16a34a;"></div>
+                <div class="pivot-pipe" style="left:calc(71.9% - 1px); background:#16a34a;"></div>
                 <div class="pivot-pipe" style="right:0px; background:#15803d;"></div>
-                <div class="pivot-ball" style="left:calc(68.4% - 5.5px); background:#15803d;"></div>
+                <div class="pivot-ball" style="left:calc(27.4% - 5.5px); background:#15803d;"></div>
               </div>
               <div class="pivot-hover-price-line">
-                <span>S3: 189.08</span>
-                <span class="cur-price-highlight">₹193.70</span>
-                <span>R3: 195.83</span>
-              </div>
-            </div>
-            </td>
-
-        <td class="pivot-cell" title="Buy Favor (Hurdle: Resistance Ceiling)&#10;--------------------------------------------------&#10;Floor (Support): R1 ₹193.58&#10;Ceiling (Resistance): R2 ₹194.97&#10;Room till Resistance: 91.4% (Hurdle-free upside)&#10;Score: 9.1 / 10.0&#10;Recommendation: BUY NOW&#10;Target (Resistance): R2 ₹194.97 (+1.27 / +0.66%)&#10;Stop Loss (Support -): R1 ₹193.58 (-0.12 / -0.06%)">
-            <div class="buy-favor-cell" title="Buy Favor (Hurdle: Resistance Ceiling)&#10;--------------------------------------------------&#10;Floor (Support): R1 ₹193.58&#10;Ceiling (Resistance): R2 ₹194.97&#10;Room till Resistance: 91.4% (Hurdle-free upside)&#10;Score: 9.1 / 10.0&#10;Recommendation: BUY NOW&#10;Target (Resistance): R2 ₹194.97 (+1.27 / +0.66%)&#10;Stop Loss (Support -): R1 ₹193.58 (-0.12 / -0.06%)">
-              <span style="display:none">09.10</span>
-              <div class="buy-favor-inline">
-                <span class="pivot-score-badge score-high">Score: 9.1</span>
-                <span class="buy-room-badge room-high">91% Room</span>
+                <span>S3: 8534.67</span>
+                <span class="cur-price-highlight">₹8705.00</span>
+                <span>R3: 9155.67</span>
               </div>
             </div>
             </td>
@@ -1615,10 +1629,6 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
             0.0%
         </td>
 
-        <td class="profit">
-            4,104
-        </td>
-
         <td class="signal-LONG">
             LONG
         </td>
@@ -1627,9 +1637,9 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
 
         <td>10.0</td>
 
-        <td>6.4</td>
+        <td><span class="score-badge score-mid" title="Commodity Quantitative Score (1-10)">6.4</span></td>
 
-        <td>5.1</td>
+        <td><span class="score-badge score-mid" title="AI Quantitative Score (1-10)">5.1</span></td>
 
         <td style="font-weight: bold; font-size: 1.1em; color: green;">3.26</td>
 
@@ -1655,81 +1665,6 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
             </div>
             </td>
 
-        <td class="pivot-cell" title="Buy Favor (Hurdle: Resistance Ceiling)&#10;--------------------------------------------------&#10;Floor (Support): S1 ₹146595.33&#10;Ceiling (Resistance): P ₹147048.67&#10;Room till Resistance: 33.9% (Near ceiling / hurdle)&#10;Score: 3.4 / 10.0&#10;Recommendation: BUY > ₹147195.72&#10;Target (Resistance): R1 ₹148319.33 (+1424.33 / +0.97%)&#10;Stop Loss (Support -): S1 ₹146595.33 (-299.67 / -0.20%)">
-            <div class="buy-favor-cell" title="Buy Favor (Hurdle: Resistance Ceiling)&#10;--------------------------------------------------&#10;Floor (Support): S1 ₹146595.33&#10;Ceiling (Resistance): P ₹147048.67&#10;Room till Resistance: 33.9% (Near ceiling / hurdle)&#10;Score: 3.4 / 10.0&#10;Recommendation: BUY > ₹147195.72&#10;Target (Resistance): R1 ₹148319.33 (+1424.33 / +0.97%)&#10;Stop Loss (Support -): S1 ₹146595.33 (-299.67 / -0.20%)">
-              <span style="display:none">03.40</span>
-              <div class="buy-favor-inline">
-                <span class="pivot-score-badge score-low">Score: 3.4</span>
-                <span class="buy-room-badge room-low">34% Room</span>
-              </div>
-            </div>
-            </td>
-
-        </tr>
-        
-        <tr>
-
-        <td>ZINC</td>
-        <td>413.00</td>
-
-        <td>
-            352.79%
-        </td>
-
-        <td>
-            0.0%
-        </td>
-
-        <td class="profit">
-            41
-        </td>
-
-        <td class="signal-LONG">
-            LONG
-        </td>
-
-        <td class="signal-LONG">LONG</td>
-
-        <td>10.0</td>
-
-        <td>6.5</td>
-
-        <td>4.8</td>
-
-        <td style="font-weight: bold; font-size: 1.1em; color: green;">3.12</td>
-
-        <td class="pivot-cell">
-            <div class="pivot-graph-wrap" tabindex="0">
-              <span style="display:none">059.49</span>
-              <div class="pivot-detail-tooltip">S3: 398.90 | S2: 403.00 | S1: 406.80 | P: 410.90 | R1: 414.70 | R2: 418.80 | R3: 422.60</div>
-              <div class="pivot-track">
-                <div class="pivot-pipe" style="left:0px; background:#991b1b;"></div>
-                <div class="pivot-pipe" style="left:calc(17.3% - 1px); background:#dc2626;"></div>
-                <div class="pivot-pipe" style="left:calc(33.3% - 1px); background:#f87171;"></div>
-                <div class="pivot-pipe" style="left:calc(50.6% - 1px); background:#64748b;"></div>
-                <div class="pivot-pipe" style="left:calc(66.7% - 1px); background:#4ade80;"></div>
-                <div class="pivot-pipe" style="left:calc(84.0% - 1px); background:#16a34a;"></div>
-                <div class="pivot-pipe" style="right:0px; background:#15803d;"></div>
-                <div class="pivot-ball" style="left:calc(59.5% - 5.5px); background:#15803d;"></div>
-              </div>
-              <div class="pivot-hover-price-line">
-                <span>S3: 398.90</span>
-                <span class="cur-price-highlight">₹413.00</span>
-                <span>R3: 422.60</span>
-              </div>
-            </div>
-            </td>
-
-        <td class="pivot-cell" title="Buy Favor (Hurdle: Resistance Ceiling)&#10;--------------------------------------------------&#10;Floor (Support): P ₹410.90&#10;Ceiling (Resistance): R1 ₹414.70&#10;Room till Resistance: 44.7% (Near ceiling / hurdle)&#10;Score: 4.5 / 10.0&#10;Recommendation: BUY > ₹415.11&#10;Target (Resistance): R2 ₹418.80 (+5.80 / +1.40%)&#10;Stop Loss (Support -): P ₹410.90 (-2.10 / -0.51%)">
-            <div class="buy-favor-cell" title="Buy Favor (Hurdle: Resistance Ceiling)&#10;--------------------------------------------------&#10;Floor (Support): P ₹410.90&#10;Ceiling (Resistance): R1 ₹414.70&#10;Room till Resistance: 44.7% (Near ceiling / hurdle)&#10;Score: 4.5 / 10.0&#10;Recommendation: BUY > ₹415.11&#10;Target (Resistance): R2 ₹418.80 (+5.80 / +1.40%)&#10;Stop Loss (Support -): P ₹410.90 (-2.10 / -0.51%)">
-              <span style="display:none">04.50</span>
-              <div class="buy-favor-inline">
-                <span class="pivot-score-badge score-mid">Score: 4.5</span>
-                <span class="buy-room-badge room-low">45% Room</span>
-              </div>
-            </div>
-            </td>
-
         </tr>
         
         <tr>
@@ -1745,10 +1680,6 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
             0.0%
         </td>
 
-        <td class="profit">
-            NA
-        </td>
-
         <td class="signal-LONG">
             LONG
         </td>
@@ -1757,9 +1688,9 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
 
         <td>10.0</td>
 
-        <td>6.4</td>
+        <td><span class="score-badge score-mid" title="Commodity Quantitative Score (1-10)">6.4</span></td>
 
-        <td>7.2</td>
+        <td><span class="score-badge score-mid" title="AI Quantitative Score (1-10)">7.2</span></td>
 
         <td style="font-weight: bold; font-size: 1.1em; color: green;">4.61</td>
 
@@ -1785,33 +1716,19 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
             </div>
             </td>
 
-        <td class="pivot-cell" title="Buy Favor (Hurdle: Resistance Ceiling)&#10;--------------------------------------------------&#10;Floor (Support): P ₹336.23&#10;Ceiling (Resistance): R1 ₹339.27&#10;Room till Resistance: 22.0% (Near ceiling / hurdle)&#10;Score: 2.2 / 10.0&#10;Recommendation: BUY > ₹339.61&#10;Target (Resistance): R2 ₹341.93 (+3.33 / +0.98%)&#10;Stop Loss (Support -): P ₹336.23 (-2.37 / -0.70%)">
-            <div class="buy-favor-cell" title="Buy Favor (Hurdle: Resistance Ceiling)&#10;--------------------------------------------------&#10;Floor (Support): P ₹336.23&#10;Ceiling (Resistance): R1 ₹339.27&#10;Room till Resistance: 22.0% (Near ceiling / hurdle)&#10;Score: 2.2 / 10.0&#10;Recommendation: BUY > ₹339.61&#10;Target (Resistance): R2 ₹341.93 (+3.33 / +0.98%)&#10;Stop Loss (Support -): P ₹336.23 (-2.37 / -0.70%)">
-              <span style="display:none">02.20</span>
-              <div class="buy-favor-inline">
-                <span class="pivot-score-badge score-low">Score: 2.2</span>
-                <span class="buy-room-badge room-low">22% Room</span>
-              </div>
-            </div>
-            </td>
-
         </tr>
         
         <tr>
 
-        <td>CRUDEOIL</td>
-        <td>8693.00</td>
+        <td>SILVER</td>
+        <td>226350.00</td>
 
         <td>
-            9336.22%
+            2891.14%
         </td>
 
         <td>
-            0.22%
-        </td>
-
-        <td class="profit">
-            30,430
+            0.17%
         </td>
 
         <td class="signal-LONG">
@@ -1822,83 +1739,15 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
 
         <td>5.0</td>
 
-        <td>6.4</td>
+        <td><span class="score-badge score-mid" title="Commodity Quantitative Score (1-10)">6.3</span></td>
 
-        <td>3.2</td>
+        <td><span class="score-badge score-mid" title="AI Quantitative Score (1-10)">3.3</span></td>
 
-        <td style="font-weight: bold; font-size: 1.1em; color: green;">1.02</td>
-
-        <td class="pivot-cell">
-            <div class="pivot-graph-wrap" tabindex="0">
-              <span style="display:none">025.50</span>
-              <div class="pivot-detail-tooltip">S3: 8534.67 | S2: 8567.33 | S1: 8741.67 | P: 8774.33 | R1: 8948.67 | R2: 8981.33 | R3: 9155.67</div>
-              <div class="pivot-track">
-                <div class="pivot-pipe" style="left:0px; background:#991b1b;"></div>
-                <div class="pivot-pipe" style="left:calc(5.3% - 1px); background:#dc2626;"></div>
-                <div class="pivot-pipe" style="left:calc(33.3% - 1px); background:#f87171;"></div>
-                <div class="pivot-pipe" style="left:calc(38.6% - 1px); background:#64748b;"></div>
-                <div class="pivot-pipe" style="left:calc(66.7% - 1px); background:#4ade80;"></div>
-                <div class="pivot-pipe" style="left:calc(71.9% - 1px); background:#16a34a;"></div>
-                <div class="pivot-pipe" style="right:0px; background:#15803d;"></div>
-                <div class="pivot-ball" style="left:calc(25.5% - 5.5px); background:#15803d;"></div>
-              </div>
-              <div class="pivot-hover-price-line">
-                <span>S3: 8534.67</span>
-                <span class="cur-price-highlight">₹8693.00</span>
-                <span>R3: 9155.67</span>
-              </div>
-            </div>
-            </td>
-
-        <td class="pivot-cell" title="Buy Favor (Hurdle: Resistance Ceiling)&#10;--------------------------------------------------&#10;Floor (Support): S2 ₹8567.33&#10;Ceiling (Resistance): S1 ₹8741.67&#10;Room till Resistance: 27.9% (Near ceiling / hurdle)&#10;Score: 2.8 / 10.0&#10;Recommendation: BUY > ₹8750.41&#10;Target (Resistance): P ₹8774.33 (+81.33 / +0.94%)&#10;Stop Loss (Support -): S2 ₹8567.33 (-125.67 / -1.45%)">
-            <div class="buy-favor-cell" title="Buy Favor (Hurdle: Resistance Ceiling)&#10;--------------------------------------------------&#10;Floor (Support): S2 ₹8567.33&#10;Ceiling (Resistance): S1 ₹8741.67&#10;Room till Resistance: 27.9% (Near ceiling / hurdle)&#10;Score: 2.8 / 10.0&#10;Recommendation: BUY > ₹8750.41&#10;Target (Resistance): P ₹8774.33 (+81.33 / +0.94%)&#10;Stop Loss (Support -): S2 ₹8567.33 (-125.67 / -1.45%)">
-              <span style="display:none">02.80</span>
-              <div class="buy-favor-inline">
-                <span class="pivot-score-badge score-low">Score: 2.8</span>
-                <span class="buy-room-badge room-low">28% Room</span>
-              </div>
-            </div>
-            </td>
-
-        </tr>
-        
-
-<tr class="section-label short-title"><td colspan="13">&#9660; SELL SIDE &nbsp;— SHORT &amp; UNWIND &nbsp;&nbsp;(Market Score: 0.60)</td></tr>
-
-        <tr>
-
-        <td>SILVER</td>
-        <td>226200.00</td>
-
-        <td>
-            2886.07%
-        </td>
-
-        <td>
-            -0.01%
-        </td>
-
-        <td class="profit">
-            193,365
-        </td>
-
-        <td class="signal-UNWIND">
-            UNWIND
-        </td>
-
-        <td class="signal-SHORT">SHORT</td>
-
-        <td>8.0</td>
-
-        <td>5.2</td>
-
-        <td>7.1</td>
-
-        <td style="font-weight: bold; font-size: 1.1em; color: red;">2.95</td>
+        <td style="font-weight: bold; font-size: 1.1em; color: green;">1.04</td>
 
         <td class="pivot-cell">
             <div class="pivot-graph-wrap" tabindex="0">
-              <span style="display:none">048.91</span>
+              <span style="display:none">050.53</span>
               <div class="pivot-detail-tooltip">S3: 221657.00 | S2: 223629.00 | S1: 224753.00 | P: 226725.00 | R1: 227849.00 | R2: 229821.00 | R3: 230945.00</div>
               <div class="pivot-track">
                 <div class="pivot-pipe" style="left:0px; background:#991b1b;"></div>
@@ -1908,87 +1757,12 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
                 <div class="pivot-pipe" style="left:calc(66.7% - 1px); background:#4ade80;"></div>
                 <div class="pivot-pipe" style="left:calc(87.9% - 1px); background:#16a34a;"></div>
                 <div class="pivot-pipe" style="right:0px; background:#15803d;"></div>
-                <div class="pivot-ball" style="left:calc(48.9% - 5.5px); background:#dc2626;"></div>
+                <div class="pivot-ball" style="left:calc(50.5% - 5.5px); background:#15803d;"></div>
               </div>
               <div class="pivot-hover-price-line">
                 <span>S3: 221657.00</span>
-                <span class="cur-price-highlight">₹226200.00</span>
+                <span class="cur-price-highlight">₹226350.00</span>
                 <span>R3: 230945.00</span>
-              </div>
-            </div>
-            </td>
-
-        <td class="pivot-cell" title="Sell Favor (Hurdle: Support Floor)&#10;--------------------------------------------------&#10;Floor (Support): S1 ₹224753.00&#10;Ceiling (Resistance): P ₹226725.00&#10;Room till Support: 73.4% (Hurdle-free drop)&#10;Score: 7.3 / 10.0&#10;Recommendation: SELL NOW&#10;Target (Support): S1 ₹224753.00 (-1447.00 / -0.64%)&#10;Stop Loss (Resistance +): P ₹226725.00 (+525.00 / +0.23%)">
-            <div class="buy-favor-cell" title="Sell Favor (Hurdle: Support Floor)&#10;--------------------------------------------------&#10;Floor (Support): S1 ₹224753.00&#10;Ceiling (Resistance): P ₹226725.00&#10;Room till Support: 73.4% (Hurdle-free drop)&#10;Score: 7.3 / 10.0&#10;Recommendation: SELL NOW&#10;Target (Support): S1 ₹224753.00 (-1447.00 / -0.64%)&#10;Stop Loss (Resistance +): P ₹226725.00 (+525.00 / +0.23%)">
-              <span style="display:none">07.30</span>
-              <div class="buy-favor-inline">
-                <span class="pivot-score-badge score-high">Score: 7.3</span>
-                <span class="buy-room-badge room-high">73% Room</span>
-              </div>
-            </div>
-            </td>
-
-        </tr>
-        
-        <tr>
-
-        <td>COPPER</td>
-        <td>1410.80</td>
-
-        <td>
-            251763.2%
-        </td>
-
-        <td>
-            0.0%
-        </td>
-
-        <td class="profit">
-            54,525
-        </td>
-
-        <td class="signal-UNWIND">
-            UNWIND
-        </td>
-
-        <td class="signal-UNWIND">UNWIND</td>
-
-        <td>6.0</td>
-
-        <td>4.9</td>
-
-        <td>2.8</td>
-
-        <td style="font-weight: bold; font-size: 1.1em; color: red;">0.82</td>
-
-        <td class="pivot-cell">
-            <div class="pivot-graph-wrap" tabindex="0">
-              <span style="display:none">074.40</span>
-              <div class="pivot-detail-tooltip">S3: 1382.90 | S2: 1391.20 | S1: 1395.40 | P: 1403.70 | R1: 1407.90 | R2: 1416.20 | R3: 1420.40</div>
-              <div class="pivot-track">
-                <div class="pivot-pipe" style="left:0px; background:#991b1b;"></div>
-                <div class="pivot-pipe" style="left:calc(22.1% - 1px); background:#dc2626;"></div>
-                <div class="pivot-pipe" style="left:calc(33.3% - 1px); background:#f87171;"></div>
-                <div class="pivot-pipe" style="left:calc(55.5% - 1px); background:#64748b;"></div>
-                <div class="pivot-pipe" style="left:calc(66.7% - 1px); background:#4ade80;"></div>
-                <div class="pivot-pipe" style="left:calc(88.8% - 1px); background:#16a34a;"></div>
-                <div class="pivot-pipe" style="right:0px; background:#15803d;"></div>
-                <div class="pivot-ball" style="left:calc(74.4% - 5.5px); background:#dc2626;"></div>
-              </div>
-              <div class="pivot-hover-price-line">
-                <span>S3: 1382.90</span>
-                <span class="cur-price-highlight">₹1410.80</span>
-                <span>R3: 1420.40</span>
-              </div>
-            </div>
-            </td>
-
-        <td class="pivot-cell" title="Sell Favor (Hurdle: Support Floor)&#10;--------------------------------------------------&#10;Floor (Support): R1 ₹1407.90&#10;Ceiling (Resistance): R2 ₹1416.20&#10;Room till Support: 34.9% (Near floor support)&#10;Score: 3.5 / 10.0&#10;Recommendation: SELL < ₹1406.49&#10;Target (Support): P ₹1403.70 (-7.10 / -0.50%)&#10;Stop Loss (Resistance +): R2 ₹1416.20 (+5.40 / +0.38%)">
-            <div class="buy-favor-cell" title="Sell Favor (Hurdle: Support Floor)&#10;--------------------------------------------------&#10;Floor (Support): R1 ₹1407.90&#10;Ceiling (Resistance): R2 ₹1416.20&#10;Room till Support: 34.9% (Near floor support)&#10;Score: 3.5 / 10.0&#10;Recommendation: SELL < ₹1406.49&#10;Target (Support): P ₹1403.70 (-7.10 / -0.50%)&#10;Stop Loss (Resistance +): R2 ₹1416.20 (+5.40 / +0.38%)">
-              <span style="display:none">03.50</span>
-              <div class="buy-favor-inline">
-                <span class="pivot-score-badge score-low">Score: 3.5</span>
-                <span class="buy-room-badge room-low">35% Room</span>
               </div>
             </div>
             </td>
@@ -1998,37 +1772,33 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
         <tr>
 
         <td>NATURALGAS</td>
-        <td>295.90</td>
+        <td>296.50</td>
 
         <td>
-            98730.71%
+            98781.49%
         </td>
 
         <td>
-            -0.43%
+            0.05%
         </td>
 
-        <td class="profit">
-            18,125
+        <td class="signal-LONG">
+            LONG
         </td>
 
-        <td class="signal-UNWIND">
-            UNWIND
-        </td>
+        <td class="signal-UNWIND">UNWIND</td>
 
-        <td class="signal-COVER">COVER</td>
+        <td>5.0</td>
 
-        <td>6.0</td>
+        <td><span class="score-badge score-mid" title="Commodity Quantitative Score (1-10)">6.5</span></td>
 
-        <td>4.9</td>
+        <td><span class="score-badge score-mid" title="AI Quantitative Score (1-10)">5.7</span></td>
 
-        <td>4.1</td>
-
-        <td style="font-weight: bold; font-size: 1.1em; color: red;">1.21</td>
+        <td style="font-weight: bold; font-size: 1.1em; color: green;">1.85</td>
 
         <td class="pivot-cell">
             <div class="pivot-graph-wrap" tabindex="0">
-              <span style="display:none">080.53</span>
+              <span style="display:none">083.43</span>
               <div class="pivot-detail-tooltip">S3: 279.23 | S2: 284.77 | S1: 286.13 | P: 291.67 | R1: 293.03 | R2: 298.57 | R3: 299.93</div>
               <div class="pivot-track">
                 <div class="pivot-pipe" style="left:0px; background:#991b1b;"></div>
@@ -2038,22 +1808,168 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
                 <div class="pivot-pipe" style="left:calc(66.7% - 1px); background:#4ade80;"></div>
                 <div class="pivot-pipe" style="left:calc(93.4% - 1px); background:#16a34a;"></div>
                 <div class="pivot-pipe" style="right:0px; background:#15803d;"></div>
-                <div class="pivot-ball" style="left:calc(80.5% - 5.5px); background:#dc2626;"></div>
+                <div class="pivot-ball" style="left:calc(83.4% - 5.5px); background:#15803d;"></div>
               </div>
               <div class="pivot-hover-price-line">
                 <span>S3: 279.23</span>
-                <span class="cur-price-highlight">₹295.90</span>
+                <span class="cur-price-highlight">₹296.50</span>
                 <span>R3: 299.93</span>
               </div>
             </div>
             </td>
 
-        <td class="pivot-cell" title="Sell Favor (Hurdle: Support Floor)&#10;--------------------------------------------------&#10;Floor (Support): R1 ₹293.03&#10;Ceiling (Resistance): R2 ₹298.57&#10;Room till Support: 51.8% (Near floor support)&#10;Score: 5.2 / 10.0&#10;Recommendation: SELL < ₹292.74&#10;Target (Support): P ₹291.67 (-4.23 / -1.43%)&#10;Stop Loss (Resistance +): R2 ₹298.57 (+2.67 / +0.90%)">
-            <div class="buy-favor-cell" title="Sell Favor (Hurdle: Support Floor)&#10;--------------------------------------------------&#10;Floor (Support): R1 ₹293.03&#10;Ceiling (Resistance): R2 ₹298.57&#10;Room till Support: 51.8% (Near floor support)&#10;Score: 5.2 / 10.0&#10;Recommendation: SELL < ₹292.74&#10;Target (Support): P ₹291.67 (-4.23 / -1.43%)&#10;Stop Loss (Resistance +): R2 ₹298.57 (+2.67 / +0.90%)">
-              <span style="display:none">05.20</span>
-              <div class="buy-favor-inline">
-                <span class="pivot-score-badge score-mid">Score: 5.2</span>
-                <span class="buy-room-badge room-low">52% Room</span>
+        </tr>
+        
+
+<tr class="section-label short-title"><td colspan="11">&#9660; SELL SIDE &nbsp;— SHORT &amp; UNWIND &nbsp;&nbsp;(Market Score: 0.60 | MCX Score: 6.0)<span class="section-count-badge">3 Commodities</span></td></tr>
+
+        <tr>
+
+        <td>COPPER</td>
+        <td>1410.00</td>
+
+        <td>
+            251823.31%
+        </td>
+
+        <td>
+            0.02%
+        </td>
+
+        <td class="signal-SHORT">
+            SHORT
+        </td>
+
+        <td class="signal-UNWIND">UNWIND</td>
+
+        <td>9.0</td>
+
+        <td><span class="score-badge score-mid" title="Commodity Quantitative Score (1-10)">3.2</span></td>
+
+        <td><span class="score-badge score-mid" title="AI Quantitative Score (1-10)">2.8</span></td>
+
+        <td style="font-weight: bold; font-size: 1.1em; color: red;">0.81</td>
+
+        <td class="pivot-cell">
+            <div class="pivot-graph-wrap" tabindex="0">
+              <span style="display:none">072.27</span>
+              <div class="pivot-detail-tooltip">S3: 1382.90 | S2: 1391.20 | S1: 1395.40 | P: 1403.70 | R1: 1407.90 | R2: 1416.20 | R3: 1420.40</div>
+              <div class="pivot-track">
+                <div class="pivot-pipe" style="left:0px; background:#991b1b;"></div>
+                <div class="pivot-pipe" style="left:calc(22.1% - 1px); background:#dc2626;"></div>
+                <div class="pivot-pipe" style="left:calc(33.3% - 1px); background:#f87171;"></div>
+                <div class="pivot-pipe" style="left:calc(55.5% - 1px); background:#64748b;"></div>
+                <div class="pivot-pipe" style="left:calc(66.7% - 1px); background:#4ade80;"></div>
+                <div class="pivot-pipe" style="left:calc(88.8% - 1px); background:#16a34a;"></div>
+                <div class="pivot-pipe" style="right:0px; background:#15803d;"></div>
+                <div class="pivot-ball" style="left:calc(72.3% - 5.5px); background:#dc2626;"></div>
+              </div>
+              <div class="pivot-hover-price-line">
+                <span>S3: 1382.90</span>
+                <span class="cur-price-highlight">₹1410.00</span>
+                <span>R3: 1420.40</span>
+              </div>
+            </div>
+            </td>
+
+        </tr>
+        
+        <tr>
+
+        <td>LEAD</td>
+        <td>193.65</td>
+
+        <td>
+            406.73%
+        </td>
+
+        <td>
+            -0.19%
+        </td>
+
+        <td class="signal-UNWIND">
+            UNWIND
+        </td>
+
+        <td class="signal-LONG">LONG</td>
+
+        <td>7.0</td>
+
+        <td><span class="score-badge score-mid" title="Commodity Quantitative Score (1-10)">4.5</span></td>
+
+        <td><span class="score-badge score-mid" title="AI Quantitative Score (1-10)">2.9</span></td>
+
+        <td style="font-weight: bold; font-size: 1.1em; color: red;">0.91</td>
+
+        <td class="pivot-cell">
+            <div class="pivot-graph-wrap" tabindex="0">
+              <span style="display:none">067.70</span>
+              <div class="pivot-detail-tooltip">S3: 189.08 | S2: 190.47 | S1: 191.33 | P: 192.72 | R1: 193.58 | R2: 194.97 | R3: 195.83</div>
+              <div class="pivot-track">
+                <div class="pivot-pipe" style="left:0px; background:#991b1b;"></div>
+                <div class="pivot-pipe" style="left:calc(20.6% - 1px); background:#dc2626;"></div>
+                <div class="pivot-pipe" style="left:calc(33.3% - 1px); background:#f87171;"></div>
+                <div class="pivot-pipe" style="left:calc(53.9% - 1px); background:#64748b;"></div>
+                <div class="pivot-pipe" style="left:calc(66.7% - 1px); background:#4ade80;"></div>
+                <div class="pivot-pipe" style="left:calc(87.3% - 1px); background:#16a34a;"></div>
+                <div class="pivot-pipe" style="right:0px; background:#15803d;"></div>
+                <div class="pivot-ball" style="left:calc(67.7% - 5.5px); background:#dc2626;"></div>
+              </div>
+              <div class="pivot-hover-price-line">
+                <span>S3: 189.08</span>
+                <span class="cur-price-highlight">₹193.65</span>
+                <span>R3: 195.83</span>
+              </div>
+            </div>
+            </td>
+
+        </tr>
+        
+        <tr>
+
+        <td>ZINC</td>
+        <td>412.30</td>
+
+        <td>
+            353.54%
+        </td>
+
+        <td>
+            0.17%
+        </td>
+
+        <td class="signal-SHORT">
+            SHORT
+        </td>
+
+        <td class="signal-LONG">LONG</td>
+
+        <td>5.0</td>
+
+        <td><span class="score-badge score-mid" title="Commodity Quantitative Score (1-10)">3.3</span></td>
+
+        <td><span class="score-badge score-mid" title="AI Quantitative Score (1-10)">4.3</span></td>
+
+        <td style="font-weight: bold; font-size: 1.1em; color: red;">0.71</td>
+
+        <td class="pivot-cell">
+            <div class="pivot-graph-wrap" tabindex="0">
+              <span style="display:none">056.54</span>
+              <div class="pivot-detail-tooltip">S3: 398.90 | S2: 403.00 | S1: 406.80 | P: 410.90 | R1: 414.70 | R2: 418.80 | R3: 422.60</div>
+              <div class="pivot-track">
+                <div class="pivot-pipe" style="left:0px; background:#991b1b;"></div>
+                <div class="pivot-pipe" style="left:calc(17.3% - 1px); background:#dc2626;"></div>
+                <div class="pivot-pipe" style="left:calc(33.3% - 1px); background:#f87171;"></div>
+                <div class="pivot-pipe" style="left:calc(50.6% - 1px); background:#64748b;"></div>
+                <div class="pivot-pipe" style="left:calc(66.7% - 1px); background:#4ade80;"></div>
+                <div class="pivot-pipe" style="left:calc(84.0% - 1px); background:#16a34a;"></div>
+                <div class="pivot-pipe" style="right:0px; background:#15803d;"></div>
+                <div class="pivot-ball" style="left:calc(56.5% - 5.5px); background:#dc2626;"></div>
+              </div>
+              <div class="pivot-hover-price-line">
+                <span>S3: 398.90</span>
+                <span class="cur-price-highlight">₹412.30</span>
+                <span>R3: 422.60</span>
               </div>
             </div>
             </td>
@@ -2117,7 +2033,7 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
 <!-- ── Full-width High Conviction Signals & Trade Plan ───── -->
 <div class="section" style="margin-bottom:20px;">
 <div class="high-score-box" style="width:100%;">
-<h3>&#9733; High Conviction Signals &nbsp;(4 Active &bull; Combined Score &ge; 7.0 / 10)</h3>
+<h3>&#9733; High Conviction Signals &nbsp;(3 Active &bull; Combined Score &ge; 7.0 / 10)</h3>
 <table id="highScoreTable">
 <thead><tr>
   <th onclick="sortTable(this, 0)">Commodity</th>
@@ -2139,39 +2055,6 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
 </tr></thead>
 <tbody>
 
-        <tr>
-          <td><b>LEAD</b></td>
-          <td>2026-10-05 17:21</td>
-          <td>₹192.85</td>
-          <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹196.71'>₹196.71 <span style='font-size:11px; font-weight:normal;'>(+2.0%)</span></td>
-          <td style='font-weight:700; color:#b91c1c;' title='Dynamic ATR Stop Loss (1.25x 15m ATR): ₹190.92'>₹190.92 <span style='font-size:11px; font-weight:normal;'>(-1.00%)</span></td>
-          <td class="signal-LONG">LONG</td>
-          <td><span class="pivot-score-badge score-fav-low">1.3</span></td>
-          <td style="font-weight:bold; color:#1e293b;">10.00</td>
-          <td><span class="score-badge score-high" title="Stock Score (Percentile): 7.3/10">7.3</span></td>
-          <td><span style="font-weight:700; color:#15803d;" title="Combined Score (10-Pt): 50% Stock Score (7.3) + 50% Final Score (10.00) = 8.7 / 10">8.7</span></td>
-          <td><span class="badge-buy">BUY</span></td>
-          <td style="font-weight:600;">₹193.70</td>
-          <td><span class="change-no">NO</span></td>
-          <td class="signal-LONG">LONG</td>
-          <td style="font-weight:bold; color:#15803d;">+0.44%</td>
-          <td class="quant-hc-cell" onclick="openQuantModal('LEAD')" style="cursor:pointer;" title="LEAD AI Quantitative Prediction&#10;----------------------------------------&#10;⚡ INTRADAY: STRONG BUY (BUY: 78.0 | SELL: 11.0) | Conf: 86%&#10;Key: Breakout above Pivot R1 (Rs.193.6) | Trading near session highs (82% of range)&#10;----------------------------------------&#10;📅 SWING (1-15D): BUY (BUY: 55.5 | SELL: 31.0) | Conf: 56%&#10;Key: Multi-day price base above Floor Pivot | Multi-day institutional accumulation (+406.7% DoD OI)&#10;Click to inspect deep dive">
-            <span style="display:none">78.00</span>
-            <div style="display:flex; flex-direction:column; gap:3px; min-width:145px;">
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
-                <span style="font-size:10px; font-weight:700; color:#475569;">⚡ Intra:</span>
-                <span class="quant-sig-pill sig-strong-buy" style="font-size:10px; padding:1px 6px;">78.0 STRONG BUY</span>
-                <span style="font-size:9.5px; color:#64748b; font-weight:600;">86%</span>
-              </div>
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
-                <span style="font-size:10px; font-weight:700; color:#475569;">📅 Swing:</span>
-                <span class="quant-sig-pill sig-buy" style="font-size:10px; padding:1px 6px;">55.5 BUY</span>
-                <span style="font-size:9.5px; color:#64748b; font-weight:600;">56%</span>
-              </div>
-            </div>
-          </td>
-        </tr>
-        
         <tr>
           <td><b>ALUMINIUM</b></td>
           <td>2026-10-05 19:33</td>
@@ -2206,60 +2089,60 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
         </tr>
         
         <tr>
-          <td><b>ZINC</b></td>
-          <td>2026-10-05 21:58</td>
-          <td>₹413.00</td>
-          <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹421.26'>₹421.26 <span style='font-size:11px; font-weight:normal;'>(+2.0%)</span></td>
-          <td style='font-weight:700; color:#b91c1c;' title='Dynamic ATR Stop Loss (1.25x 15m ATR): ₹408.87'>₹408.87 <span style='font-size:11px; font-weight:normal;'>(-1.00%)</span></td>
+          <td><b>CRUDEOIL</b></td>
+          <td>2026-10-05 22:00</td>
+          <td>₹8693.00</td>
+          <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹8866.86'>₹8866.86 <span style='font-size:11px; font-weight:normal;'>(+2.0%)</span></td>
+          <td style='font-weight:700; color:#b91c1c;' title='Dynamic ATR Stop Loss (1.25x 15m ATR): ₹8606.07'>₹8606.07 <span style='font-size:11px; font-weight:normal;'>(-1.00%)</span></td>
           <td class="signal-LONG">LONG</td>
-          <td><span class="pivot-score-badge score-fav-low">4.5</span></td>
+          <td><span class="pivot-score-badge score-fav-low">2.1</span></td>
           <td style="font-weight:bold; color:#1e293b;">10.00</td>
-          <td><span class="score-badge score-mid" title="Stock Score (Percentile): 6.5/10">6.5</span></td>
-          <td><span style="font-weight:700; color:#15803d;" title="Combined Score (10-Pt): 50% Stock Score (6.5) + 50% Final Score (10.00) = 8.2 / 10">8.2</span></td>
+          <td><span class="score-badge score-mid" title="Stock Score (Percentile): 6.4/10">6.4</span></td>
+          <td><span style="font-weight:700; color:#15803d;" title="Combined Score (10-Pt): 50% Stock Score (6.4) + 50% Final Score (10.00) = 8.2 / 10">8.2</span></td>
           <td><span class="badge-buy">BUY</span></td>
-          <td style="font-weight:600;">₹413.00</td>
+          <td style="font-weight:600;">₹8705.00</td>
           <td><span class="change-no">NO</span></td>
           <td class="signal-LONG">LONG</td>
-          <td style="font-weight:bold; color:#64748b;">+0.00%</td>
-          <td class="quant-hc-cell" onclick="openQuantModal('ZINC')" style="cursor:pointer;" title="ZINC AI Quantitative Prediction&#10;----------------------------------------&#10;⚡ INTRADAY: NEUTRAL (BUY: 54.5 | SELL: 34.0) | Conf: 52%&#10;Key: Trading above Central Pivot (Rs.410.9)&#10;----------------------------------------&#10;📅 SWING (1-15D): NEUTRAL (BUY: 30.5 | SELL: 39.0) | Conf: 28%&#10;Key: Weak balance sheet / fundamental vulnerability (Q: 0)&#10;Click to inspect deep dive">
-            <span style="display:none">54.50</span>
+          <td style="font-weight:bold; color:#15803d;">+0.14%</td>
+          <td class="quant-hc-cell" onclick="openQuantModal('CRUDEOIL')" style="cursor:pointer;" title="CRUDEOIL AI Quantitative Prediction&#10;----------------------------------------&#10;⚡ INTRADAY: STRONG SELL (BUY: 24.5 | SELL: 77.0) | Conf: 86%&#10;Key: Breakdown below Pivot S1 (Rs.8,741.7) | Long Unwinding Pressure (Buyer capitulation)&#10;----------------------------------------&#10;📅 SWING (1-15D): NEUTRAL (BUY: 23.5 | SELL: 51.0) | Conf: 52%&#10;Key: Multi-day price breakdown below Floor Pivot | Weak balance sheet / fundamental vulnerability (Q: 0)&#10;Click to inspect deep dive">
+            <span style="display:none">24.50</span>
             <div style="display:flex; flex-direction:column; gap:3px; min-width:145px;">
               <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
                 <span style="font-size:10px; font-weight:700; color:#475569;">⚡ Intra:</span>
-                <span class="quant-sig-pill sig-neutral" style="font-size:10px; padding:1px 6px;">54.5 NEUTRAL</span>
-                <span style="font-size:9.5px; color:#64748b; font-weight:600;">52%</span>
+                <span class="quant-sig-pill sig-strong-sell" style="font-size:10px; padding:1px 6px;">24.5 STRONG SELL</span>
+                <span style="font-size:9.5px; color:#64748b; font-weight:600;">86%</span>
               </div>
               <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
                 <span style="font-size:10px; font-weight:700; color:#475569;">📅 Swing:</span>
-                <span class="quant-sig-pill sig-neutral" style="font-size:10px; padding:1px 6px;">30.5 NEUTRAL</span>
-                <span style="font-size:9.5px; color:#64748b; font-weight:600;">28%</span>
+                <span class="quant-sig-pill sig-neutral" style="font-size:10px; padding:1px 6px;">23.5 NEUTRAL</span>
+                <span style="font-size:9.5px; color:#64748b; font-weight:600;">52%</span>
               </div>
             </div>
           </td>
         </tr>
         
         <tr>
-          <td><b>COPPER</b></td>
-          <td>2026-10-05 19:33</td>
-          <td>₹1408.25</td>
-          <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹1436.41'>₹1436.41 <span style='font-size:11px; font-weight:normal;'>(+2.0%)</span></td>
-          <td style='font-weight:700; color:#b91c1c;' title='Dynamic ATR Stop Loss (1.25x 15m ATR): ₹1394.17'>₹1394.17 <span style='font-size:11px; font-weight:normal;'>(-1.00%)</span></td>
+          <td><b>LEAD</b></td>
+          <td>2026-10-05 17:21</td>
+          <td>₹192.85</td>
+          <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹196.71'>₹196.71 <span style='font-size:11px; font-weight:normal;'>(+2.0%)</span></td>
+          <td style='font-weight:700; color:#b91c1c;' title='Dynamic ATR Stop Loss (1.25x 15m ATR): ₹190.92'>₹190.92 <span style='font-size:11px; font-weight:normal;'>(-1.00%)</span></td>
           <td class="signal-LONG">LONG</td>
-          <td><span class="pivot-score-badge score-fav-mid">6.3</span></td>
+          <td><span class="pivot-score-badge score-fav-low">1.3</span></td>
           <td style="font-weight:bold; color:#1e293b;">10.00</td>
-          <td><span class="score-badge score-low" title="Stock Score (Percentile): 4.9/10">4.9</span></td>
-          <td><span style="font-weight:700; color:#15803d;" title="Combined Score (10-Pt): 50% Stock Score (4.9) + 50% Final Score (10.00) = 7.5 / 10">7.5</span></td>
+          <td><span class="score-badge score-low" title="Stock Score (Percentile): 4.5/10">4.5</span></td>
+          <td><span style="font-weight:700; color:#15803d;" title="Combined Score (10-Pt): 50% Stock Score (4.5) + 50% Final Score (10.00) = 7.2 / 10">7.2</span></td>
           <td><span class="badge-buy">BUY</span></td>
-          <td style="font-weight:600;">₹1410.80</td>
+          <td style="font-weight:600;">₹193.65</td>
           <td><span class="change-yes">YES</span></td>
           <td class="signal-UNWIND">UNWIND</td>
-          <td style="font-weight:bold; color:#15803d;">+0.18%</td>
-          <td class="quant-hc-cell" onclick="openQuantModal('COPPER')" style="cursor:pointer;" title="COPPER AI Quantitative Prediction&#10;----------------------------------------&#10;⚡ INTRADAY: STRONG BUY (BUY: 85.0 | SELL: 8.5) | Conf: 86%&#10;Key: Breakout above Pivot R1 (Rs.1,407.9) | Trading near session highs (90% of range)&#10;----------------------------------------&#10;📅 SWING (1-15D): BUY (BUY: 55.5 | SELL: 31.0) | Conf: 56%&#10;Key: Multi-day price base above Floor Pivot | Multi-day institutional accumulation (+251793.3% DoD OI)&#10;Click to inspect deep dive">
-            <span style="display:none">85.00</span>
+          <td style="font-weight:bold; color:#15803d;">+0.41%</td>
+          <td class="quant-hc-cell" onclick="openQuantModal('LEAD')" style="cursor:pointer;" title="LEAD AI Quantitative Prediction&#10;----------------------------------------&#10;⚡ INTRADAY: STRONG BUY (BUY: 78.0 | SELL: 11.0) | Conf: 86%&#10;Key: Breakout above Pivot R1 (Rs.193.6) | Trading near session highs (82% of range)&#10;----------------------------------------&#10;📅 SWING (1-15D): BUY (BUY: 55.5 | SELL: 31.0) | Conf: 56%&#10;Key: Multi-day price base above Floor Pivot | Multi-day institutional accumulation (+406.7% DoD OI)&#10;Click to inspect deep dive">
+            <span style="display:none">78.00</span>
             <div style="display:flex; flex-direction:column; gap:3px; min-width:145px;">
               <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
                 <span style="font-size:10px; font-weight:700; color:#475569;">⚡ Intra:</span>
-                <span class="quant-sig-pill sig-strong-buy" style="font-size:10px; padding:1px 6px;">85.0 STRONG BUY</span>
+                <span class="quant-sig-pill sig-strong-buy" style="font-size:10px; padding:1px 6px;">78.0 STRONG BUY</span>
                 <span style="font-size:9.5px; color:#64748b; font-weight:600;">86%</span>
               </div>
               <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
@@ -2340,17 +2223,17 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
   </div>
   <div class="scores-kpi-card">
     <div class="scores-kpi-title">Top Decile (&ge;7.0)</div>
-    <div class="scores-kpi-val" style="color:#22543d;">1 <span style="font-size:12px;color:#888;">Commodities</span></div>
+    <div class="scores-kpi-val" style="color:#22543d;">0 <span style="font-size:12px;color:#888;">Commodities</span></div>
     <div class="scores-kpi-sub">Top Ranked Percentile</div>
   </div>
   <div class="scores-kpi-card">
     <div class="scores-kpi-title">Average Score</div>
-    <div class="scores-kpi-val" style="color:#2b6cb0;">6.0 <span style="font-size:12px;color:#888;">/ 10</span></div>
+    <div class="scores-kpi-val" style="color:#2b6cb0;">5.4 <span style="font-size:12px;color:#888;">/ 10</span></div>
     <div class="scores-kpi-sub">Universe MC Score</div>
   </div>
   <div class="scores-kpi-card">
     <div class="scores-kpi-title">Top Scorer</div>
-    <div class="scores-kpi-val" style="color:#2e7d32;">LEAD (7.3)</div>
+    <div class="scores-kpi-val" style="color:#2e7d32;">NATURALGAS (6.5)</div>
     <div class="scores-kpi-sub">Highest Ranked in Universe</div>
   </div>
 </div>
@@ -2404,41 +2287,23 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
         <tr>
           <td style="color:#777; font-weight:bold;">1</td>
           <td style="text-align:left;">
-            <strong>LEAD</strong>
-            <div style="font-size:10px; color:#666;">LEAD</div>
+            <strong>NATURALGAS</strong>
+            <div style="font-size:10px; color:#666;">NATURALGAS</div>
           </td>
-          <td>193.70</td>
+          <td>296.50</td>
           <td><span class="signal-LONG sig-pill">LONG</span></td>
-          <td><span class="score-badge score-high" title="MC Score: 7.3/10 (Raw MC Score: 73/100)">7.3</span></td>
-          <td class="sub-score">52</td>
-          <td class="sub-score">57</td>
-          <td class="sub-score">91</td>
+          <td><span class="score-badge score-mid" title="MC Score: 6.5/10 (Raw MC Score: 65/100)">6.5</span></td>
+          <td class="sub-score">50</td>
+          <td class="sub-score">50</td>
+          <td class="sub-score">37</td>
           <td class="sub-score">90</td>
           <td>—</td>
-          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Quantitative Signal: LONG | Price: 0.44% | OI: 0.19%</td>
-          <td><a href="https://www.moneycontrol.com/commodity/mcx-lead-price?type=futures" target="_blank" class="mc-link-btn" title="View LEAD on MoneyControl">MC &#8599;</a></td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Quantitative Signal: LONG | Price: 0.00% | OI: 0.05%</td>
+          <td><a href="https://www.moneycontrol.com/commodity/mcx-naturalgas-price?type=futures" target="_blank" class="mc-link-btn" title="View NATURALGAS on MoneyControl">MC &#8599;</a></td>
         </tr>
         
         <tr>
           <td style="color:#777; font-weight:bold;">2</td>
-          <td style="text-align:left;">
-            <strong>ZINC</strong>
-            <div style="font-size:10px; color:#666;">ZINC</div>
-          </td>
-          <td>413.00</td>
-          <td><span class="signal-LONG sig-pill">LONG</span></td>
-          <td><span class="score-badge score-mid" title="MC Score: 6.5/10 (Raw MC Score: 66/100)">6.5</span></td>
-          <td class="sub-score">50</td>
-          <td class="sub-score">50</td>
-          <td class="sub-score">45</td>
-          <td class="sub-score">90</td>
-          <td>—</td>
-          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%</td>
-          <td><a href="https://www.moneycontrol.com/commodity/mcx-zinc-price?type=futures" target="_blank" class="mc-link-btn" title="View ZINC on MoneyControl">MC &#8599;</a></td>
-        </tr>
-        
-        <tr>
-          <td style="color:#777; font-weight:bold;">3</td>
           <td style="text-align:left;">
             <strong>GOLD</strong>
             <div style="font-size:10px; color:#666;">GOLD</div>
@@ -2456,25 +2321,25 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
         </tr>
         
         <tr>
-          <td style="color:#777; font-weight:bold;">4</td>
+          <td style="color:#777; font-weight:bold;">3</td>
           <td style="text-align:left;">
             <strong>CRUDEOIL</strong>
             <div style="font-size:10px; color:#666;">CRUDEOIL</div>
           </td>
-          <td>8693.00</td>
+          <td>8705.00</td>
           <td><span class="signal-LONG sig-pill">LONG</span></td>
           <td><span class="score-badge score-mid" title="MC Score: 6.4/10 (Raw MC Score: 64/100)">6.4</span></td>
           <td class="sub-score">52</td>
-          <td class="sub-score">50</td>
-          <td class="sub-score">28</td>
+          <td class="sub-score">52</td>
+          <td class="sub-score">21</td>
           <td class="sub-score">90</td>
           <td>—</td>
-          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Quantitative Signal: LONG | Price: 0.00% | OI: 0.22%</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Quantitative Signal: LONG | Price: 0.14% | OI: 0.15%</td>
           <td><a href="https://www.moneycontrol.com/commodity/mcx-crudeoil-price?type=futures" target="_blank" class="mc-link-btn" title="View CRUDEOIL on MoneyControl">MC &#8599;</a></td>
         </tr>
         
         <tr>
-          <td style="color:#777; font-weight:bold;">5</td>
+          <td style="color:#777; font-weight:bold;">4</td>
           <td style="text-align:left;">
             <strong>ALUMINIUM</strong>
             <div style="font-size:10px; color:#666;">ALUMINIUM</div>
@@ -2492,39 +2357,57 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
         </tr>
         
         <tr>
-          <td style="color:#777; font-weight:bold;">6</td>
+          <td style="color:#777; font-weight:bold;">5</td>
           <td style="text-align:left;">
             <strong>SILVER</strong>
             <div style="font-size:10px; color:#666;">SILVER</div>
           </td>
-          <td>226200.00</td>
+          <td>226350.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-mid" title="MC Score: 6.3/10 (Raw MC Score: 63/100)">6.3</span></td>
+          <td class="sub-score">52</td>
+          <td class="sub-score">50</td>
+          <td class="sub-score">19</td>
+          <td class="sub-score">90</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Quantitative Signal: LONG | Price: 0.00% | OI: 0.17%</td>
+          <td><a href="https://www.moneycontrol.com/commodity/mcx-silver-price?type=futures" target="_blank" class="mc-link-btn" title="View SILVER on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">6</td>
+          <td style="text-align:left;">
+            <strong>LEAD</strong>
+            <div style="font-size:10px; color:#666;">LEAD</div>
+          </td>
+          <td>193.65</td>
           <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
-          <td><span class="score-badge score-mid" title="MC Score: 5.2/10 (Raw MC Score: 52/100)">5.2</span></td>
+          <td><span class="score-badge score-low" title="MC Score: 4.5/10 (Raw MC Score: 45/100)">4.5</span></td>
+          <td class="sub-score">48</td>
           <td class="sub-score">50</td>
-          <td class="sub-score">50</td>
-          <td class="sub-score">73</td>
+          <td class="sub-score">5</td>
           <td class="sub-score">50</td>
           <td>—</td>
-          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Quantitative Signal: UNWIND | Price: 0.00% | OI: -0.01%</td>
-          <td><a href="https://www.moneycontrol.com/commodity/mcx-silver-price?type=futures" target="_blank" class="mc-link-btn" title="View SILVER on MoneyControl">MC &#8599;</a></td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Quantitative Signal: UNWIND | Price: 0.00% | OI: -0.19%</td>
+          <td><a href="https://www.moneycontrol.com/commodity/mcx-lead-price?type=futures" target="_blank" class="mc-link-btn" title="View LEAD on MoneyControl">MC &#8599;</a></td>
         </tr>
         
         <tr>
           <td style="color:#777; font-weight:bold;">7</td>
           <td style="text-align:left;">
-            <strong>NATURALGAS</strong>
-            <div style="font-size:10px; color:#666;">NATURALGAS</div>
+            <strong>ZINC</strong>
+            <div style="font-size:10px; color:#666;">ZINC</div>
           </td>
-          <td>295.90</td>
-          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
-          <td><span class="score-badge score-low" title="MC Score: 4.9/10 (Raw MC Score: 49/100)">4.9</span></td>
-          <td class="sub-score">46</td>
-          <td class="sub-score">50</td>
+          <td>412.30</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-low" title="MC Score: 3.3/10 (Raw MC Score: 33/100)">3.3</span></td>
           <td class="sub-score">52</td>
           <td class="sub-score">50</td>
+          <td class="sub-score">37</td>
+          <td class="sub-score">10</td>
           <td>—</td>
-          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Quantitative Signal: UNWIND | Price: 0.00% | OI: -0.43%</td>
-          <td><a href="https://www.moneycontrol.com/commodity/mcx-naturalgas-price?type=futures" target="_blank" class="mc-link-btn" title="View NATURALGAS on MoneyControl">MC &#8599;</a></td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Quantitative Signal: SHORT | Price: 0.00% | OI: 0.17%</td>
+          <td><a href="https://www.moneycontrol.com/commodity/mcx-zinc-price?type=futures" target="_blank" class="mc-link-btn" title="View ZINC on MoneyControl">MC &#8599;</a></td>
         </tr>
         
         <tr>
@@ -2533,15 +2416,15 @@ MCX MARKET: 48055.00 | Change: 159.18 | Change %: 0.33% | Market: UP strongly | 
             <strong>COPPER</strong>
             <div style="font-size:10px; color:#666;">COPPER</div>
           </td>
-          <td>1410.80</td>
-          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
-          <td><span class="score-badge score-low" title="MC Score: 4.9/10 (Raw MC Score: 49/100)">4.9</span></td>
+          <td>1410.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-low" title="MC Score: 3.2/10 (Raw MC Score: 32/100)">3.2</span></td>
           <td class="sub-score">50</td>
           <td class="sub-score">50</td>
-          <td class="sub-score">35</td>
-          <td class="sub-score">50</td>
+          <td class="sub-score">25</td>
+          <td class="sub-score">10</td>
           <td>—</td>
-          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Quantitative Signal: UNWIND | Price: 0.02% | OI: 0.0%</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Quantitative Signal: SHORT | Price: 0.00% | OI: 0.02%</td>
           <td><a href="https://www.moneycontrol.com/commodity/mcx-copper-price?type=futures" target="_blank" class="mc-link-btn" title="View COPPER on MoneyControl">MC &#8599;</a></td>
         </tr>
         
@@ -4698,7 +4581,7 @@ function switchDashboardTab(tabId) {
 })();
 
 // ── 360° Unified Commodity Analyzer Engine ──────────────────────────────
-const ANALYZER_DATA = {"ALUMINIUM": {"symbol": "ALUMINIUM", "company_name": "ALUMINIUM", "spot": "338.6000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-aluminium-aluminium/", "score": {"total_score": 6.4, "raw_score": 63.80000000000001, "q_score": 50.0, "g_score": 52.0, "v_score": 22.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.12% | OI: 0.0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 10.0, "share_score": 10.0, "oi_yesterday": 475.01, "oi_last_query": 0.0, "profit": null, "pivot": 336.23, "r1": 339.27, "r2": 341.93, "s1": 333.57, "s2": 330.53, "zone": "P-R1", "bias": "BULLISH", "dist_pivot": 0.7, "oi_status": null}, "quant": {"intraday_signal": "STRONG BUY", "intraday_conf": 86.0, "intraday_factors": ["Trading above Central Pivot (Rs.336.2)", "Trading near session highs (95% of range)", "Institutional Long Buildup (Price \u2191, OI \u2191)", "Intra-cycle OI accumulation (+15 contracts)"], "short_term_signal": "BUY", "short_term_conf": 56.0, "short_term_factors": ["Multi-day price base above Floor Pivot", "Multi-day institutional accumulation (+475.0% DoD OI)", "Persistent Long buildup across cycles"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "COPPER": {"symbol": "COPPER", "company_name": "COPPER", "spot": "1410.8000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-copper-copper/", "score": {"total_score": 4.9, "raw_score": 48.599999999999994, "q_score": 50.0, "g_score": 50.33333333333333, "v_score": 35.0, "t_score": 50.0, "neo_proxy": null, "oneliner": "Quantitative Signal: UNWIND | Price: 0.02% | OI: 0.0%"}, "fno": {"signal": "UNWIND", "last_signal": "UNWIND", "final_score": 3.6, "share_score": 6.0, "oi_yesterday": 251763.2, "oi_last_query": 0.0, "profit": null, "pivot": 1403.7, "r1": 1407.9, "r2": 1416.2, "s1": 1395.4, "s2": 1391.2, "zone": "R1-R2", "bias": "BULLISH", "dist_pivot": 0.51, "oi_status": null}, "quant": {"intraday_signal": "STRONG BUY", "intraday_conf": 86.0, "intraday_factors": ["Breakout above Pivot R1 (Rs.1,407.9)", "Trading near session highs (90% of range)", "Institutional Long Buildup (Price \u2191, OI \u2191)", "Intra-cycle OI accumulation (+2,500 contracts)"], "short_term_signal": "BUY", "short_term_conf": 56.0, "short_term_factors": ["Multi-day price base above Floor Pivot", "Multi-day institutional accumulation (+251793.3% DoD OI)", "Persistent Long buildup across cycles"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "CRUDEOIL": {"symbol": "CRUDEOIL", "company_name": "CRUDEOIL", "spot": "8693.0000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-crudeoil-crudeoil/", "score": {"total_score": 6.4, "raw_score": 64.24, "q_score": 52.2, "g_score": 50.0, "v_score": 28.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.22%"}, "fno": {"signal": "LONG", "last_signal": "UNWIND", "final_score": 5.0, "share_score": 5.0, "oi_yesterday": 9336.22, "oi_last_query": 0.22, "profit": null, "pivot": 8774.33, "r1": 8948.67, "r2": 8981.33, "s1": 8741.67, "s2": 8567.33, "zone": "S2-S1", "bias": "BEARISH", "dist_pivot": -0.93, "oi_status": null}, "quant": {"intraday_signal": "STRONG SELL", "intraday_conf": 86.0, "intraday_factors": ["Breakdown below Pivot S1 (Rs.8,741.7)", "Long Unwinding Pressure (Buyer capitulation)", "Severe Downside Momentum (-2.87%)", "Dragging down despite buoyant market"], "short_term_signal": "NEUTRAL", "short_term_conf": 51.8, "short_term_factors": ["Multi-day price breakdown below Floor Pivot", "Weak balance sheet / fundamental vulnerability (Q: 0)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "GOLD": {"symbol": "GOLD", "company_name": "GOLD", "spot": "146895.0000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-gold-gold/", "score": {"total_score": 6.4, "raw_score": 64.4, "q_score": 50.0, "g_score": 50.0, "v_score": 34.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 10.0, "share_score": 10.0, "oi_yesterday": -33.73, "oi_last_query": 0.0, "profit": null, "pivot": 147048.67, "r1": 148319.33, "r2": 148772.67, "s1": 146595.33, "s2": 145324.67, "zone": "S1-P", "bias": "BEARISH", "dist_pivot": -0.1, "oi_status": null}, "quant": {"intraday_signal": "BUY", "intraday_conf": 57.4, "intraday_factors": ["Institutional Long Buildup (Price \u2191, OI \u2191)", "Call option premium skew (CE > PE)"], "short_term_signal": "NEUTRAL", "short_term_conf": 33.8, "short_term_factors": ["Multi-day price breakdown below Floor Pivot", "Weak balance sheet / fundamental vulnerability (Q: 0)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "LEAD": {"symbol": "LEAD", "company_name": "LEAD", "spot": "193.7000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-lead-lead/", "score": {"total_score": 7.3, "raw_score": 72.68, "q_score": 51.9, "g_score": 57.333333333333336, "v_score": 91.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.44% | OI: 0.19%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 10.0, "share_score": 10.0, "oi_yesterday": 407.69, "oi_last_query": 0.19, "profit": null, "pivot": 192.72, "r1": 193.58, "r2": 194.97, "s1": 191.33, "s2": 190.47, "zone": "R1-R2", "bias": "BULLISH", "dist_pivot": 0.51, "oi_status": null}, "quant": {"intraday_signal": "STRONG BUY", "intraday_conf": 86.0, "intraday_factors": ["Breakout above Pivot R1 (Rs.193.6)", "Trading near session highs (82% of range)", "Institutional Long Buildup (Price \u2191, OI \u2191)"], "short_term_signal": "BUY", "short_term_conf": 56.0, "short_term_factors": ["Multi-day price base above Floor Pivot", "Multi-day institutional accumulation (+406.7% DoD OI)", "Persistent Long buildup across cycles"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "NATURALGAS": {"symbol": "NATURALGAS", "company_name": "NATURALGAS", "spot": "295.9000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-naturalgas-naturalgas/", "score": {"total_score": 4.9, "raw_score": 49.34, "q_score": 45.7, "g_score": 50.0, "v_score": 52.0, "t_score": 50.0, "neo_proxy": null, "oneliner": "Quantitative Signal: UNWIND | Price: 0.00% | OI: -0.43%"}, "fno": {"signal": "UNWIND", "last_signal": "COVER", "final_score": 3.6, "share_score": 6.0, "oi_yesterday": 98730.71, "oi_last_query": -0.43, "profit": null, "pivot": 291.67, "r1": 293.03, "r2": 298.57, "s1": 286.13, "s2": 284.77, "zone": "R1-R2", "bias": "BULLISH", "dist_pivot": 1.45, "oi_status": null}, "quant": {"intraday_signal": "STRONG BUY", "intraday_conf": 85.6, "intraday_factors": ["Breakout above Pivot R1 (Rs.292.9)", "Trading near session highs (88% of range)", "High Upside Momentum (++2.69%)"], "short_term_signal": "NEUTRAL", "short_term_conf": 32.1, "short_term_factors": ["Weak balance sheet / fundamental vulnerability (Q: 0)", "Significant downside room to S2 support (-3.8%)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "SILVER": {"symbol": "SILVER", "company_name": "SILVER", "spot": "226200.0000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-silver-silver/", "score": {"total_score": 5.2, "raw_score": 52.28, "q_score": 49.9, "g_score": 50.0, "v_score": 73.0, "t_score": 50.0, "neo_proxy": null, "oneliner": "Quantitative Signal: UNWIND | Price: 0.00% | OI: -0.01%"}, "fno": {"signal": "UNWIND", "last_signal": "SHORT", "final_score": 4.8, "share_score": 8.0, "oi_yesterday": 2886.07, "oi_last_query": -0.01, "profit": null, "pivot": 226725.0, "r1": 227849.0, "r2": 229821.0, "s1": 224753.0, "s2": 223629.0, "zone": "S1-P", "bias": "BEARISH", "dist_pivot": -0.23, "oi_status": null}, "quant": {"intraday_signal": "SELL", "intraday_conf": 69.6, "intraday_factors": ["Trading below Central Pivot (Rs.226,725.0)", "Trading right at session lows (22% of range)", "Aggressive Short Buildup (Price \u2193, OI \u2191)", "Intra-cycle Short additions (+480 contracts)"], "short_term_signal": "SELL", "short_term_conf": 73.2, "short_term_factors": ["Multi-day price breakdown below Floor Pivot", "Persistent institutional short accumulation (+2885.7% DoD OI)", "Continuous Short buildup across cycles", "Weak balance sheet / fundamental vulnerability (Q: 0)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "ZINC": {"symbol": "ZINC", "company_name": "ZINC", "spot": "413.0000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-zinc-zinc/", "score": {"total_score": 6.5, "raw_score": 65.5, "q_score": 50.0, "g_score": 50.0, "v_score": 45.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 10.0, "share_score": 10.0, "oi_yesterday": 352.79, "oi_last_query": 0.0, "profit": null, "pivot": 410.9, "r1": 414.7, "r2": 418.8, "s1": 406.8, "s2": 403.0, "zone": "P-R1", "bias": "BULLISH", "dist_pivot": 0.51, "oi_status": null}, "quant": {"intraday_signal": "NEUTRAL", "intraday_conf": 52.5, "intraday_factors": ["Trading above Central Pivot (Rs.410.9)"], "short_term_signal": "NEUTRAL", "short_term_conf": 27.6, "short_term_factors": ["Weak balance sheet / fundamental vulnerability (Q: 0)"], "risk_level": "MODERATE", "risk_flags": ["Conflicting multi-factor indicators (low confidence)"]}}};
+const ANALYZER_DATA = {"ALUMINIUM": {"symbol": "ALUMINIUM", "company_name": "ALUMINIUM", "spot": "338.6000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-aluminium-aluminium/", "score": {"total_score": 6.4, "raw_score": 63.80000000000001, "q_score": 50.0, "g_score": 52.0, "v_score": 22.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.12% | OI: 0.0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 10.0, "share_score": 10.0, "oi_yesterday": 475.01, "oi_last_query": 0.0, "profit": null, "pivot": 336.23, "r1": 339.27, "r2": 341.93, "s1": 333.57, "s2": 330.53, "zone": "P-R1", "bias": "BULLISH", "dist_pivot": 0.7, "oi_status": null}, "quant": {"intraday_signal": "STRONG BUY", "intraday_conf": 86.0, "intraday_factors": ["Trading above Central Pivot (Rs.336.2)", "Trading near session highs (95% of range)", "Institutional Long Buildup (Price \u2191, OI \u2191)", "Intra-cycle OI accumulation (+15 contracts)"], "short_term_signal": "BUY", "short_term_conf": 56.0, "short_term_factors": ["Multi-day price base above Floor Pivot", "Multi-day institutional accumulation (+475.0% DoD OI)", "Persistent Long buildup across cycles"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "COPPER": {"symbol": "COPPER", "company_name": "COPPER", "spot": "1410.0000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-copper-copper/", "score": {"total_score": 3.2, "raw_score": 31.54, "q_score": 50.2, "g_score": 50.0, "v_score": 25.0, "t_score": 10.0, "neo_proxy": null, "oneliner": "Quantitative Signal: SHORT | Price: 0.00% | OI: 0.02%"}, "fno": {"signal": "SHORT", "last_signal": "UNWIND", "final_score": 5.4, "share_score": 9.0, "oi_yesterday": 251823.31, "oi_last_query": 0.02, "profit": null, "pivot": 1403.7, "r1": 1407.9, "r2": 1416.2, "s1": 1395.4, "s2": 1391.2, "zone": "R1-R2", "bias": "BULLISH", "dist_pivot": 0.45, "oi_status": null}, "quant": {"intraday_signal": "STRONG BUY", "intraday_conf": 86.0, "intraday_factors": ["Breakout above Pivot R1 (Rs.1,407.9)", "Trading near session highs (90% of range)", "Institutional Long Buildup (Price \u2191, OI \u2191)", "Intra-cycle OI accumulation (+2,500 contracts)"], "short_term_signal": "BUY", "short_term_conf": 56.0, "short_term_factors": ["Multi-day price base above Floor Pivot", "Multi-day institutional accumulation (+251793.3% DoD OI)", "Persistent Long buildup across cycles"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "CRUDEOIL": {"symbol": "CRUDEOIL", "company_name": "CRUDEOIL", "spot": "8705.0000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-crudeoil-crudeoil/", "score": {"total_score": 6.4, "raw_score": 64.1, "q_score": 51.5, "g_score": 52.33333333333333, "v_score": 21.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.14% | OI: 0.15%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 10.0, "share_score": 10.0, "oi_yesterday": 9350.49, "oi_last_query": 0.15, "profit": null, "pivot": 8774.33, "r1": 8948.67, "r2": 8981.33, "s1": 8741.67, "s2": 8567.33, "zone": "S2-S1", "bias": "BEARISH", "dist_pivot": -0.79, "oi_status": null}, "quant": {"intraday_signal": "STRONG SELL", "intraday_conf": 86.0, "intraday_factors": ["Breakdown below Pivot S1 (Rs.8,741.7)", "Long Unwinding Pressure (Buyer capitulation)", "Severe Downside Momentum (-2.87%)", "Dragging down despite buoyant market"], "short_term_signal": "NEUTRAL", "short_term_conf": 51.8, "short_term_factors": ["Multi-day price breakdown below Floor Pivot", "Weak balance sheet / fundamental vulnerability (Q: 0)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "GOLD": {"symbol": "GOLD", "company_name": "GOLD", "spot": "146895.0000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-gold-gold/", "score": {"total_score": 6.4, "raw_score": 64.4, "q_score": 50.0, "g_score": 50.0, "v_score": 34.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%"}, "fno": {"signal": "LONG", "last_signal": "LONG", "final_score": 10.0, "share_score": 10.0, "oi_yesterday": -33.73, "oi_last_query": 0.0, "profit": null, "pivot": 147048.67, "r1": 148319.33, "r2": 148772.67, "s1": 146595.33, "s2": 145324.67, "zone": "S1-P", "bias": "BEARISH", "dist_pivot": -0.1, "oi_status": null}, "quant": {"intraday_signal": "BUY", "intraday_conf": 57.4, "intraday_factors": ["Institutional Long Buildup (Price \u2191, OI \u2191)", "Call option premium skew (CE > PE)"], "short_term_signal": "NEUTRAL", "short_term_conf": 33.8, "short_term_factors": ["Multi-day price breakdown below Floor Pivot", "Weak balance sheet / fundamental vulnerability (Q: 0)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "LEAD": {"symbol": "LEAD", "company_name": "LEAD", "spot": "193.6500", "mc_url": "https://www.moneycontrol.com/commodity/mcx-lead-lead/", "score": {"total_score": 4.5, "raw_score": 45.120000000000005, "q_score": 48.1, "g_score": 50.0, "v_score": 5.0, "t_score": 50.0, "neo_proxy": null, "oneliner": "Quantitative Signal: UNWIND | Price: 0.00% | OI: -0.19%"}, "fno": {"signal": "UNWIND", "last_signal": "LONG", "final_score": 4.2, "share_score": 7.0, "oi_yesterday": 406.73, "oi_last_query": -0.19, "profit": null, "pivot": 192.72, "r1": 193.58, "r2": 194.97, "s1": 191.33, "s2": 190.47, "zone": "R1-R2", "bias": "BULLISH", "dist_pivot": 0.48, "oi_status": null}, "quant": {"intraday_signal": "STRONG BUY", "intraday_conf": 86.0, "intraday_factors": ["Breakout above Pivot R1 (Rs.193.6)", "Trading near session highs (82% of range)", "Institutional Long Buildup (Price \u2191, OI \u2191)"], "short_term_signal": "BUY", "short_term_conf": 56.0, "short_term_factors": ["Multi-day price base above Floor Pivot", "Multi-day institutional accumulation (+406.7% DoD OI)", "Persistent Long buildup across cycles"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "NATURALGAS": {"symbol": "NATURALGAS", "company_name": "NATURALGAS", "spot": "296.5000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-naturalgas-naturalgas/", "score": {"total_score": 6.5, "raw_score": 64.8, "q_score": 50.5, "g_score": 50.0, "v_score": 37.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.05%"}, "fno": {"signal": "LONG", "last_signal": "UNWIND", "final_score": 5.0, "share_score": 5.0, "oi_yesterday": 98781.49, "oi_last_query": 0.05, "profit": null, "pivot": 291.67, "r1": 293.03, "r2": 298.57, "s1": 286.13, "s2": 284.77, "zone": "R1-R2", "bias": "BULLISH", "dist_pivot": 1.66, "oi_status": null}, "quant": {"intraday_signal": "STRONG BUY", "intraday_conf": 85.6, "intraday_factors": ["Breakout above Pivot R1 (Rs.292.9)", "Trading near session highs (88% of range)", "High Upside Momentum (++2.69%)"], "short_term_signal": "NEUTRAL", "short_term_conf": 32.1, "short_term_factors": ["Weak balance sheet / fundamental vulnerability (Q: 0)", "Significant downside room to S2 support (-3.8%)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "SILVER": {"symbol": "SILVER", "company_name": "SILVER", "spot": "226350.0000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-silver-silver/", "score": {"total_score": 6.3, "raw_score": 63.239999999999995, "q_score": 51.7, "g_score": 50.0, "v_score": 19.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.17%"}, "fno": {"signal": "LONG", "last_signal": "UNWIND", "final_score": 5.0, "share_score": 5.0, "oi_yesterday": 2891.14, "oi_last_query": 0.17, "profit": null, "pivot": 226725.0, "r1": 227849.0, "r2": 229821.0, "s1": 224753.0, "s2": 223629.0, "zone": "S1-P", "bias": "BEARISH", "dist_pivot": -0.17, "oi_status": null}, "quant": {"intraday_signal": "SELL", "intraday_conf": 69.6, "intraday_factors": ["Trading below Central Pivot (Rs.226,725.0)", "Trading right at session lows (22% of range)", "Aggressive Short Buildup (Price \u2193, OI \u2191)", "Intra-cycle Short additions (+480 contracts)"], "short_term_signal": "SELL", "short_term_conf": 73.2, "short_term_factors": ["Multi-day price breakdown below Floor Pivot", "Persistent institutional short accumulation (+2885.7% DoD OI)", "Continuous Short buildup across cycles", "Weak balance sheet / fundamental vulnerability (Q: 0)"], "risk_level": "LOW", "risk_flags": ["Normal trading volatility within standard pivot boundaries", "Healthy basis and orderly flow"]}}, "ZINC": {"symbol": "ZINC", "company_name": "ZINC", "spot": "412.3000", "mc_url": "https://www.moneycontrol.com/commodity/mcx-zinc-zinc/", "score": {"total_score": 3.3, "raw_score": 33.040000000000006, "q_score": 51.7, "g_score": 50.0, "v_score": 37.0, "t_score": 10.0, "neo_proxy": null, "oneliner": "Quantitative Signal: SHORT | Price: 0.00% | OI: 0.17%"}, "fno": {"signal": "SHORT", "last_signal": "LONG", "final_score": 3.0, "share_score": 5.0, "oi_yesterday": 353.54, "oi_last_query": 0.17, "profit": null, "pivot": 410.9, "r1": 414.7, "r2": 418.8, "s1": 406.8, "s2": 403.0, "zone": "P-R1", "bias": "BULLISH", "dist_pivot": 0.34, "oi_status": null}, "quant": {"intraday_signal": "NEUTRAL", "intraday_conf": 52.5, "intraday_factors": ["Trading above Central Pivot (Rs.410.9)"], "short_term_signal": "NEUTRAL", "short_term_conf": 27.6, "short_term_factors": ["Weak balance sheet / fundamental vulnerability (Q: 0)"], "risk_level": "MODERATE", "risk_flags": ["Conflicting multi-factor indicators (low confidence)"]}}};
 let currentAnalyzerCommodity = "GOLD";
 let analyzerActiveIndex = -1;
 
@@ -5217,7 +5100,7 @@ document.addEventListener("click", function(e) {
 });
 
 // ── Ultra-Fast In-Memory Commodity Scores Engine ────────
-const ALL_SCORES_DATA = [{"symbol": "LEAD", "company_name": "LEAD", "spot": "193.7000", "signal": "LONG", "raw_score": 72.68, "total_score": 7.3, "percentile_score": 7.3, "q_score": 51.9, "g_score": 57.333333333333336, "v_score": 91.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.44% | OI: 0.19%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-lead-price?type=futures"}, {"symbol": "ZINC", "company_name": "ZINC", "spot": "413.0000", "signal": "LONG", "raw_score": 65.5, "total_score": 6.5, "percentile_score": 6.5, "q_score": 50.0, "g_score": 50.0, "v_score": 45.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-zinc-price?type=futures"}, {"symbol": "GOLD", "company_name": "GOLD", "spot": "146895.0000", "signal": "LONG", "raw_score": 64.4, "total_score": 6.4, "percentile_score": 6.4, "q_score": 50.0, "g_score": 50.0, "v_score": 34.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-gold-price?type=futures"}, {"symbol": "CRUDEOIL", "company_name": "CRUDEOIL", "spot": "8693.0000", "signal": "LONG", "raw_score": 64.24, "total_score": 6.4, "percentile_score": 6.4, "q_score": 52.2, "g_score": 50.0, "v_score": 28.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.22%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-crudeoil-price?type=futures"}, {"symbol": "ALUMINIUM", "company_name": "ALUMINIUM", "spot": "338.6000", "signal": "LONG", "raw_score": 63.80000000000001, "total_score": 6.4, "percentile_score": 6.4, "q_score": 50.0, "g_score": 52.0, "v_score": 22.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.12% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-aluminium-price?type=futures"}, {"symbol": "SILVER", "company_name": "SILVER", "spot": "226200.0000", "signal": "UNWIND", "raw_score": 52.28, "total_score": 5.2, "percentile_score": 5.2, "q_score": 49.9, "g_score": 50.0, "v_score": 73.0, "t_score": 50.0, "neo_proxy": null, "oneliner": "Quantitative Signal: UNWIND | Price: 0.00% | OI: -0.01%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-silver-price?type=futures"}, {"symbol": "NATURALGAS", "company_name": "NATURALGAS", "spot": "295.9000", "signal": "UNWIND", "raw_score": 49.34, "total_score": 4.9, "percentile_score": 4.9, "q_score": 45.7, "g_score": 50.0, "v_score": 52.0, "t_score": 50.0, "neo_proxy": null, "oneliner": "Quantitative Signal: UNWIND | Price: 0.00% | OI: -0.43%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-naturalgas-price?type=futures"}, {"symbol": "COPPER", "company_name": "COPPER", "spot": "1410.8000", "signal": "UNWIND", "raw_score": 48.599999999999994, "total_score": 4.9, "percentile_score": 4.9, "q_score": 50.0, "g_score": 50.33333333333333, "v_score": 35.0, "t_score": 50.0, "neo_proxy": null, "oneliner": "Quantitative Signal: UNWIND | Price: 0.02% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-copper-price?type=futures"}];
+const ALL_SCORES_DATA = [{"symbol": "NATURALGAS", "company_name": "NATURALGAS", "spot": "296.5000", "signal": "LONG", "raw_score": 64.8, "total_score": 6.5, "percentile_score": 6.5, "q_score": 50.5, "g_score": 50.0, "v_score": 37.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.05%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-naturalgas-price?type=futures"}, {"symbol": "GOLD", "company_name": "GOLD", "spot": "146895.0000", "signal": "LONG", "raw_score": 64.4, "total_score": 6.4, "percentile_score": 6.4, "q_score": 50.0, "g_score": 50.0, "v_score": 34.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-gold-price?type=futures"}, {"symbol": "CRUDEOIL", "company_name": "CRUDEOIL", "spot": "8705.0000", "signal": "LONG", "raw_score": 64.1, "total_score": 6.4, "percentile_score": 6.4, "q_score": 51.5, "g_score": 52.33333333333333, "v_score": 21.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.14% | OI: 0.15%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-crudeoil-price?type=futures"}, {"symbol": "ALUMINIUM", "company_name": "ALUMINIUM", "spot": "338.6000", "signal": "LONG", "raw_score": 63.80000000000001, "total_score": 6.4, "percentile_score": 6.4, "q_score": 50.0, "g_score": 52.0, "v_score": 22.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.12% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-aluminium-price?type=futures"}, {"symbol": "SILVER", "company_name": "SILVER", "spot": "226350.0000", "signal": "LONG", "raw_score": 63.239999999999995, "total_score": 6.3, "percentile_score": 6.3, "q_score": 51.7, "g_score": 50.0, "v_score": 19.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.17%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-silver-price?type=futures"}, {"symbol": "LEAD", "company_name": "LEAD", "spot": "193.6500", "signal": "UNWIND", "raw_score": 45.120000000000005, "total_score": 4.5, "percentile_score": 4.5, "q_score": 48.1, "g_score": 50.0, "v_score": 5.0, "t_score": 50.0, "neo_proxy": null, "oneliner": "Quantitative Signal: UNWIND | Price: 0.00% | OI: -0.19%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-lead-price?type=futures"}, {"symbol": "ZINC", "company_name": "ZINC", "spot": "412.3000", "signal": "SHORT", "raw_score": 33.040000000000006, "total_score": 3.3, "percentile_score": 3.3, "q_score": 51.7, "g_score": 50.0, "v_score": 37.0, "t_score": 10.0, "neo_proxy": null, "oneliner": "Quantitative Signal: SHORT | Price: 0.00% | OI: 0.17%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-zinc-price?type=futures"}, {"symbol": "COPPER", "company_name": "COPPER", "spot": "1410.0000", "signal": "SHORT", "raw_score": 31.54, "total_score": 3.2, "percentile_score": 3.2, "q_score": 50.2, "g_score": 50.0, "v_score": 25.0, "t_score": 10.0, "neo_proxy": null, "oneliner": "Quantitative Signal: SHORT | Price: 0.00% | OI: 0.02%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-copper-price?type=futures"}];
 let filteredScoresData = ALL_SCORES_DATA.slice();
 let currentScorePage = 1;
 let scorePageSize = 50;
