@@ -5,10 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MCX Commodity Market Dashboard</title>
   <link rel="stylesheet" href="css/dashboard.css">
+  <script>
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem("dashboardTheme");
+        if (!savedTheme) {
+          savedTheme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark" : "light";
+        }
+        if (savedTheme === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch(e) {}
+    })();
+  </script>
 </head>
 <body>
 
-  <h2>MCX Commodity Market Dashboard</h2>
+  <div class="dashboard-header-bar">
+    <h2 style="margin:0;">MCX Commodity Market Dashboard</h2>
+    <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleDashboardTheme()" title="Toggle Dark/Light Mode">
+      <span id="themeToggleIcon">&#9790;</span>
+      <span id="themeToggleText">Dark Mode</span>
+    </button>
+  </div>
 
 
   <div class="tab-nav">
