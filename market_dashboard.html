@@ -8,6 +8,20 @@
 
 <title>MCX Commodity Market Dashboard</title>
 
+<script>
+(function() {
+  try {
+    var savedTheme = localStorage.getItem("dashboardTheme");
+    if (!savedTheme) {
+      savedTheme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark" : "light";
+    }
+    if (savedTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  } catch(e) {}
+})();
+</script>
+
 <style>
 
 body {
@@ -905,6 +919,363 @@ th:hover {
     transform: translateY(0);
 }
 
+/* ── Theme Switcher Header & Button Styles ───────────────── */
+.dashboard-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.theme-toggle-btn {
+    padding: 7px 15px;
+    border-radius: 20px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    outline: none;
+}
+.theme-toggle-btn:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+    color: #0f172a;
+    transform: translateY(-1px);
+}
+.theme-toggle-btn.is-dark {
+    background: #1e293b;
+    border-color: #475569;
+    color: #f8fafc;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.theme-toggle-btn.is-dark:hover {
+    background: #334155;
+    border-color: #64748b;
+    color: #ffffff;
+}
+.theme-toggle-btn .theme-icon {
+    font-size: 14px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   DARK THEME PALETTE & OVERRIDES ([data-theme="dark"] / .dark-theme)
+   ══════════════════════════════════════════════════════════ */
+[data-theme="dark"],
+body.dark-theme {
+    background: #0b0f19 !important;
+    color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, [data-theme="dark"] h4,
+body.dark-theme h1, body.dark-theme h2, body.dark-theme h3, body.dark-theme h4 {
+    color: #f8fafc !important;
+}
+
+/* ── Tab Navigation ── */
+[data-theme="dark"] .tab-nav,
+body.dark-theme .tab-nav {
+    border-bottom-color: #334155 !important;
+}
+[data-theme="dark"] .tab-nav-btn,
+body.dark-theme .tab-nav-btn {
+    background: #1e293b !important;
+    color: #94a3b8 !important;
+    border-color: #334155 !important;
+}
+[data-theme="dark"] .tab-nav-btn:hover,
+body.dark-theme .tab-nav-btn:hover {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+[data-theme="dark"] .tab-nav-btn.active,
+body.dark-theme .tab-nav-btn.active {
+    background: #0f172a !important;
+    color: #60a5fa !important;
+    border-color: #334155 #334155 #0f172a #334155 !important;
+}
+
+/* ── Form Controls & Inputs ── */
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+body.dark-theme input,
+body.dark-theme select {
+    background: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+[data-theme="dark"] input::placeholder,
+body.dark-theme input::placeholder {
+    color: #64748b !important;
+}
+
+/* ── Tables ── */
+[data-theme="dark"] table,
+body.dark-theme table {
+    background: #1e293b !important;
+    color: #f1f5f9 !important;
+}
+[data-theme="dark"] th,
+body.dark-theme th {
+    background: #0f172a !important;
+    color: #93c5fd !important;
+    border-color: #334155 !important;
+}
+[data-theme="dark"] th:hover,
+body.dark-theme th:hover {
+    background: #1e293b !important;
+}
+[data-theme="dark"] td,
+body.dark-theme td {
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+[data-theme="dark"] tr:hover td,
+body.dark-theme tr:hover td {
+    background: rgba(51, 65, 85, 0.4) !important;
+}
+
+/* ── Section Titles & Banners ── */
+[data-theme="dark"] .long-title,
+body.dark-theme .long-title {
+    background: #064e3b !important;
+    color: #6ee7b7 !important;
+    border-color: #047857 !important;
+}
+[data-theme="dark"] .long-title span,
+body.dark-theme .long-title span {
+    color: #6ee7b7 !important;
+}
+[data-theme="dark"] .short-title,
+body.dark-theme .short-title {
+    background: #7f1d1d !important;
+    color: #fca5a5 !important;
+    border-color: #b91c1c !important;
+}
+[data-theme="dark"] .short-title span,
+body.dark-theme .short-title span {
+    color: #fca5a5 !important;
+}
+
+/* ── Signal Pills in Tables ── */
+[data-theme="dark"] .signal-LONG,
+body.dark-theme .signal-LONG {
+    background: #064e3b !important;
+    color: #6ee7b7 !important;
+}
+[data-theme="dark"] .signal-SHORT,
+body.dark-theme .signal-SHORT {
+    background: #7f1d1d !important;
+    color: #fca5a5 !important;
+}
+[data-theme="dark"] .signal-COVER,
+body.dark-theme .signal-COVER {
+    background: #1e3a8a !important;
+    color: #93c5fd !important;
+}
+[data-theme="dark"] .signal-UNWIND,
+body.dark-theme .signal-UNWIND {
+    background: #78350f !important;
+    color: #fde047 !important;
+}
+
+/* ── Interactive Commodity Elements ── */
+[data-theme="dark"] .symbol-clickable,
+body.dark-theme .symbol-clickable {
+    color: #60a5fa !important;
+}
+[data-theme="dark"] .symbol-clickable:hover,
+body.dark-theme .symbol-clickable:hover {
+    color: #93c5fd !important;
+}
+[data-theme="dark"] .btn-row-analyze,
+body.dark-theme .btn-row-analyze {
+    background: #1e293b !important;
+    color: #60a5fa !important;
+    border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .btn-row-analyze:hover,
+body.dark-theme .btn-row-analyze:hover {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+
+/* ── Nifty / Market Banner ── */
+[data-theme="dark"] .nifty,
+body.dark-theme .nifty {
+    background: #1e293b !important;
+    border-color: #475569 !important;
+    color: #f8fafc !important;
+}
+
+/* ── Cards & Panels ── */
+[data-theme="dark"] .high-score-box,
+[data-theme="dark"] .movers-box,
+body.dark-theme .high-score-box,
+body.dark-theme .movers-box {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+/* ── 360° Analyzer Hero & Dossier Components ── */
+[data-theme="dark"] .analyzer-hero-card,
+[data-theme="dark"] .analyzer-dossier-header,
+[data-theme="dark"] .analyzer-pillar-card,
+[data-theme="dark"] .analyzer-verdict-card,
+body.dark-theme .analyzer-hero-card,
+body.dark-theme .analyzer-dossier-header,
+body.dark-theme .analyzer-pillar-card,
+body.dark-theme .analyzer-verdict-card {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+}
+
+[data-theme="dark"] .analyzer-pillar-title,
+body.dark-theme .analyzer-pillar-title {
+    color: #93c5fd !important;
+}
+
+[data-theme="dark"] .analyzer-chip,
+body.dark-theme .analyzer-chip {
+    background: #0f172a !important;
+    border-color: #475569 !important;
+    color: #cbd5e1 !important;
+}
+[data-theme="dark"] .analyzer-chip:hover,
+body.dark-theme .analyzer-chip:hover {
+    background: #334155 !important;
+    color: #ffffff !important;
+    border-color: #60a5fa !important;
+}
+
+[data-theme="dark"] .analyzer-suggestions,
+body.dark-theme .analyzer-suggestions {
+    background: #1e293b !important;
+    border-color: #475569 !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
+}
+[data-theme="dark"] .analyzer-suggestion-item,
+body.dark-theme .analyzer-suggestion-item {
+    border-bottom-color: #334155 !important;
+    color: #f8fafc !important;
+}
+[data-theme="dark"] .analyzer-suggestion-item:hover,
+[data-theme="dark"] .analyzer-suggestion-item.active,
+body.dark-theme .analyzer-suggestion-item:hover,
+body.dark-theme .analyzer-suggestion-item.active {
+    background: #334155 !important;
+}
+
+[data-theme="dark"] .analyzer-score-bar-track,
+body.dark-theme .analyzer-score-bar-track {
+    background: #334155 !important;
+}
+
+/* ── Inner Light-gray Boxes within Cards ── */
+[data-theme="dark"] div[style*="background:#f8fafc"],
+[data-theme="dark"] div[style*="background: #f8fafc"],
+body.dark-theme div[style*="background:#f8fafc"],
+body.dark-theme div[style*="background: #f8fafc"] {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] div[style*="color:#0f172a"],
+[data-theme="dark"] div[style*="color: #0f172a"],
+[data-theme="dark"] h2[style*="color:#0f172a"],
+[data-theme="dark"] span[style*="color:#0f172a"],
+body.dark-theme div[style*="color:#0f172a"],
+body.dark-theme div[style*="color: #0f172a"],
+body.dark-theme h2[style*="color:#0f172a"],
+body.dark-theme span[style*="color:#0f172a"] {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] div[style*="color:#334155"],
+[data-theme="dark"] div[style*="color: #334155"],
+[data-theme="dark"] div[style*="color:#475569"],
+[data-theme="dark"] span[style*="color:#475569"],
+[data-theme="dark"] ul[style*="color:#334155"],
+[data-theme="dark"] ul[style*="color:#475569"],
+body.dark-theme div[style*="color:#334155"],
+body.dark-theme div[style*="color: #334155"],
+body.dark-theme div[style*="color:#475569"],
+body.dark-theme span[style*="color:#475569"],
+body.dark-theme ul[style*="color:#334155"],
+body.dark-theme ul[style*="color:#475569"] {
+    color: #cbd5e1 !important;
+}
+
+/* ── 360° Dossier Modal in Dark Mode ── */
+[data-theme="dark"] .market-analyzer-modal-overlay,
+body.dark-theme .market-analyzer-modal-overlay {
+    background: rgba(0, 0, 0, 0.8) !important;
+}
+[data-theme="dark"] .market-analyzer-modal-container,
+body.dark-theme .market-analyzer-modal-container {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
+}
+[data-theme="dark"] .market-analyzer-modal-header,
+body.dark-theme .market-analyzer-modal-header {
+    background: #0f172a !important;
+    border-bottom-color: #334155 !important;
+}
+[data-theme="dark"] .modal-commodity-bar,
+body.dark-theme .modal-commodity-bar {
+    background: #0f172a !important;
+    border-bottom-color: #334155 !important;
+}
+[data-theme="dark"] .modal-select,
+body.dark-theme .modal-select {
+    background: #1e293b !important;
+    border-color: #475569 !important;
+    color: #f8fafc !important;
+}
+[data-theme="dark"] .modal-chip,
+body.dark-theme .modal-chip {
+    background: #1e293b !important;
+    border-color: #475569 !important;
+    color: #cbd5e1 !important;
+}
+[data-theme="dark"] .modal-chip:hover,
+body.dark-theme .modal-chip:hover {
+    background: #334155 !important;
+    color: #ffffff !important;
+}
+[data-theme="dark"] .modal-chip.active,
+body.dark-theme .modal-chip.active {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+}
+[data-theme="dark"] .modal-close-btn,
+body.dark-theme .modal-close-btn {
+    color: #94a3b8 !important;
+}
+[data-theme="dark"] .modal-close-btn:hover,
+body.dark-theme .modal-close-btn:hover {
+    background: #334155 !important;
+    color: #ffffff !important;
+}
+[data-theme="dark"] .modal-dossier-body,
+body.dark-theme .modal-dossier-body {
+    background: #1e293b !important;
+}
+
 .analyzer-hero-card {
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -1657,7 +2028,13 @@ th:hover {
 
 <body>
 
-<h2>MCX Commodity Market Dashboard</h2>
+<div class="dashboard-header-bar">
+  <h2 style="margin:0;">MCX Commodity Market Dashboard</h2>
+  <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleDashboardTheme()" title="Toggle Dark/Light Mode">
+    <span id="themeToggleIcon">&#9790;</span>
+    <span id="themeToggleText">Dark Mode</span>
+  </button>
+</div>
 
 <div class="tab-nav">
   <button class="tab-nav-btn active" id="tabBtn-fno" onclick="switchDashboardTab('fno')">
@@ -1686,7 +2063,7 @@ th:hover {
 <div id="tabContent-fno" class="tab-content active">
 
 <div class="nifty" style="background: #ffcdd2; border: 1px solid #c62828; color: #b71c1c;">
-MCX MARKET: 33715.87 | Change: -101.39 | Change %: -0.30% | Market: DOWN strongly | 15M: -0.00% FLAT | B: 0.60 | S: 1.00
+MCX MARKET: 33715.87 | Change: -101.39 | Change %: -0.30% | Market: DOWN strongly | 15M: NA% NA | B: 0.60 | S: 1.00
 </div>
 
 <div class="controls">
@@ -6286,6 +6663,54 @@ document.addEventListener("click", function(e) {
         wrap.classList.toggle("active-touch");
     }
 });
+
+// ── Theme Management (Light / Dark) ─────────────────────────
+function updateThemeUI(theme) {
+    const btn = document.getElementById("themeToggleBtn");
+    const icon = document.getElementById("themeToggleIcon");
+    const text = document.getElementById("themeToggleText");
+    if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.body.classList.add("dark-theme");
+        if (icon) icon.innerHTML = "&#9728;"; // Sun
+        if (text) text.textContent = "Light Mode";
+        if (btn) {
+            btn.classList.add("is-dark");
+            btn.title = "Switch to Light Mode";
+        }
+    } else {
+        document.documentElement.removeAttribute("data-theme");
+        document.body.classList.remove("dark-theme");
+        if (icon) icon.innerHTML = "&#9790;"; // Moon
+        if (text) text.textContent = "Dark Mode";
+        if (btn) {
+            btn.classList.remove("is-dark");
+            btn.title = "Switch to Dark Mode";
+        }
+    }
+}
+
+function toggleDashboardTheme() {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark" || document.body.classList.contains("dark-theme");
+    const newTheme = isDark ? "light" : "dark";
+    try {
+        localStorage.setItem("dashboardTheme", newTheme);
+    } catch(e) {}
+    updateThemeUI(newTheme);
+}
+
+function initTheme() {
+    let theme = "light";
+    try {
+        theme = localStorage.getItem("dashboardTheme") ||
+            (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light");
+    } catch(e) {}
+    updateThemeUI(theme);
+}
+
+window.toggleDashboardTheme = toggleDashboardTheme;
+window.initTheme = initTheme;
+initTheme();
 
 </script>
 
