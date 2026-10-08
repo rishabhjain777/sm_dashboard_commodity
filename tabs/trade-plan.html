@@ -10,16 +10,15 @@
   <th onclick="sortTable(this, 3)" title="Target: BUY +0.8% | SELL -0.8%">Target</th>
   <th onclick="sortTable(this, 4)" title="Commodity Stop Loss (0.4%)">Stop Loss</th>
   <th onclick="sortTable(this, 5)">Signal at Call</th>
-  <th onclick="sortTable(this, 6)" title="Trade Favor Score based on 6-floor building model">Buy Favor Score</th>
-  <th onclick="sortTable(this, 7)">Final Score</th>
-  <th onclick="sortTable(this, 8)" title="MoneyControl MC Score (1 to 10)">MC Score</th>
-  <th onclick="sortTable(this, 9)" title="10-Point Score: 50% MC Score + 50% Final Score">Combined Score (0-10)</th>
-  <th onclick="sortTable(this, 10)">Signal Side</th>
-  <th onclick="sortTable(this, 11)">Current Price</th>
-  <th onclick="sortTable(this, 12)">Signal Change post Call</th>
-  <th onclick="sortTable(this, 13)">New Signal</th>
-  <th onclick="sortTable(this, 14)">Live Move %</th>
-  <th onclick="sortTable(this, 15)" title="AI Quantitative Prediction: Intraday & Swing Models (Score 0-100, Direction & Conviction)">AI Quantitative Prediction<br><span style="font-size:10px; font-weight:normal; color:#64748b;">(Intraday &amp; Swing)</span></th>
+  <th onclick="sortTable(this, 6)">Final Score</th>
+  <th onclick="sortTable(this, 7)" title="MoneyControl MC Score (1 to 10)">MC Score</th>
+  <th onclick="sortTable(this, 8)" title="10-Point Score: 50% MC Score + 50% Final Score">Combined Score (0-10)</th>
+  <th onclick="sortTable(this, 9)">Signal Side</th>
+  <th onclick="sortTable(this, 10)">Current Price</th>
+  <th onclick="sortTable(this, 11)">Signal Change post Call</th>
+  <th onclick="sortTable(this, 12)">New Signal</th>
+  <th onclick="sortTable(this, 13)">Live Move %</th>
+  <th onclick="sortTable(this, 14)" title="AI Quantitative Prediction: Intraday & Swing Models (Score 0-100, Direction & Conviction)">AI Quantitative Prediction<br><span style="font-size:10px; font-weight:normal; color:#64748b;">(Intraday &amp; Swing)</span></th>
 </tr></thead>
 <tbody>
 
@@ -30,7 +29,6 @@
           <td style='font-weight:700; color:#15803d;' title='Target Price (0.8%): ₹8454.82'>₹8454.82 <span style='font-size:11px; font-weight:normal;'>(-0.8%)</span></td>
           <td style='font-weight:700; color:#b91c1c;' title='Stop Loss (0.4%): ₹8557.09'>₹8557.09 <span style='font-size:11px; font-weight:normal;'>(+0.40%)</span></td>
           <td class="signal-SHORT">SHORT</td>
-          <td><span class="pivot-score-badge score-fav-low">0.0</span></td>
           <td style="font-weight:bold; color:#1e293b;">10.00</td>
           <td><span class="score-badge score-high" title="Stock Score (Percentile): 8.8/10">8.8</span></td>
           <td><span style="font-weight:700; color:#15803d;" title="Combined Score (10-Pt): 50% Stock Score (8.8) + 50% Final Score (10.00) = 9.4 / 10">9.4</span></td>
@@ -63,7 +61,6 @@
           <td style='font-weight:700; color:#15803d;' title='Target Price (0.8%): ₹1114.02'>₹1114.02 <span style='font-size:11px; font-weight:normal;'>(-0.8%)</span></td>
           <td style='font-weight:700; color:#b91c1c;' title='Stop Loss (0.4%): ₹1127.49'>₹1127.49 <span style='font-size:11px; font-weight:normal;'>(+0.40%)</span></td>
           <td class="signal-SHORT">SHORT</td>
-          <td><span class="pivot-score-badge score-fav-low">2.0</span></td>
           <td style="font-weight:bold; color:#1e293b;">10.00</td>
           <td><span class="score-badge score-high" title="Stock Score (Percentile): 8.5/10">8.5</span></td>
           <td><span style="font-weight:700; color:#15803d;" title="Combined Score (10-Pt): 50% Stock Score (8.5) + 50% Final Score (10.00) = 9.2 / 10">9.2</span></td>
@@ -96,7 +93,6 @@
           <td style='font-weight:700; color:#15803d;' title='Target Price (0.8%): ₹1648.80'>₹1648.80 <span style='font-size:11px; font-weight:normal;'>(-0.8%)</span></td>
           <td style='font-weight:700; color:#b91c1c;' title='Stop Loss (0.4%): ₹1668.75'>₹1668.75 <span style='font-size:11px; font-weight:normal;'>(+0.40%)</span></td>
           <td class="signal-SHORT">SHORT</td>
-          <td><span class="pivot-score-badge score-fav-high">10.0</span></td>
           <td style="font-weight:bold; color:#1e293b;">10.00</td>
           <td><span class="score-badge score-high" title="Stock Score (Percentile): 8.5/10">8.5</span></td>
           <td><span style="font-weight:700; color:#15803d;" title="Combined Score (10-Pt): 50% Stock Score (8.5) + 50% Final Score (10.00) = 9.2 / 10">9.2</span></td>
@@ -129,7 +125,6 @@
           <td style='font-weight:700; color:#15803d;' title='Target Price (0.8%): ₹1208.75'>₹1208.75 <span style='font-size:11px; font-weight:normal;'>(-0.8%)</span></td>
           <td style='font-weight:700; color:#b91c1c;' title='Stop Loss (0.4%): ₹1223.37'>₹1223.37 <span style='font-size:11px; font-weight:normal;'>(+0.40%)</span></td>
           <td class="signal-SHORT">SHORT</td>
-          <td><span class="pivot-score-badge score-fav-low">0.0</span></td>
           <td style="font-weight:bold; color:#1e293b;">10.00</td>
           <td><span class="score-badge score-high" title="Stock Score (Percentile): 8.5/10">8.5</span></td>
           <td><span style="font-weight:700; color:#15803d;" title="Combined Score (10-Pt): 50% Stock Score (8.5) + 50% Final Score (10.00) = 9.2 / 10">9.2</span></td>
