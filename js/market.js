@@ -7,24 +7,27 @@ function applyFilters() {
     let shownCount = 0;
     const maxRows = limit === "ALL" ? Infinity : parseInt(limit, 10);
 
-    const rows = document.querySelectorAll("#mainTable tbody tr");
+    ["buyTable", "sellTable", "mainTable"].forEach(tableId => {
+        const table = document.getElementById(tableId);
+        if (!table) return;
+        let shownCount = 0;
+        const rows = table.querySelectorAll("tbody tr");
+        rows.forEach(r => {
+            if (r.classList.contains("section-label")) {
+                r.style.display = "";
+                return;
+            }
 
-    rows.forEach(r => {
-        if (r.classList.contains("section-label")) {
-            r.style.display = "";
-            shownCount = 0; // Reset row counter for each section (BUY & SELL)
-            return;
-        }
+            const sym = (r.cells[0]?.textContent || "").toUpperCase();
+            const matchesSearch = !search || sym.includes(search);
 
-        const sym = (r.cells[0]?.textContent || "").toUpperCase();
-        const matchesSearch = !search || sym.includes(search);
-
-        if (matchesSearch && shownCount < maxRows) {
-            r.style.display = "";
-            shownCount++;
-        } else {
-            r.style.display = "none";
-        }
+            if (matchesSearch && shownCount < maxRows) {
+                r.style.display = "";
+                shownCount++;
+            } else {
+                r.style.display = "none";
+            }
+        });
     });
 
     // Expiry column visibility
