@@ -18,7 +18,7 @@ function applyFilters() {
                 return;
             }
 
-            const sym = (r.cells[0]?.textContent || "").toUpperCase();
+            const sym = (r.cells[0]?.textContent || "").trim().toUpperCase();
             const matchesSearch = !search || sym.includes(search);
 
             if (matchesSearch && shownCount < maxRows) {
@@ -39,11 +39,267 @@ function applyFilters() {
     });
 }
 
+// ── 360° Dossier Modal & Share Controller ────────────────────────────
+window.currentModalCommodity = "GOLD";
+
+async function ensureAnalyzerDataLoaded() {
+    if (window.ANALYZER_DATA && Object.keys(window.ANALYZER_DATA).length > 0 && typeof window.renderFullDossierHtml === "function") {
+        return true;
+    }
+    if (typeof loadScript === "function") {
+        try {
+            await loadScript("js/analyzer.js");
+            return true;
+        } catch(e) {
+            console.error("Failed to load js/analyzer.js", e);
+        }
+    }
+    return false;
+}
+
+function getFirstVisibleCommodity() {
+    const searchVal = (document.getElementById("search")?.value || "").trim().toUpperCase();
+    if (searchVal && window.ANALYZER_DATA && window.ANALYZER_DATA[searchVal]) {
+        return searchVal;
+    }
+    for (const tableId of ["buyTable", "sellTable", "mainTable"]) {
+        const table = document.getElementById(tableId);
+        if (!table) continue;
+        const rows = table.querySelectorAll("tbody tr");
+        for (const r of rows) {
+            if (r.style.display !== "none" && r.cells.length > 0) {
+                const sym = r.cells[0].textContent.trim().toUpperCase();
+                if (sym && window.ANALYZER_DATA && window.ANALYZER_DATA[sym]) {
+                    return sym;
+                }
+            }
+        }
+    }
+    return "GOLD";
+}
+
+function populateModalCommodityControls() {
+    if (!window.ANALYZER_DATA) return;
+    const symbols = Object.keys(window.ANALYZER_DATA);
+    if (!symbols.length) return;
+
+    const sel = document.getElementById("modalCommoditySelect");
+    if (sel && sel.options.length !== symbols.length) {
+        sel.innerHTML = "";
+        symbols.forEach(s => {
+            const opt = document.createElement("option");
+            opt.value = s;
+            opt.textContent = s;
+            sel.appendChild(opt);
+        });
+    }
+
+    const chipsWrap = document.getElementById("modalCommodityChips");
+    if (chipsWrap && !chipsWrap.hasChildNodes()) {
+        chipsWrap.innerHTML = "";
+        symbols.slice(0, 16).forEach(s => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "modal-chip";
+            btn.dataset.sym = s;
+            btn.textContent = s;
+            btn.onclick = () => switchModalCommodity(s);
+            chipsWrap.appendChild(btn);
+        });
+    }
+}
+
+async function openMarketAnalyzerModal(symbol) {
+    await ensureAnalyzerDataLoaded();
+
+    let targetSym = symbol ? symbol.trim().toUpperCase() : getFirstVisibleCommodity();
+    if (!window.ANALYZER_DATA || !window.ANALYZER_DATA[targetSym]) {
+        if (window.ANALYZER_DATA) {
+            const keys = Object.keys(window.ANALYZER_DATA);
+            if (keys.length > 0) targetSym = keys[0];
+        }
+    }
+
+    populateModalCommodityControls();
+    switchModalCommodity(targetSym);
+
+    const modal = document.getElementById("marketAnalyzerModal");
+    if (modal) {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function switchModalCommodity(symbol) {
+    if (!symbol) return;
+    const sym = symbol.trim().toUpperCase();
+    window.currentModalCommodity = sym;
+
+    const sel = document.getElementById("modalCommoditySelect");
+    if (sel && sel.value !== sym) sel.value = sym;
+
+    document.querySelectorAll(".modal-chip").forEach(c => {
+        if (c.dataset.sym === sym) {
+            c.classList.add("active");
+        } else {
+            c.classList.remove("active");
+        }
+    });
+
+    const body = document.getElementById("modalDossierBody");
+    if (!body) return;
+
+    const d = window.ANALYZER_DATA ? window.ANALYZER_DATA[sym] : null;
+    if (d && typeof renderFullDossierHtml === "function") {
+        body.innerHTML = renderFullDossierHtml(d);
+    } else {
+        body.innerHTML = '<div style="padding:40px; text-align:center; color:#888;">No analyzer intelligence available for ' + sym + '</div>';
+    }
+}
+
+function closeMarketAnalyzerModal(event) {
+    if (event && event.target && event.target.id !== "marketAnalyzerModal" && !event.target.classList.contains("modal-close-btn")) {
+        return;
+    }
+    const modal = document.getElementById("marketAnalyzerModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+    }
+}
+
+function openCurrentInAnalyzerTab() {
+    const sym = window.currentModalCommodity || "GOLD";
+    closeMarketAnalyzerModal();
+    if (typeof switchDashboardTab === "function") {
+        switchDashboardTab("analyzer");
+    }
+    setTimeout(() => {
+        if (typeof selectAnalyzerCommodity === "function") {
+            selectAnalyzerCommodity(sym);
+        }
+    }, 150);
+}
+
+function generateDossierShareText(sym) {
+    const d = window.ANALYZER_DATA ? window.ANALYZER_DATA[sym] : null;
+    if (!d) return "Commodity " + sym + " intelligence not found.";
+
+    const name = d.company_name || sym;
+    const spot = (d.spot !== null && d.spot !== undefined && d.spot !== "NA" && !isNaN(d.spot))
+        ? ("₹" + Number(d.spot).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}))
+        : (d.spot || "NA");
+
+    const fnoSig = d.fno ? d.fno.signal : "NA";
+    const finalScore = d.fno && d.fno.final_score !== null ? d.fno.final_score : "—";
+    const pivot = d.fno && d.fno.pivot !== null ? ("₹" + Number(d.fno.pivot).toFixed(2)) : "—";
+    const r1 = d.fno && d.fno.r1 !== null ? ("₹" + Number(d.fno.r1).toFixed(2)) : "—";
+    const s1 = d.fno && d.fno.s1 !== null ? ("₹" + Number(d.fno.s1).toFixed(2)) : "—";
+    const oiYest = d.fno && d.fno.oi_yesterday !== null ? (d.fno.oi_yesterday + "%") : "—";
+    const oiIntra = d.fno && d.fno.oi_last_query !== null ? (d.fno.oi_last_query + "%") : "—";
+
+    const mcScore = d.score && d.score.total_score !== null ? (Number(d.score.total_score).toFixed(1) + "/10") : "—";
+    const aiSig = d.quant && d.quant.intraday_signal ? d.quant.intraday_signal : "—";
+    const aiConf = d.quant && d.quant.intraday_conf !== null ? (Number(d.quant.intraday_conf).toFixed(1) + "%") : "—";
+    const risk = d.quant && d.quant.risk_level ? d.quant.risk_level : "—";
+
+    let verdictLabel = "NEUTRAL";
+    let verdictScore = 50;
+    let strategy = "";
+    if (typeof computeUnifiedVerdict === "function") {
+        const v = computeUnifiedVerdict(d.fno, d.score, d.quant);
+        verdictLabel = v.label;
+        verdictScore = v.score;
+        strategy = v.strategy;
+    }
+
+    const lines = [
+        "📊 MCX 360° COMMODITY INTELLIGENCE: " + sym,
+        "💰 Spot Price: " + spot,
+        "--------------------------------------------------",
+        "🎯 Composite Stance: " + verdictLabel + " (" + verdictScore + "/100)",
+        "📈 F&O Market Signal: " + fnoSig + " | Final Score: " + finalScore + "/10",
+        "⚡ AI Quant Model: " + aiSig + " (" + aiConf + " Confidence) | Risk: " + risk,
+        "⭐ MC Commodity Score: " + mcScore,
+        "📍 Key Levels: Pivot " + pivot + " | R1: " + r1 + " | S1: " + s1,
+        "🔄 OI Shifts: Yesterday " + oiYest + " | Intraday " + oiIntra,
+        strategy ? ("💡 Actionable Strategy: " + strategy) : "",
+        "--------------------------------------------------",
+        "Live MCX Dashboard: " + window.location.href.split("#")[0]
+    ].filter(Boolean);
+
+    return lines.join("\n");
+}
+
+async function shareCurrentModalDossier() {
+    const sym = window.currentModalCommodity || "GOLD";
+    const text = generateDossierShareText(sym);
+
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: "MCX 360° Dossier: " + sym,
+                text: text
+            });
+            showShareToast("✓ Shared successfully!");
+            return;
+        } catch(e) {
+            // Cancelled or unsupported, fallback to clipboard
+        }
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+            await navigator.clipboard.writeText(text);
+            showShareToast("✓ Copied Dossier to clipboard!");
+            return;
+        } catch(e) {}
+    }
+
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    showShareToast("✓ Copied Dossier to clipboard!");
+}
+
+function showShareToast(msg) {
+    let t = document.getElementById("shareToast");
+    if (!t) {
+        t = document.createElement("div");
+        t.id = "shareToast";
+        t.className = "share-toast";
+        document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.classList.add("show");
+    setTimeout(() => { t.classList.remove("show"); }, 2500);
+}
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        const modal = document.getElementById("marketAnalyzerModal");
+        if (modal && modal.style.display !== "none") {
+            closeMarketAnalyzerModal();
+        }
+    }
+});
+
+// Explicit window bindings
+window.openMarketAnalyzerModal = openMarketAnalyzerModal;
+window.closeMarketAnalyzerModal = closeMarketAnalyzerModal;
+window.switchModalCommodity = switchModalCommodity;
+window.shareCurrentModalDossier = shareCurrentModalDossier;
+window.openCurrentInAnalyzerTab = openCurrentInAnalyzerTab;
+
 window.initMarketTab = function() {
     applyFilters();
+    ensureAnalyzerDataLoaded();
 };
 
 // Auto-run if table exists
-if (document.getElementById("mainTable")) {
+if (document.getElementById("mainTable") || document.getElementById("buyTable")) {
     applyFilters();
 }
