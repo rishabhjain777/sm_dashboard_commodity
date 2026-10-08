@@ -1,5 +1,5 @@
 <div class="nifty" style="background: #ffcdd2; border: 1px solid #c62828; color: #b71c1c;">
-MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongly | 15M: 0.07% MILD_UP | B: 0.60 | S: 1.00
+MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongly | 15M: 0.00% FLAT | B: 0.60 | S: 1.00
 </div>
 
 <div class="controls">
@@ -27,6 +27,10 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
     <option value="ALL">All Rows</option>
 </select>
 
+<button type="button" class="btn-market-analyzer-popup" onclick="openMarketAnalyzerModal()" title="Open 360° Commodity Dossier Popup & Share Result">
+  &#128373; 360° Dossier &amp; Share Result
+</button>
+
 </div>
 
 <!-- ── BUY SIDE (LONG & COVER) ───────────────────────────────────────────── -->
@@ -48,13 +52,16 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
         <th onclick="sortTable(this, 8)" title="AI Quantitative Score, normalized from 5 to 10">Score AI Quant</th>
         <th onclick="sortTable(this, 9)" title="Final Score = OI Score × Score QGVT × Score AI Quant × Market Score / 1000">Final Score</th>
         <th onclick="sortTable(this, 10)" title="15M Standard Pivot Points Channel (S3 to R3) with 7 coloured levels">Pivot Point</th>
+        <th style="width: 85px; text-align: center;" title="Popup 360° Commodity Dossier & Share Result">360° Dossier</th>
       </tr>
     </thead>
     <tbody>
       
         <tr>
 
-        <td>CARDAMOM</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('CARDAMOM')" title="Click to open 360° Dossier for CARDAMOM" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">CARDAMOM</span>
+        </td>
         <td>3370.00</td>
 
         <td>
@@ -101,11 +108,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('CARDAMOM')" title="Popup 360° Dossier & Share Result for CARDAMOM">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>KAPAS</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('KAPAS')" title="Click to open 360° Dossier for KAPAS" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">KAPAS</span>
+        </td>
         <td>1662.50</td>
 
         <td>
@@ -152,11 +167,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('KAPAS')" title="Popup 360° Dossier & Share Result for KAPAS">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>STEELREBAR</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('STEELREBAR')" title="Click to open 360° Dossier for STEELREBAR" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">STEELREBAR</span>
+        </td>
         <td>48330.00</td>
 
         <td>
@@ -203,11 +226,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('STEELREBAR')" title="Popup 360° Dossier & Share Result for STEELREBAR">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>COTTON</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('COTTON')" title="Click to open 360° Dossier for COTTON" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">COTTON</span>
+        </td>
         <td>28500.00</td>
 
         <td>
@@ -254,11 +285,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('COTTON')" title="Popup 360° Dossier & Share Result for COTTON">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>RUBBER</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('RUBBER')" title="Click to open 360° Dossier for RUBBER" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">RUBBER</span>
+        </td>
         <td>100.00</td>
 
         <td>
@@ -305,11 +344,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('RUBBER')" title="Popup 360° Dossier & Share Result for RUBBER">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>CPO</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('CPO')" title="Click to open 360° Dossier for CPO" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">CPO</span>
+        </td>
         <td>1337.00</td>
 
         <td>
@@ -356,11 +403,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('CPO')" title="Popup 360° Dossier & Share Result for CPO">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>ALUMINIUM</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('ALUMINIUM')" title="Click to open 360° Dossier for ALUMINIUM" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">ALUMINIUM</span>
+        </td>
         <td>366.00</td>
 
         <td>
@@ -407,6 +462,12 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('ALUMINIUM')" title="Popup 360° Dossier & Share Result for ALUMINIUM">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
     </tbody>
@@ -432,13 +493,16 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
         <th onclick="sortTable(this, 8)" title="AI Quantitative Score, normalized from 5 to 10">Score AI Quant</th>
         <th onclick="sortTable(this, 9)" title="Final Score = OI Score × Score QGVT × Score AI Quant × Market Score / 1000">Final Score</th>
         <th onclick="sortTable(this, 10)" title="15M Standard Pivot Points Channel (S3 to R3) with 7 coloured levels">Pivot Point</th>
+        <th style="width: 85px; text-align: center;" title="Popup 360° Commodity Dossier & Share Result">360° Dossier</th>
       </tr>
     </thead>
     <tbody>
       
         <tr>
 
-        <td>SILVER</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('SILVER')" title="Click to open 360° Dossier for SILVER" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">SILVER</span>
+        </td>
         <td>236822.00</td>
 
         <td>
@@ -485,11 +549,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('SILVER')" title="Popup 360° Dossier & Share Result for SILVER">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>LEAD</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('LEAD')" title="Click to open 360° Dossier for LEAD" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">LEAD</span>
+        </td>
         <td>199.15</td>
 
         <td>
@@ -536,11 +608,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('LEAD')" title="Popup 360° Dossier & Share Result for LEAD">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>GOLD</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('GOLD')" title="Click to open 360° Dossier for GOLD" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">GOLD</span>
+        </td>
         <td>149494.00</td>
 
         <td>
@@ -587,11 +667,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('GOLD')" title="Popup 360° Dossier & Share Result for GOLD">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>NICKEL</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('NICKEL')" title="Click to open 360° Dossier for NICKEL" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">NICKEL</span>
+        </td>
         <td>1662.10</td>
 
         <td>
@@ -638,11 +726,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('NICKEL')" title="Popup 360° Dossier & Share Result for NICKEL">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>COPPER</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('COPPER')" title="Click to open 360° Dossier for COPPER" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">COPPER</span>
+        </td>
         <td>1218.50</td>
 
         <td>
@@ -689,11 +785,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('COPPER')" title="Popup 360° Dossier & Share Result for COPPER">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>MENTHAOIL</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('MENTHAOIL')" title="Click to open 360° Dossier for MENTHAOIL" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">MENTHAOIL</span>
+        </td>
         <td>1123.00</td>
 
         <td>
@@ -740,11 +844,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('MENTHAOIL')" title="Popup 360° Dossier & Share Result for MENTHAOIL">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>CRUDEOIL</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('CRUDEOIL')" title="Click to open 360° Dossier for CRUDEOIL" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">CRUDEOIL</span>
+        </td>
         <td>8523.00</td>
 
         <td>
@@ -791,11 +903,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('CRUDEOIL')" title="Popup 360° Dossier & Share Result for CRUDEOIL">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>NATURALGAS</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('NATURALGAS')" title="Click to open 360° Dossier for NATURALGAS" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">NATURALGAS</span>
+        </td>
         <td>242.70</td>
 
         <td>
@@ -842,11 +962,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('NATURALGAS')" title="Popup 360° Dossier & Share Result for NATURALGAS">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>ZINC</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('ZINC')" title="Click to open 360° Dossier for ZINC" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">ZINC</span>
+        </td>
         <td>336.20</td>
 
         <td>
@@ -893,7 +1021,47 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('ZINC')" title="Popup 360° Dossier & Share Result for ZINC">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
     </tbody>
   </table>
+</div>
+
+<!-- ── 360° Commodity Intelligence Modal Popup ── -->
+<div id="marketAnalyzerModal" class="market-analyzer-modal-overlay" style="display: none;" onclick="closeMarketAnalyzerModal(event)">
+  <div class="market-analyzer-modal-container" onclick="event.stopPropagation()">
+    <div class="market-analyzer-modal-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 22px;">&#128373;</span>
+        <div>
+          <div style="font-size: 16px; font-weight: 800; color: #0f172a;">360° Commodity Intelligence Dossier</div>
+          <div style="font-size: 12px; color: #64748b;">Market Signal • Quality Scores • AI Quant • Composite Verdict</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <button id="modalShareBtn" class="modal-action-btn btn-share" onclick="shareCurrentModalDossier()" title="Share / Copy Dossier Result">
+          &#128228; Share Result
+        </button>
+        <button class="modal-action-btn btn-open-tab" onclick="openCurrentInAnalyzerTab()" title="Open full view in 360° Tab">
+          &#8599; Open in Tab
+        </button>
+        <button class="modal-close-btn" onclick="closeMarketAnalyzerModal()" title="Close (Esc)">
+          &times;
+        </button>
+      </div>
+    </div>
+    <div class="modal-commodity-bar">
+      <span style="font-size: 12px; font-weight: 700; color: #475569;">Commodity:</span>
+      <select id="modalCommoditySelect" onchange="switchModalCommodity(this.value)" class="modal-select"></select>
+      <div id="modalCommodityChips" class="modal-chips-wrap"></div>
+    </div>
+    <div id="modalDossierBody" class="modal-dossier-body"></div>
+  </div>
+</div>
+<div id="shareToast" class="share-toast">
