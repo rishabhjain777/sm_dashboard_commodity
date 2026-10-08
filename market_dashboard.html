@@ -695,6 +695,216 @@ th:hover {
 }
 
 /* ── 360° Unified Commodity Analyzer Styles ───────────── */
+.btn-market-analyzer-popup {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.btn-market-analyzer-popup:hover {
+    background: linear-gradient(135deg, #1e40af, #1d4ed8);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+    transform: translateY(-1px);
+}
+.btn-row-analyze {
+    padding: 4px 9px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.btn-row-analyze:hover {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 2px 5px rgba(37, 99, 235, 0.25);
+}
+.symbol-clickable {
+    cursor: pointer;
+    color: #1d4ed8;
+    font-weight: 700;
+    text-decoration: underline dotted;
+    transition: color 0.15s ease;
+}
+.symbol-clickable:hover {
+    color: #2563eb;
+    text-decoration: underline;
+}
+.market-analyzer-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: modalFadeIn 0.2s ease-out;
+}
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.market-analyzer-modal-container {
+    background: #ffffff;
+    border-radius: 14px;
+    max-width: 1150px;
+    width: 100%;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+    border: 1px solid #cbd5e1;
+    overflow: hidden;
+    animation: modalPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes modalPopIn {
+    from { transform: scale(0.96); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.market-analyzer-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+.modal-action-btn {
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.modal-action-btn.btn-share {
+    background: #059669;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+}
+.modal-action-btn.btn-share:hover {
+    background: #047857;
+    box-shadow: 0 4px 10px rgba(5, 150, 105, 0.35);
+}
+.modal-action-btn.btn-open-tab {
+    background: #2563eb;
+    color: #ffffff;
+}
+.modal-action-btn.btn-open-tab:hover {
+    background: #1d4ed8;
+}
+.modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    color: #64748b;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+}
+.modal-close-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+.modal-commodity-bar {
+    padding: 8px 20px;
+    background: #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.modal-select {
+    padding: 4px 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    background: #ffffff;
+    color: #0f172a;
+}
+.modal-chips-wrap {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.modal-chip {
+    padding: 3px 9px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.modal-chip:hover {
+    background: #e2e8f0;
+}
+.modal-chip.active {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+}
+.modal-dossier-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    background: #ffffff;
+}
+.share-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    z-index: 100000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    border-left: 4px solid #10b981;
+}
+.share-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .analyzer-hero-card {
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -1476,7 +1686,7 @@ th:hover {
 <div id="tabContent-fno" class="tab-content active">
 
 <div class="nifty" style="background: #ffcdd2; border: 1px solid #c62828; color: #b71c1c;">
-MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongly | 15M: 0.07% MILD_UP | B: 0.60 | S: 1.00
+MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongly | 15M: 0.00% FLAT | B: 0.60 | S: 1.00
 </div>
 
 <div class="controls">
@@ -1517,6 +1727,10 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
     <option value="ALL">All Rows</option>
 </select>
 
+<button type="button" class="btn-market-analyzer-popup" onclick="openMarketAnalyzerModal()" title="Open 360° Commodity Dossier Popup & Share Result">
+  &#128373; 360° Dossier &amp; Share Result
+</button>
+
 </div>
 
 <!-- ── BUY SIDE (LONG & COVER) ───────────────────────────────────────────── -->
@@ -1539,13 +1753,16 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
         <th onclick="sortTable(this, 8)" title="AI Quantitative Score, normalized from 5 to 10">Score AI Quant</th>
         <th onclick="sortTable(this, 9)" title="Final Score = OI Score × Score QGVT × Score AI Quant × Market Score / 1000">Final Score</th>
         <th onclick="sortTable(this, 10)" title="15M Standard Pivot Points Channel (S3 to R3) with 7 coloured levels">Pivot Point</th>
+        <th style="width: 85px; text-align: center;" title="Popup 360° Commodity Dossier & Share Result">360° Dossier</th>
       </tr>
     </thead>
     <tbody>
       
         <tr>
 
-        <td>CARDAMOM</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('CARDAMOM')" title="Click to open 360° Dossier for CARDAMOM" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">CARDAMOM</span>
+        </td>
         <td>3370.00</td>
 
         <td>
@@ -1592,11 +1809,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('CARDAMOM')" title="Popup 360° Dossier & Share Result for CARDAMOM">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>KAPAS</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('KAPAS')" title="Click to open 360° Dossier for KAPAS" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">KAPAS</span>
+        </td>
         <td>1662.50</td>
 
         <td>
@@ -1643,11 +1868,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('KAPAS')" title="Popup 360° Dossier & Share Result for KAPAS">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>STEELREBAR</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('STEELREBAR')" title="Click to open 360° Dossier for STEELREBAR" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">STEELREBAR</span>
+        </td>
         <td>48330.00</td>
 
         <td>
@@ -1694,11 +1927,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('STEELREBAR')" title="Popup 360° Dossier & Share Result for STEELREBAR">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>COTTON</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('COTTON')" title="Click to open 360° Dossier for COTTON" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">COTTON</span>
+        </td>
         <td>28500.00</td>
 
         <td>
@@ -1745,11 +1986,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('COTTON')" title="Popup 360° Dossier & Share Result for COTTON">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>RUBBER</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('RUBBER')" title="Click to open 360° Dossier for RUBBER" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">RUBBER</span>
+        </td>
         <td>100.00</td>
 
         <td>
@@ -1796,11 +2045,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('RUBBER')" title="Popup 360° Dossier & Share Result for RUBBER">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>CPO</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('CPO')" title="Click to open 360° Dossier for CPO" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">CPO</span>
+        </td>
         <td>1337.00</td>
 
         <td>
@@ -1847,11 +2104,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('CPO')" title="Popup 360° Dossier & Share Result for CPO">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>ALUMINIUM</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('ALUMINIUM')" title="Click to open 360° Dossier for ALUMINIUM" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">ALUMINIUM</span>
+        </td>
         <td>366.00</td>
 
         <td>
@@ -1898,6 +2163,12 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('ALUMINIUM')" title="Popup 360° Dossier & Share Result for ALUMINIUM">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
     </tbody>
@@ -1924,13 +2195,16 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
         <th onclick="sortTable(this, 8)" title="AI Quantitative Score, normalized from 5 to 10">Score AI Quant</th>
         <th onclick="sortTable(this, 9)" title="Final Score = OI Score × Score QGVT × Score AI Quant × Market Score / 1000">Final Score</th>
         <th onclick="sortTable(this, 10)" title="15M Standard Pivot Points Channel (S3 to R3) with 7 coloured levels">Pivot Point</th>
+        <th style="width: 85px; text-align: center;" title="Popup 360° Commodity Dossier & Share Result">360° Dossier</th>
       </tr>
     </thead>
     <tbody>
       
         <tr>
 
-        <td>SILVER</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('SILVER')" title="Click to open 360° Dossier for SILVER" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">SILVER</span>
+        </td>
         <td>236822.00</td>
 
         <td>
@@ -1977,11 +2251,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('SILVER')" title="Popup 360° Dossier & Share Result for SILVER">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>LEAD</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('LEAD')" title="Click to open 360° Dossier for LEAD" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">LEAD</span>
+        </td>
         <td>199.15</td>
 
         <td>
@@ -2028,11 +2310,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('LEAD')" title="Popup 360° Dossier & Share Result for LEAD">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>GOLD</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('GOLD')" title="Click to open 360° Dossier for GOLD" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">GOLD</span>
+        </td>
         <td>149494.00</td>
 
         <td>
@@ -2079,11 +2369,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('GOLD')" title="Popup 360° Dossier & Share Result for GOLD">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>NICKEL</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('NICKEL')" title="Click to open 360° Dossier for NICKEL" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">NICKEL</span>
+        </td>
         <td>1662.10</td>
 
         <td>
@@ -2130,11 +2428,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('NICKEL')" title="Popup 360° Dossier & Share Result for NICKEL">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>COPPER</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('COPPER')" title="Click to open 360° Dossier for COPPER" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">COPPER</span>
+        </td>
         <td>1218.50</td>
 
         <td>
@@ -2181,11 +2487,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('COPPER')" title="Popup 360° Dossier & Share Result for COPPER">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>MENTHAOIL</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('MENTHAOIL')" title="Click to open 360° Dossier for MENTHAOIL" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">MENTHAOIL</span>
+        </td>
         <td>1123.00</td>
 
         <td>
@@ -2232,11 +2546,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('MENTHAOIL')" title="Popup 360° Dossier & Share Result for MENTHAOIL">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>CRUDEOIL</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('CRUDEOIL')" title="Click to open 360° Dossier for CRUDEOIL" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">CRUDEOIL</span>
+        </td>
         <td>8523.00</td>
 
         <td>
@@ -2283,11 +2605,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('CRUDEOIL')" title="Popup 360° Dossier & Share Result for CRUDEOIL">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>NATURALGAS</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('NATURALGAS')" title="Click to open 360° Dossier for NATURALGAS" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">NATURALGAS</span>
+        </td>
         <td>242.70</td>
 
         <td>
@@ -2334,11 +2664,19 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('NATURALGAS')" title="Popup 360° Dossier & Share Result for NATURALGAS">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
         <tr>
 
-        <td>ZINC</td>
+        <td>
+          <span class="symbol-clickable" onclick="openMarketAnalyzerModal('ZINC')" title="Click to open 360° Dossier for ZINC" style="cursor: pointer; color: #1d4ed8; font-weight: 700;">ZINC</span>
+        </td>
         <td>336.20</td>
 
         <td>
@@ -2385,11 +2723,50 @@ MCX MARKET: 33663.62 | Change: -135.62 | Change %: -0.40% | Market: DOWN strongl
             </div>
             </td>
 
+        <td style="text-align: center;">
+          <button type="button" class="btn-row-analyze" onclick="openMarketAnalyzerModal('ZINC')" title="Popup 360° Dossier & Share Result for ZINC">
+            &#128373; 360°
+          </button>
+        </td>
+
         </tr>
         
     </tbody>
   </table>
 </div>
+
+<!-- ── 360° Commodity Intelligence Modal Popup ── -->
+<div id="marketAnalyzerModal" class="market-analyzer-modal-overlay" style="display: none;" onclick="closeMarketAnalyzerModal(event)">
+  <div class="market-analyzer-modal-container" onclick="event.stopPropagation()">
+    <div class="market-analyzer-modal-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 22px;">&#128373;</span>
+        <div>
+          <div style="font-size: 16px; font-weight: 800; color: #0f172a;">360° Commodity Intelligence Dossier</div>
+          <div style="font-size: 12px; color: #64748b;">Market Signal • Quality Scores • AI Quant • Composite Verdict</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <button id="modalShareBtn" class="modal-action-btn btn-share" onclick="shareCurrentModalDossier()" title="Share / Copy Dossier Result">
+          &#128228; Share Result
+        </button>
+        <button class="modal-action-btn btn-open-tab" onclick="openCurrentInAnalyzerTab()" title="Open full view in 360° Tab">
+          &#8599; Open in Tab
+        </button>
+        <button class="modal-close-btn" onclick="closeMarketAnalyzerModal()" title="Close (Esc)">
+          &times;
+        </button>
+      </div>
+    </div>
+    <div class="modal-commodity-bar">
+      <span style="font-size: 12px; font-weight: 700; color: #475569;">Commodity:</span>
+      <select id="modalCommoditySelect" onchange="switchModalCommodity(this.value)" class="modal-select"></select>
+      <div id="modalCommodityChips" class="modal-chips-wrap"></div>
+    </div>
+    <div id="modalDossierBody" class="modal-dossier-body"></div>
+  </div>
+</div>
+<div id="shareToast" class="share-toast"></div>
 
 </div><!-- /#tabContent-fno -->
 
@@ -5529,6 +5906,236 @@ document.addEventListener("click", function(e) {
         sugBox.style.display = "none";
     }
 });
+
+// ── 360° Dossier Modal & Share Controller ────────────────────────────
+window.currentModalCommodity = "GOLD";
+
+function getFirstVisibleCommodity() {
+    const searchVal = (document.getElementById("search")?.value || "").trim().toUpperCase();
+    if (searchVal && ANALYZER_DATA && ANALYZER_DATA[searchVal]) {
+        return searchVal;
+    }
+    for (const tableId of ["buyTable", "sellTable", "mainTable"]) {
+        const table = document.getElementById(tableId);
+        if (!table) continue;
+        const rows = table.querySelectorAll("tbody tr");
+        for (const r of rows) {
+            if (r.style.display !== "none" && r.cells.length > 0) {
+                const sym = r.cells[0].textContent.trim().toUpperCase();
+                if (sym && ANALYZER_DATA && ANALYZER_DATA[sym]) {
+                    return sym;
+                }
+            }
+        }
+    }
+    return "GOLD";
+}
+
+function populateModalCommodityControls() {
+    if (!ANALYZER_DATA) return;
+    const symbols = Object.keys(ANALYZER_DATA);
+    if (!symbols.length) return;
+
+    const sel = document.getElementById("modalCommoditySelect");
+    if (sel && sel.options.length !== symbols.length) {
+        sel.innerHTML = "";
+        symbols.forEach(s => {
+            const opt = document.createElement("option");
+            opt.value = s;
+            opt.textContent = s;
+            sel.appendChild(opt);
+        });
+    }
+
+    const chipsWrap = document.getElementById("modalCommodityChips");
+    if (chipsWrap && !chipsWrap.hasChildNodes()) {
+        chipsWrap.innerHTML = "";
+        symbols.slice(0, 16).forEach(s => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "modal-chip";
+            btn.dataset.sym = s;
+            btn.textContent = s;
+            btn.onclick = () => switchModalCommodity(s);
+            chipsWrap.appendChild(btn);
+        });
+    }
+}
+
+function openMarketAnalyzerModal(symbol) {
+    let targetSym = symbol ? symbol.trim().toUpperCase() : getFirstVisibleCommodity();
+    if (!ANALYZER_DATA || !ANALYZER_DATA[targetSym]) {
+        if (ANALYZER_DATA) {
+            const keys = Object.keys(ANALYZER_DATA);
+            if (keys.length > 0) targetSym = keys[0];
+        }
+    }
+
+    populateModalCommodityControls();
+    switchModalCommodity(targetSym);
+
+    const modal = document.getElementById("marketAnalyzerModal");
+    if (modal) {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function switchModalCommodity(symbol) {
+    if (!symbol) return;
+    const sym = symbol.trim().toUpperCase();
+    window.currentModalCommodity = sym;
+
+    const sel = document.getElementById("modalCommoditySelect");
+    if (sel && sel.value !== sym) sel.value = sym;
+
+    document.querySelectorAll(".modal-chip").forEach(c => {
+        if (c.dataset.sym === sym) {
+            c.classList.add("active");
+        } else {
+            c.classList.remove("active");
+        }
+    });
+
+    const body = document.getElementById("modalDossierBody");
+    if (!body) return;
+
+    const d = ANALYZER_DATA ? ANALYZER_DATA[sym] : null;
+    if (d && typeof renderFullDossierHtml === "function") {
+        body.innerHTML = renderFullDossierHtml(d);
+    } else {
+        body.innerHTML = '<div style="padding:40px; text-align:center; color:#888;">No analyzer intelligence available for ' + sym + '</div>';
+    }
+}
+
+function closeMarketAnalyzerModal(event) {
+    if (event && event.target && event.target.id !== "marketAnalyzerModal" && !event.target.classList.contains("modal-close-btn")) {
+        return;
+    }
+    const modal = document.getElementById("marketAnalyzerModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+    }
+}
+
+function openCurrentInAnalyzerTab() {
+    const sym = window.currentModalCommodity || "GOLD";
+    closeMarketAnalyzerModal();
+    if (typeof switchDashboardTab === "function") {
+        switchDashboardTab("analyzer");
+    }
+    setTimeout(() => {
+        if (typeof selectAnalyzerCommodity === "function") {
+            selectAnalyzerCommodity(sym);
+        }
+    }, 150);
+}
+
+function generateDossierShareText(sym) {
+    const d = ANALYZER_DATA ? ANALYZER_DATA[sym] : null;
+    if (!d) return "Commodity " + sym + " intelligence not found.";
+
+    const name = d.company_name || sym;
+    const spot = (d.spot !== null && d.spot !== undefined && d.spot !== "NA" && !isNaN(d.spot))
+        ? ("₹" + Number(d.spot).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}))
+        : (d.spot || "NA");
+
+    const fnoSig = d.fno ? d.fno.signal : "NA";
+    const finalScore = d.fno && d.fno.final_score !== null ? d.fno.final_score : "—";
+    const pivot = d.fno && d.fno.pivot !== null ? ("₹" + Number(d.fno.pivot).toFixed(2)) : "—";
+    const r1 = d.fno && d.fno.r1 !== null ? ("₹" + Number(d.fno.r1).toFixed(2)) : "—";
+    const s1 = d.fno && d.fno.s1 !== null ? ("₹" + Number(d.fno.s1).toFixed(2)) : "—";
+    const oiYest = d.fno && d.fno.oi_yesterday !== null ? (d.fno.oi_yesterday + "%") : "—";
+    const oiIntra = d.fno && d.fno.oi_last_query !== null ? (d.fno.oi_last_query + "%") : "—";
+
+    const mcScore = d.score && d.score.total_score !== null ? (Number(d.score.total_score).toFixed(1) + "/10") : "—";
+    const aiSig = d.quant && d.quant.intraday_signal ? d.quant.intraday_signal : "—";
+    const aiConf = d.quant && d.quant.intraday_conf !== null ? (Number(d.quant.intraday_conf).toFixed(1) + "%") : "—";
+    const risk = d.quant && d.quant.risk_level ? d.quant.risk_level : "—";
+
+    let verdictLabel = "NEUTRAL";
+    let verdictScore = 50;
+    let strategy = "";
+    if (typeof computeUnifiedVerdict === "function") {
+        const v = computeUnifiedVerdict(d.fno, d.score, d.quant);
+        verdictLabel = v.label;
+        verdictScore = v.score;
+        strategy = v.strategy;
+    }
+
+    const lines = [
+        "📊 MCX 360° COMMODITY INTELLIGENCE: " + sym,
+        "💰 Spot Price: " + spot,
+        "--------------------------------------------------",
+        "🎯 Composite Stance: " + verdictLabel + " (" + verdictScore + "/100)",
+        "📈 F&O Market Signal: " + fnoSig + " | Final Score: " + finalScore + "/10",
+        "⚡ AI Quant Model: " + aiSig + " (" + aiConf + " Confidence) | Risk: " + risk,
+        "⭐ MC Commodity Score: " + mcScore,
+        "📍 Key Levels: Pivot " + pivot + " | R1: " + r1 + " | S1: " + s1,
+        "🔄 OI Shifts: Yesterday " + oiYest + " | Intraday " + oiIntra,
+        strategy ? ("💡 Actionable Strategy: " + strategy) : "",
+        "--------------------------------------------------",
+        "Live MCX Dashboard: " + window.location.href.split("#")[0]
+    ].filter(Boolean);
+
+    return lines.join("\n");
+}
+
+async function shareCurrentModalDossier() {
+    const sym = window.currentModalCommodity || "GOLD";
+    const text = generateDossierShareText(sym);
+
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: "MCX 360° Dossier: " + sym,
+                text: text
+            });
+            showShareToast("✓ Shared successfully!");
+            return;
+        } catch(e) {}
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+            await navigator.clipboard.writeText(text);
+            showShareToast("✓ Copied Dossier to clipboard!");
+            return;
+        } catch(e) {}
+    }
+
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    showShareToast("✓ Copied Dossier to clipboard!");
+}
+
+function showShareToast(msg) {
+    let t = document.getElementById("shareToast");
+    if (!t) {
+        t = document.createElement("div");
+        t.id = "shareToast";
+        t.className = "share-toast";
+        document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.classList.add("show");
+    setTimeout(() => { t.classList.remove("show"); }, 2500);
+}
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        const modal = document.getElementById("marketAnalyzerModal");
+        if (modal && modal.style.display !== "none") {
+            closeMarketAnalyzerModal();
+        }
+    }
+});
+
 
 // ── Ultra-Fast In-Memory Commodity Scores Engine ────────
 const ALL_SCORES_DATA = [{"symbol": "STEELREBAR", "company_name": "STEELREBAR", "spot": "48330.0000", "signal": "LONG", "raw_score": 85.5, "total_score": 8.6, "percentile_score": 8.6, "q_score": 50.0, "g_score": 50.0, "v_score": 100.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-steelrebar-price?type=futures"}, {"symbol": "RUBBER", "company_name": "RUBBER", "spot": "100.0000", "signal": "LONG", "raw_score": 85.5, "total_score": 8.6, "percentile_score": 8.6, "q_score": 50.0, "g_score": 50.0, "v_score": 100.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-rubber-price?type=futures"}, {"symbol": "KAPAS", "company_name": "KAPAS", "spot": "1662.5000", "signal": "LONG", "raw_score": 85.5, "total_score": 8.6, "percentile_score": 8.6, "q_score": 50.0, "g_score": 50.0, "v_score": 100.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-kapas-price?type=futures"}, {"symbol": "CPO", "company_name": "CPO", "spot": "1337.0000", "signal": "LONG", "raw_score": 85.5, "total_score": 8.6, "percentile_score": 8.6, "q_score": 50.0, "g_score": 50.0, "v_score": 100.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-cpo-price?type=futures"}, {"symbol": "COTTON", "company_name": "COTTON", "spot": "28500.0000", "signal": "LONG", "raw_score": 85.5, "total_score": 8.6, "percentile_score": 8.6, "q_score": 50.0, "g_score": 50.0, "v_score": 100.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-cotton-price?type=futures"}, {"symbol": "CARDAMOM", "company_name": "CARDAMOM", "spot": "3370.0000", "signal": "LONG", "raw_score": 84.35000000000001, "total_score": 8.4, "percentile_score": 8.4, "q_score": 50.0, "g_score": 50.0, "v_score": 77.0, "t_score": 90.0, "neo_proxy": null, "oneliner": "Quantitative Signal: LONG | Price: 0.00% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-cardamom-price?type=futures"}, {"symbol": "ALUMINIUM", "company_name": "ALUMINIUM", "spot": "366.0000", "signal": "COVER", "raw_score": 77.62, "total_score": 7.8, "percentile_score": 7.8, "q_score": 51.2, "g_score": 50.0, "v_score": 100.0, "t_score": 50.0, "neo_proxy": null, "oneliner": "Quantitative Signal: COVER | Price: 0.00% | OI: 0.12%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-aluminium-price?type=futures"}, {"symbol": "ZINC", "company_name": "ZINC", "spot": "336.2000", "signal": "UNWIND", "raw_score": 72.64, "total_score": 7.3, "percentile_score": 7.3, "q_score": 51.4, "g_score": 50.0, "v_score": 0.0, "t_score": 50.0, "neo_proxy": null, "oneliner": "Quantitative Signal: UNWIND | Price: 0.00% | OI: 0.14%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-zinc-price?type=futures"}, {"symbol": "SILVER", "company_name": "SILVER", "spot": "236822.0000", "signal": "SHORT", "raw_score": 71.92, "total_score": 7.2, "percentile_score": 7.2, "q_score": 49.2, "g_score": 100.0, "v_score": 0.0, "t_score": 10.0, "neo_proxy": null, "oneliner": "Quantitative Signal: SHORT | Price: 7.32% | OI: -0.08%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-silver-price?type=futures"}, {"symbol": "NATURALGAS", "company_name": "NATURALGAS", "spot": "242.7000", "signal": "UNWIND", "raw_score": 72.34, "total_score": 7.2, "percentile_score": 7.2, "q_score": 48.4, "g_score": 50.0, "v_score": 0.0, "t_score": 50.0, "neo_proxy": null, "oneliner": "Quantitative Signal: UNWIND | Price: 0.00% | OI: -0.16%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-naturalgas-price?type=futures"}, {"symbol": "LEAD", "company_name": "LEAD", "spot": "199.1500", "signal": "SHORT", "raw_score": 69.825, "total_score": 7.0, "percentile_score": 7.0, "q_score": 50.0, "g_score": 85.5, "v_score": 0.0, "t_score": 10.0, "neo_proxy": null, "oneliner": "Quantitative Signal: SHORT | Price: 2.13% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-lead-price?type=futures"}, {"symbol": "GOLD", "company_name": "GOLD", "spot": "149494.0000", "signal": "SHORT", "raw_score": 69.5, "total_score": 7.0, "percentile_score": 7.0, "q_score": 49.5, "g_score": 83.66666666666666, "v_score": 0.0, "t_score": 10.0, "neo_proxy": null, "oneliner": "Quantitative Signal: SHORT | Price: 2.02% | OI: -0.05%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-gold-price?type=futures"}, {"symbol": "NICKEL", "company_name": "NICKEL", "spot": "1662.1000", "signal": "SHORT", "raw_score": 64.5, "total_score": 6.5, "percentile_score": 6.5, "q_score": 50.0, "g_score": 50.0, "v_score": 0.0, "t_score": 10.0, "neo_proxy": null, "oneliner": "Quantitative Signal: SHORT | Price: 0.00% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-nickel-price?type=futures"}, {"symbol": "MENTHAOIL", "company_name": "MENTHAOIL", "spot": "1123.0000", "signal": "SHORT", "raw_score": 64.5, "total_score": 6.5, "percentile_score": 6.5, "q_score": 50.0, "g_score": 50.0, "v_score": 0.0, "t_score": 10.0, "neo_proxy": null, "oneliner": "Quantitative Signal: SHORT | Price: 0.00% | OI: 0.0%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-menthaoil-price?type=futures"}, {"symbol": "COPPER", "company_name": "COPPER", "spot": "1218.5000", "signal": "SHORT", "raw_score": 64.85000000000001, "total_score": 6.5, "percentile_score": 6.5, "q_score": 53.49999999999999, "g_score": 50.0, "v_score": 0.0, "t_score": 10.0, "neo_proxy": null, "oneliner": "Quantitative Signal: SHORT | Price: 0.00% | OI: 0.35%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-copper-price?type=futures"}, {"symbol": "CRUDEOIL", "company_name": "CRUDEOIL", "spot": "8523.0000", "signal": "SHORT", "raw_score": 59.5, "total_score": 6.0, "percentile_score": 6.0, "q_score": 0.0, "g_score": 50.0, "v_score": 0.0, "t_score": 10.0, "neo_proxy": null, "oneliner": "Quantitative Signal: SHORT | Price: 0.00% | OI: -5.6%", "mc_url": "https://www.moneycontrol.com/commodity/mcx-crudeoil-price?type=futures"}];
