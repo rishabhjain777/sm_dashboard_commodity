@@ -186,7 +186,55 @@ async function switchDashboardTab(rawTabId) {
     }
 }
 
+// ── Theme Management (Light / Dark) ─────────────────────────
+function updateThemeUI(theme) {
+    const btn = document.getElementById("themeToggleBtn");
+    const icon = document.getElementById("themeToggleIcon");
+    const text = document.getElementById("themeToggleText");
+    if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.body.classList.add("dark-theme");
+        if (icon) icon.innerHTML = "&#9728;"; // Sun
+        if (text) text.textContent = "Light Mode";
+        if (btn) {
+            btn.classList.add("is-dark");
+            btn.title = "Switch to Light Mode";
+        }
+    } else {
+        document.documentElement.removeAttribute("data-theme");
+        document.body.classList.remove("dark-theme");
+        if (icon) icon.innerHTML = "&#9790;"; // Moon
+        if (text) text.textContent = "Dark Mode";
+        if (btn) {
+            btn.classList.remove("is-dark");
+            btn.title = "Switch to Dark Mode";
+        }
+    }
+}
+
+function toggleDashboardTheme() {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark" || document.body.classList.contains("dark-theme");
+    const newTheme = isDark ? "light" : "dark";
+    try {
+        localStorage.setItem("dashboardTheme", newTheme);
+    } catch(e) {}
+    updateThemeUI(newTheme);
+}
+
+function initTheme() {
+    let theme = "light";
+    try {
+        theme = localStorage.getItem("dashboardTheme") ||
+            (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light");
+    } catch(e) {}
+    updateThemeUI(theme);
+}
+
+window.toggleDashboardTheme = toggleDashboardTheme;
+window.initTheme = initTheme;
+
 window.addEventListener("DOMContentLoaded", () => {
+    initTheme();
     let initialTab = "market";
     try {
         const hash = window.location.hash.replace("#", "");
@@ -201,3 +249,8 @@ window.addEventListener("DOMContentLoaded", () => {
     } catch(e) {}
     switchDashboardTab(initialTab);
 });
+
+// Run theme check immediately if body is already loaded
+if (document.body) {
+    initTheme();
+}
